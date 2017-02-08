@@ -8,6 +8,34 @@ namespace ERPManagement.ViewModel.List
 {
     class ListViewModel : BaseViewModel
     {
+        private String name = null;
+        private String note = null;
+
+        public String Name
+        {
+            get { return name; }
+            set
+            {
+                if (name != null)
+                {
+                    name = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        public String Note
+        {
+            get { return note; }
+            set
+            {
+                if (note != null)
+                {
+                    note = value;
+                    RaisePropertyChanged("Note");
+                }
+            }
+        }
 
         protected override void Save(RadWindow window)
         {

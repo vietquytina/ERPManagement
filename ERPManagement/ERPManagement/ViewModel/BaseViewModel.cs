@@ -3,13 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using System.Windows;
+using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel
 {
+    enum ViewModelAction : uint
+    {
+        Add = 1,
+        Edit = 2
+    }
+
+    class ActionEventArgs : RoutedEventArgs
+    {
+        public ViewModelAction Action { get; set; }
+    }
+
+    delegate void ActionEventHandler(object sender, ActionEventArgs e);
+
     class BaseViewModel : BaseNotify
     {
+        protected static ERPManagementDataContext db = new ERPManagementDataContext();
+
+        public event RoutedEventHandler Deleted;
+        public event ActionEventHandler ItemAction;
+
         protected Boolean isInserted = true;
-        private ICommand saveCommand, closeCommand;
+        private ICommand saveCommand, closeCommand, deleteCommand, editCommand;
 
         public ICommand SaveCommand
         {
@@ -20,6 +40,8 @@ namespace ERPManagement.ViewModel
                     saveCommand = new RelayCommand<Telerik.Windows.Controls.RadWindow>((wnd) =>
                     {
                         Save(wnd);
+                        if (wnd != null)
+                            wnd.Close();
                     });
                 }
                 return saveCommand;
@@ -41,17 +63,67 @@ namespace ERPManagement.ViewModel
             }
         }
 
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (deleteCommand == null)
+                {
+                    deleteCommand = new RelayCommand(() =>
+                    {
+                        if (Delete() && Deleted != null)
+                        {
+                            Deleted(this, new RoutedEventArgs());
+                        }
+                    });
+                }
+                return deleteCommand;
+            }
+        }
+
+        public ICommand EditCommand
+        {
+            get
+            {
+                if (editCommand == null)
+                {
+                    editCommand = new RelayCommand(() =>
+                    {
+                        Edit();
+                    });
+                }
+                return editCommand;
+            }
+        }
+
 
         protected virtual void Save(Telerik.Windows.Controls.RadWindow window)
         {
 
         }
 
-        protected void Close(Telerik.Windows.Controls.RadWindow window)
+        private void Close(Telerik.Windows.Controls.RadWindow window)
         {
             if (window != null)
             {
                 window.Close();
+            }
+        }
+
+        protected virtual void Edit()
+        {
+        }
+
+        protected virtual Boolean Delete()
+        {
+            return true;
+        }
+
+        protected void RaiseAction(ViewModelAction action)
+        {
+            if (ItemAction != null)
+            {
+                ItemAction(this, new ActionEventArgs() { Action = action });
             }
         }
     }
