@@ -86,7 +86,14 @@
     <Compile Include="ViewModel\BaseNotify.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\List\ClassViewModel.cs" />
+    <Compile Include="ViewModel\List\EquipmentTypeViewModel.cs" />
+    <Compile Include="ViewModel\List\FundingSourceViewModel.cs" />
+    <Compile Include="ViewModel\List\GradeViewModel.cs" />
     <Compile Include="ViewModel\List\ListViewModel.cs" />
+    <Compile Include="ViewModel\List\NationalViewModel.cs" />
+    <Compile Include="ViewModel\List\StatusViewModel.cs" />
+    <Compile Include="ViewModel\List\SubjectViewModel.cs" />
+    <Compile Include="ViewModel\List\WareHouseViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
