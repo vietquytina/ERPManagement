@@ -36,10 +36,5 @@ namespace ERPManagement.ViewModel.List
                 }
             }
         }
-
-        protected override void Save(RadWindow window)
-        {
-
-        }
     }
 }
