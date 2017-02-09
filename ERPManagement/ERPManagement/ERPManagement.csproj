@@ -87,6 +87,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\List\ClassViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentTypeViewModel.cs" />
+    <Compile Include="ViewModel\List\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\List\FundingSourceViewModel.cs" />
     <Compile Include="ViewModel\List\GradeViewModel.cs" />
     <Compile Include="ViewModel\List\ListViewModel.cs" />
