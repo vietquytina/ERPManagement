@@ -17,6 +17,7 @@ namespace ERPManagement.ViewModel.List
             foreach (var g in gs)
             {
                 GradeViewModel grade = new GradeViewModel();
+                grade.gradeID = g.GradeID;
                 grade.Name = g.Name;
                 grade.Note = g.Note;
                 grade.isInserted = false;
@@ -31,6 +32,7 @@ namespace ERPManagement.ViewModel.List
             if (g == null)
                 return null;
             GradeViewModel grade = new GradeViewModel();
+            grade.gradeID = g.GradeID;
             grade.Name = g.Name;
             grade.Note = g.Note;
             grade.isInserted = false;
@@ -39,6 +41,13 @@ namespace ERPManagement.ViewModel.List
 
         #region Variables
         private Int32 gradeID = 0;
+        #endregion
+
+        #region Properties
+        public Int32 GradeID
+        {
+            get { return gradeID; }
+        }
         #endregion
 
         protected override void Save(RadWindow window)
@@ -59,11 +68,12 @@ namespace ERPManagement.ViewModel.List
                 grade.Note = Note;
                 db.SubmitChanges();
                 gradeID = grade.GradeID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
             }
         }
 
-        protected override bool Delete()
+        protected override Boolean Delete()
         {
             Grade grade = db.Grades.SingleOrDefault(m => m.GradeID == gradeID);
             try
@@ -77,7 +87,6 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
-
         }
     }
 }

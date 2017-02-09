@@ -17,6 +17,7 @@ namespace ERPManagement.ViewModel.List
             foreach (var n in ns)
             {
                 NationalViewModel national = new NationalViewModel();
+                national.nationalID = n.NationalID;
                 national.Name = n.Name;
                 national.Note = n.Note;
                 national.isInserted = false;
@@ -29,13 +30,23 @@ namespace ERPManagement.ViewModel.List
         {
             var n = db.Nationals.SingleOrDefault(m => m.NationalID == nationalID);
             NationalViewModel national = new NationalViewModel();
+            national.nationalID = n.NationalID;
             national.Name = n.Name;
             national.Note = n.Note;
             national.isInserted = false;
             return national;
         }
 
+        #region Variables
         private Int32 nationalID = 0;
+        #endregion
+
+        #region Properties
+        public Int32 NationalID
+        {
+            get { return nationalID; }
+        }
+        #endregion
 
         protected override void Save(RadWindow window)
         {
@@ -55,13 +66,20 @@ namespace ERPManagement.ViewModel.List
                 national.Note = Note;
                 db.SubmitChanges();
                 nationalID = national.NationalID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
             }
         }
 
-        protected override bool Delete()
+        protected override Boolean Delete()
         {
-            return base.Delete();
+            try
+            {
+                National national = db.Nationals.SingleOrDefault(m => m.NationalID == nationalID);
+                db.Nationals.DeleteOnSubmit(national);
+                return true;
+            }
+            catch { return false; }
         }
 
         protected override void Edit()

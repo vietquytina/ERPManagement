@@ -83,6 +83,7 @@ namespace ERPManagement.ViewModel.List
                 studentClass.Grade = db.Grades.Single(m => m.GradeID == GradeID);
                 db.SubmitChanges();
                 classID = studentClass.ClassID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
             }
         }
