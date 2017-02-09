@@ -29,6 +29,8 @@ namespace ERPManagement.ViewModel.List
         public static NationalViewModel GetNational(Int32 nationalID)
         {
             var n = db.Nationals.SingleOrDefault(m => m.NationalID == nationalID);
+            if (n == null)
+                return null;
             NationalViewModel national = new NationalViewModel();
             national.nationalID = n.NationalID;
             national.Name = n.Name;

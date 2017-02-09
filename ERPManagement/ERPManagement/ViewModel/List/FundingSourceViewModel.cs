@@ -29,6 +29,8 @@ namespace ERPManagement.ViewModel.List
         public static FundingSourceViewModel GetFunding(Int32 sourceID)
         {
             var _funding = db.FundingSources.SingleOrDefault(m => m.FundingSourceID == sourceID);
+            if (_funding == null)
+                return null;
             FundingSourceViewModel funding = new FundingSourceViewModel();
             funding.sourceID = _funding.FundingSourceID;
             funding.Name = _funding.Name;
