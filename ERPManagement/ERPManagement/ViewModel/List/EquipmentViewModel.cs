@@ -155,10 +155,10 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Save(RadWindow window)
         {
-            Equipment eq = null;
+            ERPManagement.Model.Equipment eq = null;
             if (isInserted)
             {
-                eq = new Equipment();
+                eq = new ERPManagement.Model.Equipment();
                 db.Equipments.InsertOnSubmit(eq);
             }
             else
@@ -184,7 +184,7 @@ namespace ERPManagement.ViewModel.List
 
         protected override Boolean Delete()
         {
-            Equipment eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == EquipmentID);
+            ERPManagement.Model.Equipment eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == EquipmentID);
             try
             {
                 db.Equipments.DeleteOnSubmit(eq);

@@ -8,6 +8,11 @@ namespace ERPManagement.ViewModel.Equipment
 {
     class EquipmentViewModel : BaseViewModel
     {
+        protected static void Sync(IEnumerable<EquipmentDetailViewModel> srcDetails)
+        {
+
+        }
+
         #region Variables
         private String number, note;
         private DateTime date = DateTime.Now;
