@@ -123,8 +123,11 @@ namespace ERPManagement.ViewModel.Equipment
                 eqImp.Number = Number;
                 eqImp.Date = Date;
                 eqImp.Note = Note;
+                Sync(Details, eqImp.EquipmentImportationDetails);
+                SyncIndex(Details);
                 db.SubmitChanges();
                 equipmentImportationID = eqImp.EquipmentImportationID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
             }
         }

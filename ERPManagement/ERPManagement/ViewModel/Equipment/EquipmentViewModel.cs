@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
@@ -8,11 +10,6 @@ namespace ERPManagement.ViewModel.Equipment
 {
     class EquipmentViewModel : BaseViewModel
     {
-        protected static void Sync(IEnumerable<EquipmentDetailViewModel> srcDetails)
-        {
-
-        }
-
         #region Variables
         private String number, note;
         private DateTime date = DateTime.Now;
@@ -58,5 +55,20 @@ namespace ERPManagement.ViewModel.Equipment
             }
         }
         #endregion
+
+        protected void Sync(IEnumerable<EquipmentDetailViewModel> srcDetails, IEnumerable destDetails)
+        {
+            int i = 0;
+            int j = 0;
+        }
+
+        protected void SyncIndex(IEnumerable<EquipmentDetailViewModel> details)
+        {
+            int index = 0;
+            foreach(var detail in details)
+            {
+                detail.Index = index++;
+            }
+        }
     }
 }
