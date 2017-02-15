@@ -88,6 +88,8 @@
     <Compile Include="ViewModel\Equipment\EquipmentDetailViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentImportationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentLiquidationViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentReturningViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentStatusNoteBookViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\ItemListViewModel.cs" />
     <Compile Include="ViewModel\List\ClassListViewModel.cs" />
@@ -158,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="ViewModel\Employee\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>

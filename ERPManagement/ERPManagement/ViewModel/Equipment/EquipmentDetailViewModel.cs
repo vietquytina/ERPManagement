@@ -9,7 +9,7 @@ namespace ERPManagement.ViewModel.Equipment
     {
         #region Variables
         private Int32 equipmentID;
-        private String equipmentName;
+        private String equipmentName, unitMeasure;
         #endregion
 
         #region Properties
@@ -22,7 +22,9 @@ namespace ERPManagement.ViewModel.Equipment
             {
                 if (equipmentID != value)
                 {
+                    var oldEquipment = equipmentID;
                     equipmentID = value;
+                    OnEquipmentChanged(oldEquipment, equipmentID);
                     RaisePropertyChanged("EquipmentID");
                 }
             }
@@ -39,12 +41,28 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+        public String UnitMeasure
+        {
+            get { return unitMeasure; }
+            set
+            {
+                if (unitMeasure != value)
+                {
+                    unitMeasure = value;
+                    RaisePropertyChanged("UnitMeasure");
+                }
+            }
+        }
         #endregion
 
         public EquipmentDetailViewModel()
         {
             DetailID = Guid.NewGuid();
             Index = -1;
+        }
+
+        protected virtual void OnEquipmentChanged(int oldEquipment, int newEquipment)
+        {
         }
     }
 }
