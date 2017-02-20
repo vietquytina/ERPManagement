@@ -83,8 +83,10 @@
       <DependentUpon>ERPManagement.dbml</DependentUpon>
     </Compile>
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModel\Authorize\AuthorizeAttribute.cs" />
     <Compile Include="ViewModel\BaseNotify.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Employee\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentBreakViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentDetailViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentExportationViewModel.cs" />
@@ -94,23 +96,16 @@
     <Compile Include="ViewModel\Equipment\EquipmentStatusNoteBookViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\ItemListViewModel.cs" />
-    <Compile Include="ViewModel\List\ClassListViewModel.cs" />
-    <Compile Include="ViewModel\List\ClassViewModel.cs" />
+    <Compile Include="ViewModel\List\DepartmentViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentListViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentTypeListViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentTypeViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentViewModel.cs" />
-    <Compile Include="ViewModel\List\FundingSourceListViewModel.cs" />
-    <Compile Include="ViewModel\List\FundingSourceViewModel.cs" />
-    <Compile Include="ViewModel\List\GradeListViewModel.cs" />
-    <Compile Include="ViewModel\List\GradeViewModel.cs" />
     <Compile Include="ViewModel\List\ListViewModel.cs" />
     <Compile Include="ViewModel\List\NationalListViewModel.cs" />
     <Compile Include="ViewModel\List\NationalViewModel.cs" />
     <Compile Include="ViewModel\List\StatusListViewModel.cs" />
     <Compile Include="ViewModel\List\StatusViewModel.cs" />
-    <Compile Include="ViewModel\List\SubjectListViewModel.cs" />
-    <Compile Include="ViewModel\List\SubjectViewModel.cs" />
     <Compile Include="ViewModel\List\WareHouseListViewModel.cs" />
     <Compile Include="ViewModel\List\WareHouseViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -162,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="ViewModel\Employee\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
