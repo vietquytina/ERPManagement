@@ -8,29 +8,32 @@ using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel
 {
-    enum ViewModelAction : uint
+    public enum ViewModelAction : uint
     {
         Add = 1,
         Edit = 2
     }
 
-    class ActionEventArgs : RoutedEventArgs
+    public class ActionEventArgs : RoutedEventArgs
     {
         public ViewModelAction Action { get; set; }
     }
 
-    delegate void ActionEventHandler(object sender, ActionEventArgs e);
+    public delegate void ActionEventHandler(object sender, ActionEventArgs e);
 
-    class BaseViewModel : BaseNotify
+    public class BaseViewModel : BaseNotify
     {
         protected static ERPManagementDataContext db = new ERPManagementDataContext();
 
         public event RoutedEventHandler Deleted;
         public event ActionEventHandler ItemAction;
 
+        #region Variables
         protected Boolean isInserted = true;
         private ICommand saveCommand, closeCommand, deleteCommand, editCommand;
+        #endregion
 
+        #region Properties
         public ICommand SaveCommand
         {
             get
@@ -95,8 +98,22 @@ namespace ERPManagement.ViewModel
                 return editCommand;
             }
         }
+        #endregion
 
+        #region Permission properties
+        public Boolean CanRead { get; set; }
 
+        public Boolean CanWrite { get; set; }
+
+        public Boolean CanDelete { get; set; }
+        #endregion
+
+        public BaseViewModel()
+        {
+
+        }
+
+        #region Method
         protected virtual void Save(Telerik.Windows.Controls.RadWindow window)
         {
 
@@ -118,6 +135,7 @@ namespace ERPManagement.ViewModel
         {
             return true;
         }
+        #endregion
 
         protected void RaiseAction(ViewModelAction action)
         {

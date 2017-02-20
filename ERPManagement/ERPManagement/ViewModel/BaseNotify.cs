@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace ERPManagement.ViewModel
 {
-    class BaseNotify : INotifyPropertyChanged
+    public class BaseNotify : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

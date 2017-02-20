@@ -73,9 +73,9 @@ namespace ERPManagement.ViewModel.Equipment
     class EquipmentBreakViewModel : EquipmentViewModel
     {
         #region Variables
-        private Int32 companyID;
+        private Int32 companyID, assignment, repairer;
         private String companyName;
-        private DateTime repairDate;
+        private DateTime repairDate, recvInfoDate;
         private String advise;
         #endregion
 
@@ -92,6 +92,7 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public String CompanyName
         {
             get { return companyName; }
@@ -104,6 +105,27 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
+        #region Xử lí của tung tâm
+        /// <summary>
+        /// Ngày nhận báo hỏng
+        /// </summary>
+        public DateTime RecvInfoDate
+        {
+            get { return recvInfoDate; }
+            set
+            {
+                if (recvInfoDate != value)
+                {
+                    recvInfoDate = value;
+                    RaisePropertyChanged("RecvInfoDate");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ngày xử lý
+        /// </summary>
         public DateTime RepairDate
         {
             get { return repairDate; }
@@ -116,7 +138,15 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
+        /// <summary>
+        /// Kết quả
+        /// </summary>
         public String Result { get; set; }
+        
+        /// <summary>
+        /// Đề xuất
+        /// </summary>
         public String Advise
         {
             get { return advise; }
@@ -129,6 +159,39 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+        
+        /// <summary>
+        /// Người giao nhiệm vụ
+        /// </summary>
+        public Int32 Assignment
+        {
+            get { return assignment; }
+            set
+            {
+                if (assignment != value)
+                {
+                    assignment = value;
+                    RaisePropertyChanged("Assignment");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Người thực hiện
+        /// </summary>
+        public Int32 Repairer
+        {
+            get { return repairer; }
+            set
+            {
+                if (repairer != value)
+                {
+                    repairer = value;
+                    RaisePropertyChanged("Repairer");
+                }
+            }
+        }
+        #endregion
         #endregion
 
         public EquipmentBreakViewModel() : base()

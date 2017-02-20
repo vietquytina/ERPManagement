@@ -109,6 +109,7 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Save(RadWindow window)
         {
+
         }
 
         protected override bool Delete()

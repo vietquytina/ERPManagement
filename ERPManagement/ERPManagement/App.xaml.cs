@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using ERPManagement.ViewModel.Employee;
 
 namespace ERPManagement
 {
@@ -12,5 +13,6 @@ namespace ERPManagement
     /// </summary>
     public partial class App : Application
     {
+        public EmployeeViewModel Employee { get; set; }
     }
 }

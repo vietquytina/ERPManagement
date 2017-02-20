@@ -108,37 +108,12 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Save(RadWindow window)
         {
-            EquipmentImportation eqImp = null;
-            if (isInserted)
-            {
-                eqImp = new EquipmentImportation();
-                db.EquipmentImportations.InsertOnSubmit(eqImp);
-            }
-            else
-            {
-                eqImp = db.EquipmentImportations.SingleOrDefault(m => m.EquipmentImportationID == EquipmentImportationID);
-            }
-            if (eqImp != null)
-            {
-                eqImp.Number = Number;
-                eqImp.Date = Date;
-                eqImp.Note = Note;
-                Sync(Details, eqImp.EquipmentImportationDetails);
-                SyncIndex(Details);
-                db.SubmitChanges();
-                equipmentImportationID = eqImp.EquipmentImportationID;
-                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
-                isInserted = false;
-            }
         }
 
         protected override bool Delete()
         {
             try
             {
-                EquipmentImportation eqImp = db.EquipmentImportations.SingleOrDefault(m => m.EquipmentImportationID == EquipmentImportationID);
-                db.EquipmentImportations.DeleteOnSubmit(eqImp);
-                db.SubmitChanges();
                 return true;
             }
             catch { return false; }
