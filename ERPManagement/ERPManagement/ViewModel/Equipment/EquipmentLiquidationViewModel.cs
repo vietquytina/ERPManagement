@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
+using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel.Equipment
 {
@@ -105,15 +106,21 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Save(RadWindow window)
         {
+
         }
 
-        protected override bool Delete()
+        protected override Boolean Delete()
         {
-            return base.Delete();
+            try
+            {
+                return true;
+            }
+            catch { return false; }
         }
 
         protected override void Edit()
         {
+
         }
     }
 }

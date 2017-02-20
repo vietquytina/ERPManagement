@@ -12,42 +12,14 @@ namespace ERPManagement.ViewModel.List
         public static IEnumerable<EquipmentViewModel> GetEquipments()
         {
             List<EquipmentViewModel> equipments = new List<EquipmentViewModel>();
-            var eqs = from p in db.Equipments
-                      select p;
-            foreach (var eq in eqs)
-            {
-                EquipmentViewModel equipment = new EquipmentViewModel();
-                equipment.equipmentID = eq.EquipmentID;
-                equipment.Code = eq.Code;
-                equipment.Name = eq.Name;
-                equipment.UnitMeasure = eq.UnitMeasure;
-                equipment.Number = eq.Number;
-                equipment.EquipmentTypeID = eq.EquipmentTypeID;
-                equipment.SubjectID = eq.SubjectID;
-                equipment.Description = eq.Description;
-                equipment.NationalID = eq.NationalID;
-                equipment.isInserted = false;
-                equipments.Add(equipment);
-            }
+
             return equipments;
         }
 
         public static EquipmentViewModel GetEquipment(Int32 equipmentID)
         {
-            var eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == equipmentID);
-            if (eq == null)
-                return null;
+
             EquipmentViewModel equipment = new EquipmentViewModel();
-            equipment.equipmentID = eq.EquipmentID;
-            equipment.Code = eq.Code;
-            equipment.Name = eq.Name;
-            equipment.UnitMeasure = eq.UnitMeasure;
-            equipment.Number = eq.Number;
-            equipment.EquipmentTypeID = eq.EquipmentTypeID;
-            equipment.SubjectID = eq.SubjectID;
-            equipment.Description = eq.Description;
-            equipment.NationalID = eq.NationalID;
-            equipment.isInserted = false;
             return equipment;
         }
 
@@ -155,40 +127,14 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Save(RadWindow window)
         {
-            ERPManagement.Model.Equipment eq = null;
-            if (isInserted)
-            {
-                eq = new ERPManagement.Model.Equipment();
-                db.Equipments.InsertOnSubmit(eq);
-            }
-            else
-            {
-                eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == EquipmentID);
-            }
-            if (eq != null)
-            {
-                eq.Code = Code;
-                eq.Name = Name;
-                eq.UnitMeasure = UnitMeasure;
-                eq.Number = Number;
-                eq.EquipmentType = db.EquipmentTypes.SingleOrDefault(m => m.TypeID == EquipmentTypeID);
-                eq.Subject = db.Subjects.SingleOrDefault(m => m.SubjectID == SubjectID);
-                eq.Description = Description;
-                eq.National = db.Nationals.SingleOrDefault(m => m.NationalID == NationalID);
-                db.SubmitChanges();
-                equipmentID = eq.EquipmentID;
-                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
-                isInserted = false;
-            }
+
         }
 
         protected override Boolean Delete()
         {
-            ERPManagement.Model.Equipment eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == EquipmentID);
             try
             {
-                db.Equipments.DeleteOnSubmit(eq);
-                db.SubmitChanges();
+
                 return true;
             }
             catch { return false; }

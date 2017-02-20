@@ -13,6 +13,7 @@ namespace ERPManagement.ViewModel.Equipment
         #region Variables
         private String number, note;
         private DateTime date = DateTime.Now;
+        private Int32 statusID = 0;
         #endregion
 
         #region Properties
@@ -51,6 +52,19 @@ namespace ERPManagement.ViewModel.Equipment
                 {
                     date = value;
                     RaisePropertyChanged("Date");
+                }
+            }
+        }
+
+        public Int32 StatusID
+        {
+            get { return statusID; }
+            set
+            {
+                if (statusID != value)
+                {
+                    statusID = value;
+                    RaisePropertyChanged("StatusID");
                 }
             }
         }
