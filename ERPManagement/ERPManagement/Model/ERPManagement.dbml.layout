@@ -14,7 +14,7 @@
         <elementListCompartment Id="e9408ead-110e-45d9-9130-3fa37711a780" absoluteBounds="0.515, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.5 : 2.39589680989583); (1.5 : 3.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.5 : 2.39589680989583); (1.5 : 3.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ERPManagementDataContext/Company/Company_Department" />
       <nodes>
         <classShapeMoniker Id="923a9040-efcb-4fcd-bc7a-00d597bed460" />
