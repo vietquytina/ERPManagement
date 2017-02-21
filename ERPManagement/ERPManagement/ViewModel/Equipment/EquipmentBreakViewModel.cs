@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Telerik.Windows.Controls;
 
 namespace ERPManagement.ViewModel.Equipment
 {
@@ -197,6 +198,16 @@ namespace ERPManagement.ViewModel.Equipment
         public EquipmentBreakViewModel() : base()
         {
             RepairDate = DateTime.Now;
+        }
+
+        protected override void Save(RadWindow window)
+        {
+
+        }
+
+        protected override bool Delete()
+        {
+            return base.Delete();
         }
     }
 }

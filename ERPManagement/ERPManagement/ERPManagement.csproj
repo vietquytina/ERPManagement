@@ -77,7 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\ERPManagement.designer.cs">
+    <Compile Include="Model\ERPManagement1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ERPManagement.dbml</DependentUpon>
@@ -153,8 +153,8 @@
     </EmbeddedResource>
     <None Include="Model\ERPManagement.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>ERPManagement.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>ERPManagement1.designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

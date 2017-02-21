@@ -87,10 +87,12 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentImportation")]
     class EquipmentImportationViewModel : EquipmentViewModel
     {
         #region Variables
         private Int32 equipmentImportationID;
+        private Int32 delivery;
         #endregion
 
         #region Properties
@@ -99,6 +101,18 @@ namespace ERPManagement.ViewModel.Equipment
             get { return equipmentImportationID; }
         }
         public ObservableCollection<EquipmentImportationDetailViewModel> Details { get; set; }
+        public Int32 Delivery
+        {
+            get { return delivery; }
+            set
+            {
+                if (delivery != value)
+                {
+                    delivery = value;
+                    RaisePropertyChanged("Delivery");
+                }
+            }
+        }
         #endregion
 
         public EquipmentImportationViewModel()
@@ -108,12 +122,37 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Save(RadWindow window)
         {
+            EquipmentImportation eqImport = null;
+            if (isInserted)
+            {
+                eqImport = new EquipmentImportation();
+                db.EquipmentImportations.InsertOnSubmit(eqImport);
+            }
+            else
+            {
+                eqImport = db.EquipmentImportations.SingleOrDefault(m => m.ID == EquipmentImportationID);
+            }
+            if (eqImport != null)
+            {
+                eqImport.Number = Number;
+                eqImport.Date = Date;
+                eqImport.StatusID = StatusID;
+                eqImport.Employee = db.Employees.Single(m => m.EmployeeID == Delivery);
+                SyncIndex(Details);
+                db.SubmitChanges();
+                equipmentImportationID = eqImport.ID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
+                isInserted = false;
+            }
         }
 
         protected override bool Delete()
         {
             try
             {
+                EquipmentImportation eqImport = db.EquipmentImportations.SingleOrDefault(m => m.ID == EquipmentImportationID);
+                db.EquipmentImportations.DeleteOnSubmit(eqImport);
+                db.SubmitChanges();
                 return true;
             }
             catch { return false; }
