@@ -96,6 +96,7 @@
     <Compile Include="ViewModel\Equipment\EquipmentStatusNoteBookViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\ItemListViewModel.cs" />
+    <Compile Include="ViewModel\List\CompanyViewModel.cs" />
     <Compile Include="ViewModel\List\DepartmentViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentListViewModel.cs" />
     <Compile Include="ViewModel\List\EquipmentTypeListViewModel.cs" />
@@ -104,8 +105,10 @@
     <Compile Include="ViewModel\List\ListViewModel.cs" />
     <Compile Include="ViewModel\List\NationalListViewModel.cs" />
     <Compile Include="ViewModel\List\NationalViewModel.cs" />
+    <Compile Include="ViewModel\List\RegencyViewModel.cs" />
     <Compile Include="ViewModel\List\StatusListViewModel.cs" />
     <Compile Include="ViewModel\List\StatusViewModel.cs" />
+    <Compile Include="ViewModel\List\UnitMeasureViewModel.cs" />
     <Compile Include="ViewModel\List\WareHouseListViewModel.cs" />
     <Compile Include="ViewModel\List\WareHouseViewModel.cs" />
     <Page Include="MainWindow.xaml">

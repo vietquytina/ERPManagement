@@ -8,8 +8,25 @@ namespace ERPManagement.ViewModel.List
 {
     class ListViewModel : BaseViewModel
     {
+        #region Variables
         private String name = null;
         private String note = null;
+        private String code = null;
+        #endregion
+
+        #region Properties
+        public String Code
+        {
+            get { return code; }
+            set
+            {
+                if (code != null)
+                {
+                    code = value;
+                    RaisePropertyChanged("Code");
+                }
+            }
+        }
 
         public String Name
         {
@@ -36,5 +53,6 @@ namespace ERPManagement.ViewModel.List
                 }
             }
         }
+        #endregion
     }
 }
