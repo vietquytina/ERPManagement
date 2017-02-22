@@ -5,78 +5,52 @@ using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
 using ERPManagement.Model;
+using System.Data.Linq;
 
 namespace ERPManagement.ViewModel.Equipment
 {
     class EquipmentImportationDetailViewModel : EquipmentDetailViewModel
     {
         #region Variables
-        private Int32 number, fundingSourceID;
-        private String fundingSoureName;
-        private Decimal price, amount;
+        private Int32 quantity, equipmentStatusID;
+        private String note;
         #endregion
 
         #region Properties
         public Int32 EquipmentImportationID { get; set; }
-        public Int32 Number
+        public Int32 Quantity
         {
-            get { return number; }
+            get { return quantity; }
             set
             {
-                if (number != value)
+                if (quantity != value)
                 {
-                    number = value;
-                    Amount = Number * Price;
-                    RaisePropertyChanged("Number");
+                    quantity = value;
+                    RaisePropertyChanged("Quantity");
                 }
             }
         }
-        public Decimal Price
+        public Int32 EquipmentStatusID
         {
-            get { return price; }
+            get { return equipmentStatusID; }
             set
             {
-                if (price != value)
+                if (equipmentStatusID != value)
                 {
-                    price = value;
-                    Amount = Number * Price;
-                    RaisePropertyChanged("Price");
+                    equipmentStatusID = value;
+                    RaisePropertyChanged("EquipmentStatusID");
                 }
             }
         }
-        public Decimal Amount
+        public String Note
         {
-            get { return amount; }
+            get { return note; }
             set
             {
-                if (amount != value)
+                if (note != value)
                 {
-                    amount = value;
-                    RaisePropertyChanged("Amount");
-                }
-            }
-        }
-        public Int32 FundingSourceID
-        {
-            get { return fundingSourceID; }
-            set
-            {
-                if (fundingSourceID != value)
-                {
-                    fundingSourceID = value;
-                    RaisePropertyChanged("FundingSourceID");
-                }
-            }
-        }
-        public String FundingSoureName
-        {
-            get { return fundingSoureName; }
-            set
-            {
-                if (fundingSoureName != value)
-                {
-                    fundingSoureName = value;
-                    RaisePropertyChanged("FundingSoureName");
+                    note = value;
+                    RaisePropertyChanged("Note");
                 }
             }
         }
@@ -138,11 +112,38 @@ namespace ERPManagement.ViewModel.Equipment
                 eqImport.Date = Date;
                 eqImport.StatusID = StatusID;
                 eqImport.Employee = db.Employees.Single(m => m.EmployeeID == Delivery);
+                Sync(Details, eqImport.EquipmentImportationDetails);
                 SyncIndex(Details);
+                SyncIndex(eqImport.EquipmentImportationDetails);
                 db.SubmitChanges();
                 equipmentImportationID = eqImport.ID;
                 RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
+            }
+        }
+
+        private void Sync(IEnumerable<EquipmentImportationDetailViewModel> srcDetails, EntitySet<EquipmentImportationDetail> destDetails)
+        {
+            foreach (var detail in srcDetails)
+            {
+                EquipmentImportationDetail destDetail = null;
+                if (detail.Index == -1)
+                {
+                    destDetail = new EquipmentImportationDetail();
+                    destDetails.Add(destDetail);
+                }
+                else
+                {
+                    destDetail = destDetails.SingleOrDefault(m => m.Index == detail.Index);
+                }
+                if (destDetail != null)
+                {
+                    destDetail.Equipment = db.Equipments.Single(m => m.EquipmentID == detail.EquipmentID);
+                    destDetail.RestQuantity = detail.RestQuantity;
+                    destDetail.Quantity = detail.Quantity;
+                    destDetail.EquipmentStatusID = detail.EquipmentStatusID;
+                    destDetail.Note = detail.Note;
+                }
             }
         }
 

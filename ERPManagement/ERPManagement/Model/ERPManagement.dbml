@@ -101,6 +101,7 @@
       <Column Name="UnitMeasureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
       <Association Name="Equipment_EquipmentImportationDetail" Member="EquipmentImportationDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentImportationDetail" />
+      <Association Name="Equipment_EquipmentExportationDetail" Member="EquipmentExportationDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentExportationDetail" />
       <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
       <Association Name="UnitMeasure_Equipment" Member="UnitMeasure" ThisKey="UnitMeasureID" OtherKey="UnitMeasureID" Type="UnitMeasure" IsForeignKey="true" />
     </Type>
@@ -128,6 +129,30 @@
       <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="EquipmentImportation_EquipmentImportationDetail" Member="EquipmentImportationDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentImportationDetail" />
       <Association Name="Employee_EquipmentImportation" Member="Employee" ThisKey="Deliver" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentExportation" Member="EquipmentExportations">
+    <Type Name="EquipmentExportation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Receiver" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentExportation_EquipmentExportationDetail" Member="EquipmentExportationDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentExportationDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentExportationDetail" Member="EquipmentExportationDetails">
+    <Type Name="EquipmentExportationDetail">
+      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RestQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="Equipment_EquipmentExportationDetail" Member="Equipment" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="Equipment" IsForeignKey="true" />
+      <Association Name="EquipmentExportation_EquipmentExportationDetail" Member="EquipmentExportation" ThisKey="ID" OtherKey="ID" Type="EquipmentExportation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
+using System.Reflection;
 
 namespace ERPManagement.ViewModel.Equipment
 {
@@ -70,18 +71,26 @@ namespace ERPManagement.ViewModel.Equipment
         }
         #endregion
 
-        protected void Sync(IEnumerable<EquipmentDetailViewModel> srcDetails, IEnumerable destDetails)
-        {
-            int i = 0;
-            int j = 0;
-        }
-
         protected void SyncIndex(IEnumerable<EquipmentDetailViewModel> details)
         {
             int index = 0;
             foreach(var detail in details)
             {
                 detail.Index = index++;
+            }
+        }
+
+        protected void SyncIndex(IEnumerable details)
+        {
+            int index = 0;
+            foreach(var detail in details)
+            {
+                PropertyInfo pi = detail.GetType().GetProperty("Index");
+                if (pi != null)
+                {
+                    pi.SetValue(detail, index, null);
+                    index++;
+                }
             }
         }
     }
