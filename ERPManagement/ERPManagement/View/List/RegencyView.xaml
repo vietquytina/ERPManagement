@@ -1,0 +1,25 @@
+﻿<telerik:RadWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERPManagement.View.List" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.RegencyView" 
+        mc:Ignorable="d" 
+        Header="Chức vụ" Height="246" Width="505" Style="{StaticResource BlueRadWindowStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Label Content="Mã chức vụ" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tên chức vụ" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ghi chú" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox x:Name="metroTextBox" HorizontalAlignment="Left" Margin="104,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="362"/>
+        <ERPManagement:MetroTextBox x:Name="metroTextBox1" HorizontalAlignment="Left" Margin="104,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="362"/>
+        <ERPManagement:MetroTextBox x:Name="metroTextBox2" HorizontalAlignment="Left" Margin="104,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="362"/>
+        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Lưu" HorizontalAlignment="Left" Height="31" Margin="275,14.5,0,14.5" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Thoát" HorizontalAlignment="Left" Height="31" Margin="379,14.5,0,14.5" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+    </Grid>
+</telerik:RadWindow>
