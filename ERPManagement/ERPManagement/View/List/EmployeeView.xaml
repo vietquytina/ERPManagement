@@ -7,14 +7,42 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.EmployeeView" 
         mc:Ignorable="d"
-        Header="Nhân viên" Height="460" Width="946" Style="{StaticResource BlueRadWindowStyle}">
+        Header="Nhân viên" Height="519" Width="874" Style="{StaticResource BlueRadWindowStyle}">
     <Grid>
-        <Label Content="Mã nhân viên" HorizontalAlignment="Left" Margin="143,38,0,0" VerticalAlignment="Top"/>
-        <ERPManagement:MetroTextBox x:Name="metroTextBox" HorizontalAlignment="Left" Margin="237,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
-        <Label Content="Tên đơn vị" HorizontalAlignment="Left" Margin="143,70,0,0" VerticalAlignment="Top"/>
-        <ERPManagement:MetroTextBox x:Name="metroTextBox_Copy" HorizontalAlignment="Left" Margin="237,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Label Content="Mã nhân viên" HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Label Content="Họ và đệm" HorizontalAlignment="Left" Margin="143,80,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
         <Label Content="Thông tin chung" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Image Name="image" Source="../../Resources/noavatar.gif" Stretch="Fill" HorizontalAlignment="Left" Height="144" Margin="13,41,0,0" VerticalAlignment="Top" Width="108"/>
-        <Label Content="Thay ảnh khác" FontWeight="Bold" HorizontalAlignment="Left" Margin="22,190,0,0" VerticalAlignment="Top" Foreground="#FF2550AC"/>
+        <Image x:Name="image1" Source="/ERPManagement;component/Resources/noavatar.gif" Stretch="Fill" HorizontalAlignment="Left" Height="144" Margin="13,51,0,0" VerticalAlignment="Top" Width="108"/>
+        <Label Name="lbChangeAvatar" Content="Thay ảnh khác" FontWeight="Bold" HorizontalAlignment="Left" Margin="22,200,0,0" VerticalAlignment="Top" Foreground="#FF2550AC" MouseLeftButtonUp="lbChangeAvatar_MouseLeftButtonUp"/>
+        <Label Content="Giới tính" HorizontalAlignment="Left" Margin="485,48,0,0" VerticalAlignment="Top"/>
+        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" HorizontalAlignment="Left" Margin="565,48,0,0" VerticalAlignment="Top" Width="121" Height="26" />
+        <Label Content="Ngày sinh" HorizontalAlignment="Left" Margin="485,80,0,0" VerticalAlignment="Top"/>
+        <telerik:RadDatePicker telerik:StyleManager.Theme="Office_Blue" HorizontalAlignment="Left" Margin="565,79,0,0" VerticalAlignment="Top" Width="121" Height="27"/>
+        <Label Content="Tên" HorizontalAlignment="Left" Margin="143,111,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="565,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="269"/>
+        <Label Content="Nơi sinh" HorizontalAlignment="Left" Margin="485,111,0,0" VerticalAlignment="Top"/>
+        <Label Content="Họ và tên" HorizontalAlignment="Left" Margin="143,142,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Label Content="Thông tin liên hệ" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top"/>
+        <Label Content="ĐT di động" HorizontalAlignment="Left" Margin="13,273,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="111,273,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="362,273,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="460,273,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Label Content="Thông tin công việc" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top"/>
+        <Label Content="Chức vụ" HorizontalAlignment="Left" Margin="13,361,0,0" VerticalAlignment="Top"/>
+        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" HorizontalAlignment="Left" Margin="111,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
+        <Label Content="Phòng ban" HorizontalAlignment="Left" Margin="362,361,0,0" VerticalAlignment="Top"/>
+        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" HorizontalAlignment="Left" Margin="460,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
+        <Label Content="Dân tộc" HorizontalAlignment="Left" Margin="485,142,0,0" VerticalAlignment="Top"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="565,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Lưu" HorizontalAlignment="Left" Height="32" Margin="638,14,0,14" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Thoát" HorizontalAlignment="Left" Height="32" Margin="742,14,0,14" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+        <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
     </Grid>
 </telerik:RadWindow>

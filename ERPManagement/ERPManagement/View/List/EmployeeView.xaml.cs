@@ -22,5 +22,10 @@ namespace ERPManagement.View.List
         {
             InitializeComponent();
         }
+
+        private void lbChangeAvatar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
