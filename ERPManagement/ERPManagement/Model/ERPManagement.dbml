@@ -30,14 +30,6 @@
       <Association Name="UnitMeasure_Equipment" Member="Equipments" ThisKey="UnitMeasureID" OtherKey="UnitMeasureID" Type="Equipment" />
     </Type>
   </Table>
-  <Table Name="dbo.Regency" Member="Regencies">
-    <Type Name="Regency">
-      <Column Name="RegencyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Association Name="Regency_Employee" Member="Employees" ThisKey="RegencyID" OtherKey="RegencyID" Type="Employee" />
-    </Type>
-  </Table>
   <Table Name="dbo.Employee" Member="Employees">
     <Type Name="Employee">
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -75,13 +67,6 @@
       <Column Name="MethodID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
       <Association Name="Method_Permission" Member="Permissions" ThisKey="MethodID" OtherKey="MethodID" Type="Permission" />
-    </Type>
-  </Table>
-  <Table Name="dbo.WareHouse" Member="WareHouses">
-    <Type Name="WareHouse">
-      <Column Name="WareHouseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
@@ -153,6 +138,23 @@
       <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Association Name="Equipment_EquipmentExportationDetail" Member="Equipment" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="Equipment" IsForeignKey="true" />
       <Association Name="EquipmentExportation_EquipmentExportationDetail" Member="EquipmentExportation" ThisKey="ID" OtherKey="ID" Type="EquipmentExportation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Regency" Member="Regencies">
+    <Type Name="Regency">
+      <Column Name="RegencyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="Regency_Employee" Member="Employees" ThisKey="RegencyID" OtherKey="RegencyID" Type="Employee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WareHouse" Member="WareHouses">
+    <Type Name="WareHouse">
+      <Column Name="WareHouseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
