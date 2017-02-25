@@ -20,6 +20,7 @@ namespace ERPManagement.ViewModel.List
                 RegencyViewModel regencyvm = new RegencyViewModel();
                 regencyvm.regencyID = regency.RegencyID;
                 regencyvm.isInserted = false;
+                regencyvm.Code = regency.Code;
                 regencyvm.Name = regency.Name;
                 regencyvm.Note = regency.Note;
                 regencyvms.Add(regencyvm);
@@ -35,6 +36,7 @@ namespace ERPManagement.ViewModel.List
             RegencyViewModel regencyvm = new RegencyViewModel();
             regencyvm.regencyID = regency.RegencyID;
             regencyvm.isInserted = false;
+            regencyvm.Code = regency.Code;
             regencyvm.Name = regency.Name;
             regencyvm.Note = regency.Note;
             return regencyvm;
@@ -70,6 +72,7 @@ namespace ERPManagement.ViewModel.List
             }
             if (regency != null)
             {
+                regency.Code = Code;
                 regency.Name = Name;
                 regency.Note = Note;
                 db.SubmitChanges();
@@ -93,7 +96,22 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
+            ERPManagement.View.List.RegencyView frmRegency = new View.List.RegencyView();
+            RegencyViewModel regencyvm = GetRegency(RegencyID);
+            regencyvm.ItemAction += new ActionEventHandler(Regencyvm_ItemAction);
+            frmRegency.DataContext = regencyvm;
+            frmRegency.ShowDialog();
+        }
 
+        private void Regencyvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                RegencyViewModel regencyvm = (RegencyViewModel)sender;
+                Code = regencyvm.Code;
+                Name = regencyvm.Name;
+                Note = regencyvm.Note;
+            }
         }
     }
 }

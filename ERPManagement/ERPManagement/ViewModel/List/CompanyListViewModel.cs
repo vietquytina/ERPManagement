@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ERPManagement.View.List;
 
 namespace ERPManagement.ViewModel.List
 {
@@ -23,7 +24,19 @@ namespace ERPManagement.ViewModel.List
 
         protected override void OnNewCommandClick()
         {
+            Company frmCompany = new Company();
+            CompanyViewModel companyvm = new CompanyViewModel();
+            companyvm.ItemAction += new ActionEventHandler(Companyvm_ItemAction);
+            frmCompany.DataContext = companyvm;
+            frmCompany.ShowDialog();
+        }
 
+        private void Companyvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((CompanyViewModel)sender);
+            }
         }
     }
 }

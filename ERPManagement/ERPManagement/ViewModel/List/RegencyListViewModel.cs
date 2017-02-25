@@ -23,7 +23,19 @@ namespace ERPManagement.ViewModel.List
 
         protected override void OnNewCommandClick()
         {
+            ERPManagement.View.List.RegencyView frmRegency = new View.List.RegencyView();
+            RegencyViewModel regencyvm = new RegencyViewModel();
+            regencyvm.ItemAction += new ActionEventHandler(Regencyvm_ItemAction);
+            frmRegency.DataContext = regencyvm;
+            frmRegency.ShowDialog();
+        }
 
+        private void Regencyvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((RegencyViewModel)sender);
+            }
         }
     }
 }

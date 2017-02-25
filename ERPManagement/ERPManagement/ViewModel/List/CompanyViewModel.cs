@@ -126,7 +126,22 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
+            ERPManagement.View.List.Company frmCompany = new View.List.Company();
+            CompanyViewModel companyvm = GetCompany(CompanyID);
+            frmCompany.DataContext = companyvm;
+            companyvm.ItemAction += new ActionEventHandler(Companyvm_ItemAction);
+        }
 
+        private void Companyvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                CompanyViewModel companyvm = (CompanyViewModel)sender;
+                Code = companyvm.Code;
+                Name = companyvm.Name;
+                PhoneNumber = companyvm.PhoneNumber;
+                Email = companyvm.Email;
+            }
         }
     }
 }

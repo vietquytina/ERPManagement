@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
 using ERPManagement.Model;
+using ERPManagement.View.List;
 
 namespace ERPManagement.ViewModel.List
 {
@@ -112,7 +113,20 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
+            DepartmentView frmDepartment = new DepartmentView();
+            DepartmentViewModel departmentvm = GetDepartment(DepartmentID);
+            departmentvm.ItemAction += new ActionEventHandler(Departmentvm_ItemAction);
+            frmDepartment.DataContext = departmentvm;
+            frmDepartment.ShowDialog();
+        }
 
+        private void Departmentvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            DepartmentViewModel departmentvm = (DepartmentViewModel)sender;
+            Code = departmentvm.Code;
+            Name = departmentvm.Name;
+            Note = departmentvm.Note;
+            CompanyID = departmentvm.CompanyID;
         }
     }
 }

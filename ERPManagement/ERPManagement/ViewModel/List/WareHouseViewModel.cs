@@ -19,6 +19,7 @@ namespace ERPManagement.ViewModel.List
             {
                 WareHouseViewModel wareHousevm = new WareHouseViewModel();
                 wareHousevm.warehouseID = wareHouse.WareHouseID;
+                wareHousevm.Code = wareHouse.Code;
                 wareHousevm.Name = wareHouse.Name;
                 wareHousevm.Note = wareHouse.Note;
                 wareHousevm.isInserted = false;
@@ -34,6 +35,7 @@ namespace ERPManagement.ViewModel.List
                 return null;
             WareHouseViewModel wareHousevm = new WareHouseViewModel();
             wareHousevm.warehouseID = wareHouse.WareHouseID;
+            wareHousevm.Code = wareHouse.Code;
             wareHousevm.Name = wareHouse.Name;
             wareHousevm.Note = wareHouse.Note;
             wareHousevm.isInserted = false;
@@ -65,6 +67,7 @@ namespace ERPManagement.ViewModel.List
             }
             if (wareHouse != null)
             {
+                wareHouse.Code = Code;
                 wareHouse.Name = Name;
                 wareHouse.Note = Note;
                 db.SubmitChanges();
@@ -88,7 +91,22 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
+            ERPManagement.View.List.WareHouseView frmWareHouse = new View.List.WareHouseView();
+            WareHouseViewModel wareHousevm = GetWareHouse(WareHouseID);
+            wareHousevm.ItemAction += new ActionEventHandler(WareHousevm_ItemAction);
+            frmWareHouse.DataContext = wareHousevm;
+            frmWareHouse.ShowDialog();
+        }
 
+        private void WareHousevm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                WareHouseViewModel wareHousevm = (WareHouseViewModel)sender;
+                Code = wareHousevm.Code;
+                Name = wareHousevm.Name;
+                Note = wareHousevm.Note;
+            }
         }
     }
 }

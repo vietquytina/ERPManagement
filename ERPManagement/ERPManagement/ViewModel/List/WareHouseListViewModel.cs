@@ -20,5 +20,22 @@ namespace ERPManagement.ViewModel.List
         {
             Items.Remove((WareHouseViewModel)sender);
         }
+
+        protected override void OnNewCommandClick()
+        {
+            ERPManagement.View.List.WareHouseView frmWareHouse = new View.List.WareHouseView();
+            WareHouseViewModel wareHousevm = new WareHouseViewModel();
+            wareHousevm.ItemAction += new ActionEventHandler(WareHousevm_ItemAction);
+            frmWareHouse.DataContext = wareHousevm;
+            frmWareHouse.ShowDialog();
+        }
+
+        private void WareHousevm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((WareHouseViewModel)sender);
+            }
+        }
     }
 }

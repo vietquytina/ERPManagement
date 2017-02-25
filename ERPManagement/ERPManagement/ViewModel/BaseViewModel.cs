@@ -110,7 +110,14 @@ namespace ERPManagement.ViewModel
 
         public BaseViewModel()
         {
-
+            var authAttr = (ERPManagement.ViewModel.Authorize.AuthorizeAttribute)GetType().GetCustomAttributes(true)[0];
+            var methodPers = App.Employee.Permissions.SingleOrDefault(m => m.MethodName == authAttr.Method);
+            if (methodPers != null)
+            {
+                CanRead = methodPers.CanRead;
+                CanWrite = methodPers.CanWrite;
+                CanDelete = methodPers.CanDelete;
+            }
         }
 
         #region Method

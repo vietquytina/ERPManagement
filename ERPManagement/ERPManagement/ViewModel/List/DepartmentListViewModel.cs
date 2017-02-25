@@ -20,5 +20,23 @@ namespace ERPManagement.ViewModel.List
         {
             Items.Remove((DepartmentViewModel)sender);
         }
+
+        protected override void OnNewCommandClick()
+        {
+            ERPManagement.View.List.DepartmentView frmDepartment = new View.List.DepartmentView();
+            DepartmentViewModel departmentvm = new DepartmentViewModel();
+            departmentvm.ItemAction += new ActionEventHandler(Departmentvm_ItemAction);
+            frmDepartment.DataContext = departmentvm;
+            frmDepartment.ShowDialog();
+        }
+
+        private void Departmentvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                DepartmentViewModel departmentvm = (DepartmentViewModel)sender;
+                Items.Add(departmentvm);
+            }
+        }
     }
 }

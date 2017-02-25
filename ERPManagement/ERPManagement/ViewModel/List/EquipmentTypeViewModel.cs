@@ -93,7 +93,18 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
+            ERPManagement.View.List.EquipmentTypeView frmEqType = new View.List.EquipmentTypeView();
+            EquipmentTypeViewModel eqTypevm = GetTypeByID(TypeID);
+            eqTypevm.ItemAction += new ActionEventHandler(EqTypevm_ItemAction);
+            frmEqType.DataContext = eqTypevm;
+            frmEqType.ShowDialog();
+        }
 
+        private void EqTypevm_ItemAction(object sender, ActionEventArgs e)
+        {
+            EquipmentTypeViewModel eqTypevm = (EquipmentTypeViewModel)sender;
+            Name = eqTypevm.Name;
+            Note = eqTypevm.Note;
         }
     }
 }

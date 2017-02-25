@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using ERPManagement.ViewModel.Employee;
+using Telerik.Windows.Controls;
 
 namespace ERPManagement
 {
@@ -13,6 +14,12 @@ namespace ERPManagement
     /// </summary>
     public partial class App : Application
     {
-        public EmployeeViewModel Employee { get; set; }
+        public static EmployeeViewModel Employee { get; set; }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            StyleManager.ApplicationTheme = new Office_BlueTheme();
+            base.OnStartup(e);
+        }
     }
 }

@@ -20,5 +20,22 @@ namespace ERPManagement.ViewModel.List
         {
             Items.Remove((UnitMeasureViewModel)sender);
         }
+
+        protected override void OnNewCommandClick()
+        {
+            ERPManagement.View.List.UnitMeasureView frmUnitMeasure = new View.List.UnitMeasureView();
+            UnitMeasureViewModel unitMeasurevm = new UnitMeasureViewModel();
+            unitMeasurevm.ItemAction += new ActionEventHandler(UnitMeasurevm_ItemAction);
+            frmUnitMeasure.DataContext = unitMeasurevm;
+            frmUnitMeasure.ShowDialog();
+        }
+
+        private void UnitMeasurevm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((UnitMeasureViewModel)sender);
+            }
+        }
     }
 }

@@ -93,5 +93,25 @@ namespace ERPManagement.ViewModel.List
             }
             catch { return false; }
         }
+
+        protected override void Edit()
+        {
+            ERPManagement.View.List.UnitMeasureView frmUnitMeasure = new View.List.UnitMeasureView();
+            UnitMeasureViewModel unitMeasurevm = GetUnitMeasure(UnitMeasureID);
+            unitMeasurevm.ItemAction += new ActionEventHandler(UnitMeasurevm_ItemAction);
+            frmUnitMeasure.DataContext = unitMeasurevm;
+            frmUnitMeasure.ShowDialog();
+        }
+
+        private void UnitMeasurevm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                UnitMeasureViewModel unitMeasurevm = (UnitMeasureViewModel)sender;
+                Code = unitMeasurevm.Code;
+                Name = unitMeasurevm.Name;
+                Note = unitMeasurevm.Note;
+            }
+        }
     }
 }
