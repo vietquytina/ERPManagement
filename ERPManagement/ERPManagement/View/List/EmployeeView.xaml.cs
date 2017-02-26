@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace ERPManagement.View.List
 {
@@ -25,7 +26,15 @@ namespace ERPManagement.View.List
 
         private void lbChangeAvatar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            OpenFileDialog opDlg = new OpenFileDialog();
+            opDlg.CheckFileExists = true;
+            opDlg.Filter = "Image(*.JPG, *.PNG, *.BMP)|*.JPG;*.PNG;*.BMP";
+            opDlg.FilterIndex = 0;
+            var result = opDlg.ShowDialog();
+            if (result != null && result.Value)
+            {
 
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ namespace ERPManagement.ViewModel
         private ICommand exportToXLSCommand = null;
 
         public ObservableCollection<T> Items { get; set; }
+        public T SelectedItem { get; set; }
 
         public ICommand NewCommand
         {

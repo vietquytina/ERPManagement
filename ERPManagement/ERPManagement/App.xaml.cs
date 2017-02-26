@@ -14,7 +14,7 @@ namespace ERPManagement
     /// </summary>
     public partial class App : Application
     {
-        public static EmployeeViewModel Employee { get; set; }
+        public static EmployeePermissionViewModel Employee { get; set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {

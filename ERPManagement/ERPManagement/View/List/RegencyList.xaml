@@ -20,7 +20,7 @@
                     </StackPanel>
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
-            <telerik:RadMenuItem Command="{Binding NewCommand}">
+            <telerik:RadMenuItem Command="{Binding SelectedItem.EditCommand}">
                 <telerik:RadMenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../../Resources/item_edit.PNG" RenderOptions.BitmapScalingMode="HighQuality"></Image>
@@ -28,7 +28,7 @@
                     </StackPanel>
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
-            <telerik:RadMenuItem Command="{Binding NewCommand}">
+            <telerik:RadMenuItem Command="{Binding SelectedItem.DeleteCommand}">
                 <telerik:RadMenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../../Resources/item_del.PNG" RenderOptions.BitmapScalingMode="HighQuality"></Image>
@@ -45,7 +45,7 @@
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
         </telerik:RadToolBar>
-        <telerik:RadGridView Name="grItems" telerik:StyleManager.Theme="Office_Blue" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" ShowGroupPanel="False" AutoGenerateColumns="False">
+        <telerik:RadGridView Name="grItems" CurrentItem="{Binding SelectedItem}" telerik:StyleManager.Theme="Office_Blue" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" ShowGroupPanel="False" AutoGenerateColumns="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Mã chức vụ" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Code}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Tên chức vụ" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}"></telerik:GridViewDataColumn>
