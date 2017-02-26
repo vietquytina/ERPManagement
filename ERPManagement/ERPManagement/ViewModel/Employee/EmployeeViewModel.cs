@@ -8,6 +8,7 @@ using System.Windows.Media;
 
 namespace ERPManagement.ViewModel.Employee
 {
+    [Authorize.Authorize(Method = "Employee")]
     class EmployeeViewModel : List.ListViewModel
     {
         public static IEnumerable<EmployeeViewModel> GetEmployees()

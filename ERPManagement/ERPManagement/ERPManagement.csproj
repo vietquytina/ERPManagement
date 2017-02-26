@@ -171,6 +171,12 @@
     <Compile Include="View\List\WareHouseView.xaml.cs">
       <DependentUpon>WareHouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentExportationView.xaml.cs">
+      <DependentUpon>EquipmentExportationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profession\EquipmentImportationView.xaml.cs">
+      <DependentUpon>EquipmentImportationView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -236,6 +242,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\List\WareHouseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentExportationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentImportationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
