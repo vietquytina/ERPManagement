@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="ERPManagement.View.List.UnitMeasureList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERPManagement.View.List"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             mc:Ignorable="d" d:DesignWidth="927" d:DesignHeight="358">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <telerik:RadToolBar telerik:StyleManager.Theme="Office_Blue">
+            <telerik:RadMenuItem Command="{Binding NewCommand}">
+                <telerik:RadMenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../../Resources/item_add.PNG" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        <TextBlock Text="Thêm" Margin="3,0,0,0" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </telerik:RadMenuItem.Header>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding NewCommand}">
+                <telerik:RadMenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../../Resources/item_edit.PNG" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        <TextBlock Text="Sửa" Margin="3,0,0,0" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </telerik:RadMenuItem.Header>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding NewCommand}">
+                <telerik:RadMenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../../Resources/item_del.PNG" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        <TextBlock Text="Xóa" Margin="3,0,0,0" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </telerik:RadMenuItem.Header>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding ExportToXLSCommand}" CommandParameter="{Binding ElementName=grItems}">
+                <telerik:RadMenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../../Resources/export_excel.PNG" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        <TextBlock Text="Xuất ra Excel" Margin="3,0,0,0" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </telerik:RadMenuItem.Header>
+            </telerik:RadMenuItem>
+        </telerik:RadToolBar>
+        <telerik:RadGridView Name="grItems" telerik:StyleManager.Theme="Office_Blue" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" ShowGroupPanel="False" AutoGenerateColumns="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Mã ĐVT" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Code}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Tên ĐVT" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Ghi chú" Width="260" HeaderTextAlignment="Center" DataMemberBinding="{Binding PhoneNumber}"></telerik:GridViewDataColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

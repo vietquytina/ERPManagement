@@ -66,6 +66,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Telerik\UI for WPF R3 2016\Binaries\WPF40\Telerik.Windows.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2017.1.117.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF R1 2017\Binaries\WPF40\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Windows.Controls.Input, Version=2016.3.1024.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Telerik\UI for WPF R3 2016\Binaries\WPF40\Telerik.Windows.Controls.Input.dll</HintPath>
@@ -129,20 +133,38 @@
     <Compile Include="View\List\Company.xaml.cs">
       <DependentUpon>Company.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\List\CompanyList.xaml.cs">
+      <DependentUpon>CompanyList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\List\DepartmentList.xaml.cs">
+      <DependentUpon>DepartmentList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\List\DepartmentView.xaml.cs">
       <DependentUpon>DepartmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\List\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\List\EquipmentTypeList.xaml.cs">
+      <DependentUpon>EquipmentTypeList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\List\EquipmentTypeView.xaml.cs">
       <DependentUpon>EquipmentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\List\RegencyList.xaml.cs">
+      <DependentUpon>RegencyList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\List\RegencyView.xaml.cs">
       <DependentUpon>RegencyView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\List\UnitMeasureList.xaml.cs">
+      <DependentUpon>UnitMeasureList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\List\UnitMeasureView.xaml.cs">
       <DependentUpon>UnitMeasureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\List\WareHouseList.xaml.cs">
+      <DependentUpon>WareHouseList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\List\WareHouseView.xaml.cs">
       <DependentUpon>WareHouseView.xaml</DependentUpon>
@@ -167,6 +189,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\List\CompanyList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\DepartmentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\List\DepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,7 +205,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\List\EquipmentTypeList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\List\EquipmentTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\RegencyList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,7 +221,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\List\UnitMeasureList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\List\UnitMeasureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\WareHouseList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,6 +297,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\noavatar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\item_add.png" />
+    <Resource Include="Resources\item_del.png" />
+    <Resource Include="Resources\item_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\export_excel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

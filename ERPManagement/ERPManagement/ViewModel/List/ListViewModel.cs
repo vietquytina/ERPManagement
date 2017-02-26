@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
+using System.Windows.Input;
+using Microsoft.Win32;
+using System.IO;
 
 namespace ERPManagement.ViewModel.List
 {
@@ -12,6 +15,7 @@ namespace ERPManagement.ViewModel.List
         private String name = null;
         private String note = null;
         private String code = null;
+        
         #endregion
 
         #region Properties
