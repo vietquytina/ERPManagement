@@ -8,7 +8,7 @@ using ERPManagement.Model;
 namespace ERPManagement.ViewModel.List
 {
     [Authorize.Authorize(Method = "UnitMeasure")]
-    class UnitMeasureViewModel : ListViewModel
+    public class UnitMeasureViewModel : ListViewModel
     {
         public static IEnumerable<UnitMeasureViewModel> GetUnitMeasures()
         {

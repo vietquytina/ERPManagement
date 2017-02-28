@@ -9,7 +9,7 @@ using System.IO;
 
 namespace ERPManagement.ViewModel.List
 {
-    class ListViewModel : BaseViewModel
+    public class ListViewModel : BaseViewModel
     {
         #region Variables
         private String name = null;

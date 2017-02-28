@@ -8,7 +8,7 @@ using ERPManagement.Model;
 namespace ERPManagement.ViewModel.List
 {
     [Authorize.Authorize(Method = "Regency")]
-    class RegencyViewModel : ListViewModel
+    public class RegencyViewModel : ListViewModel
     {
         public static IEnumerable<RegencyViewModel> GetRegencies()
         {

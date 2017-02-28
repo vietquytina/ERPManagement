@@ -8,7 +8,7 @@ using ERPManagement.Model;
 namespace ERPManagement.ViewModel.List
 {
     [Authorize.Authorize(Method = "EquipmentType")]
-    class EquipmentTypeViewModel : ListViewModel
+    public class EquipmentTypeViewModel : ListViewModel
     {
         public static IEnumerable<EquipmentTypeViewModel> GetTypes()
         {

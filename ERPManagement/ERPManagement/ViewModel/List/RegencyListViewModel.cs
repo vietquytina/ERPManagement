@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.List
 {
-    class RegencyListViewModel : ItemListViewModel<RegencyViewModel>
+    public class RegencyListViewModel : ItemListViewModel<RegencyViewModel>
     {
         public RegencyListViewModel() : base()
         {

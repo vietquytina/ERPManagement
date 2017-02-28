@@ -9,7 +9,7 @@ using ERPManagement.View.List;
 namespace ERPManagement.ViewModel.List
 {
     [Authorize.Authorize(Method = "Department")]
-    class DepartmentViewModel : ListViewModel
+    public class DepartmentViewModel : ListViewModel
     {
         public static IEnumerable<DepartmentViewModel> GetDepartments()
         {

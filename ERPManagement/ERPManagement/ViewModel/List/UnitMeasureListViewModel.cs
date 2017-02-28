@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.List
 {
-    class UnitMeasureListViewModel : ItemListViewModel<UnitMeasureViewModel>
+    public class UnitMeasureListViewModel : ItemListViewModel<UnitMeasureViewModel>
     {
         public UnitMeasureListViewModel() : base()
         {

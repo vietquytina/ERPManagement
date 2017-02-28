@@ -8,7 +8,7 @@ using ERPManagement.Model;
 namespace ERPManagement.ViewModel.List
 {
     [Authorize.Authorize(Method = "Company")]
-    class CompanyViewModel : ListViewModel
+    public class CompanyViewModel : ListViewModel
     {
         public static IEnumerable<CompanyViewModel> GetCompanies()
         {

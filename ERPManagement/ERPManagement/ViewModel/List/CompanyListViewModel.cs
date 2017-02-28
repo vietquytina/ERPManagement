@@ -6,7 +6,7 @@ using ERPManagement.View.List;
 
 namespace ERPManagement.ViewModel.List
 {
-    class CompanyListViewModel : ItemListViewModel<CompanyViewModel>
+    public class CompanyListViewModel : ItemListViewModel<CompanyViewModel>
     {
         public CompanyListViewModel() : base()
         {

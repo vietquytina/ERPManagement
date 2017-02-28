@@ -7,7 +7,7 @@ using Telerik.Windows.Controls;
 
 namespace ERPManagement.ViewModel
 {
-    class ItemListViewModel<T> : BaseNotify
+    public class ItemListViewModel<T> : BaseNotify
     {
         private ICommand newCommand = null;
         private ICommand exportToXLSCommand = null;
