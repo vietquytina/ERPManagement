@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
+using ERPManagement.Model;
+using System.Data.Linq;
 
 namespace ERPManagement.ViewModel.Equipment
 {
@@ -74,8 +76,7 @@ namespace ERPManagement.ViewModel.Equipment
     class EquipmentExportationViewModel : EquipmentViewModel
     {
         #region Variables
-        private Int32 sender;
-        private String senderName;
+        private Int32 receiver;
         private Int32 equipmentExportationID = 0;
         #endregion
 
@@ -84,27 +85,15 @@ namespace ERPManagement.ViewModel.Equipment
         {
             get { return equipmentExportationID; }
         }
-        public Int32 Sender
+        public Int32 Receiver
         {
-            get { return sender; }
+            get { return receiver; }
             set
             {
-                if (sender != value)
+                if (receiver != value)
                 {
-                    sender = value;
-                    RaisePropertyChanged("Sender");
-                }
-            }
-        }
-        public String SenderName
-        {
-            get { return senderName; }
-            set
-            {
-                if (senderName != value)
-                {
-                    senderName = value;
-                    RaisePropertyChanged("SenderName");
+                    receiver = value;
+                    RaisePropertyChanged("Receiver");
                 }
             }
         }
@@ -118,11 +107,85 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Save(RadWindow window)
         {
+            EquipmentExportation eqExport = null;
+            if (isInserted)
+            {
+                eqExport = new EquipmentExportation();
+                db.EquipmentExportations.InsertOnSubmit(eqExport);
+            }
+            else
+            {
+                eqExport = db.EquipmentExportations.SingleOrDefault(m => m.ID == EquipmentExportationID);
+            }
+            if (eqExport != null)
+            {
+                eqExport.Number = Number;
+                eqExport.Date = Date;
+                eqExport.StatusID = StatusID;
+                eqExport.Receiver = Receiver;
+                Sync(Details, eqExport.EquipmentExportationDetails);
+                SyncIndex(eqExport.EquipmentExportationDetails);
+                SyncIndex(Details);
+                db.SubmitChanges();
+                equipmentExportationID = eqExport.ID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
+                isInserted = false;
+            }
+        }
+
+        private void Sync(IList<EquipmentExportationDetailViewModel> srcDetails, EntitySet<EquipmentExportationDetail> destDetails)
+        {
+            int i = 0;
+            int j = 0;
+            if (srcDetails.Count == 0 || (srcDetails.Count > 0 && srcDetails[0].Index == -1))
+            {
+                destDetails.Clear();
+            }
+            while (i < srcDetails.Count && j < destDetails.Count)
+            {
+                if (srcDetails[i].Index == destDetails[j].Index)
+                {
+                    destDetails[j].Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
+                    destDetails[j].RestQuantity = srcDetails[i].RestQuantity;
+                    destDetails[j].Quantity = srcDetails[i].Quantity;
+                    destDetails[j].EquipmentStatusID = srcDetails[i].StatusID;
+                    destDetails[j].Note = srcDetails[i].Note;
+                }
+                else
+                {
+                    if (srcDetails[i].Index == -1 || srcDetails[i].Index > destDetails[j].Index)
+                    {
+                        destDetails.RemoveAt(j);
+                    }
+                }
+            }
+            while (j < destDetails.Count)
+            {
+                destDetails.RemoveAt(j);
+            }
+            while (i < srcDetails.Count)
+            {
+                EquipmentExportationDetail detail = new EquipmentExportationDetail();
+                detail.Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
+                detail.RestQuantity = srcDetails[i].RestQuantity;
+                detail.Quantity = srcDetails[i].Quantity;
+                detail.EquipmentStatusID = srcDetails[i].StatusID;
+                detail.Note = srcDetails[i].Note;
+                destDetails.Add(detail);
+                i++;
+            }
         }
 
         protected override bool Delete()
         {
-            return base.Delete();
+            try
+            {
+                EquipmentExportation eqExport = db.EquipmentExportations.SingleOrDefault(m => m.ID == EquipmentExportationID);
+                db.EquipmentExportations.DeleteOnSubmit(eqExport);
+                db.SubmitChanges();
+                return true;
+            }
+            catch { return false; }
         }
 
         protected override void Edit()

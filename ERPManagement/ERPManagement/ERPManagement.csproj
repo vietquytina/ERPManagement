@@ -101,12 +101,14 @@
     <Compile Include="ViewModel\Authorize\AuthorizeAttribute.cs" />
     <Compile Include="ViewModel\BaseNotify.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Converter\Converter.cs" />
     <Compile Include="ViewModel\Employee\EmployeeListViewModel.cs" />
     <Compile Include="ViewModel\Employee\EmployeePermissionViewModel.cs" />
     <Compile Include="ViewModel\Employee\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentBreakViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentDetailViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentExportationViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentHandoverViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentImportationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentLiquidationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentReturningViewModel.cs" />

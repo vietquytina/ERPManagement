@@ -9,7 +9,7 @@ using System.Windows.Media;
 namespace ERPManagement.ViewModel.Employee
 {
     [Authorize.Authorize(Method = "Employee")]
-    class EmployeeViewModel : List.ListViewModel
+    public class EmployeeViewModel : List.ListViewModel
     {
         public static IEnumerable<EmployeeViewModel> GetEmployees()
         {
@@ -83,20 +83,6 @@ namespace ERPManagement.ViewModel.Employee
                     familyName = value;
                     FullName = FamilyName + " " + Name;
                     RaisePropertyChanged("FamilyName");
-                }
-            }
-        }
-
-        public String Name
-        {
-            get { return name; }
-            set
-            {
-                if (name != value)
-                {
-                    name = value;
-                    FullName = FamilyName + " " + Name;
-                    RaisePropertyChanged("Name");
                 }
             }
         }

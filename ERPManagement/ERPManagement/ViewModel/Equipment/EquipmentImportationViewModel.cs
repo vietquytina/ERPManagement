@@ -9,7 +9,7 @@ using System.Data.Linq;
 
 namespace ERPManagement.ViewModel.Equipment
 {
-    class EquipmentImportationDetailViewModel : EquipmentDetailViewModel
+    public class EquipmentImportationDetailViewModel : EquipmentDetailViewModel
     {
         #region Variables
         private Int32 quantity, equipmentStatusID;
@@ -62,7 +62,7 @@ namespace ERPManagement.ViewModel.Equipment
     }
 
     [Authorize.Authorize(Method = "EquipmentImportation")]
-    class EquipmentImportationViewModel : EquipmentViewModel
+    public class EquipmentImportationViewModel : EquipmentViewModel
     {
         #region Variables
         private Int32 equipmentImportationID;
@@ -89,7 +89,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
         #endregion
 
-        public EquipmentImportationViewModel()
+        public EquipmentImportationViewModel() : base()
         {
             Details = new ObservableCollection<EquipmentImportationDetailViewModel>();
         }
@@ -122,28 +122,48 @@ namespace ERPManagement.ViewModel.Equipment
             }
         }
 
-        private void Sync(IEnumerable<EquipmentImportationDetailViewModel> srcDetails, EntitySet<EquipmentImportationDetail> destDetails)
+        private void Sync(IList<EquipmentImportationDetailViewModel> srcDetails, EntitySet<EquipmentImportationDetail> destDetails)
         {
-            foreach (var detail in srcDetails)
+            int i = 0;
+            int j = 0;
+            if (srcDetails.Count == 0 || (srcDetails.Count > 0 && srcDetails[0].Index == -1))
             {
-                EquipmentImportationDetail destDetail = null;
-                if (detail.Index == -1)
+                destDetails.Clear();
+            }
+            while (i < srcDetails.Count && j < destDetails.Count)
+            {
+                if (srcDetails[i].Index == destDetails[j].Index)
                 {
-                    destDetail = new EquipmentImportationDetail();
-                    destDetails.Add(destDetail);
+                    destDetails[j].Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
+                    destDetails[i].RestQuantity = srcDetails[i].RestQuantity;
+                    destDetails[j].Quantity = srcDetails[i].Quantity;
+                    destDetails[j].EquipmentStatusID = srcDetails[i].EquipmentStatusID;
+                    destDetails[j].Note = srcDetails[i].Note;
+                    i++;
+                    j++;
                 }
                 else
                 {
-                    destDetail = destDetails.SingleOrDefault(m => m.Index == detail.Index);
+                    if (srcDetails[i].Index == -1 || srcDetails[i].Index > destDetails[j].Index)
+                    {
+                        destDetails.RemoveAt(j);
+                    }
                 }
-                if (destDetail != null)
-                {
-                    destDetail.Equipment = db.Equipments.Single(m => m.EquipmentID == detail.EquipmentID);
-                    destDetail.RestQuantity = detail.RestQuantity;
-                    destDetail.Quantity = detail.Quantity;
-                    destDetail.EquipmentStatusID = detail.EquipmentStatusID;
-                    destDetail.Note = detail.Note;
-                }
+            }
+            while (j < destDetails.Count)
+            {
+                destDetails.RemoveAt(j);
+            }
+            while (i < srcDetails.Count)
+            {
+                EquipmentImportationDetail detail = new EquipmentImportationDetail();
+                detail.Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
+                detail.RestQuantity = srcDetails[i].RestQuantity;
+                detail.Quantity = srcDetails[i].Quantity;
+                detail.EquipmentStatusID = srcDetails[i].EquipmentStatusID;
+                detail.Note = srcDetails[i].Note;
+                destDetails.Add(detail);
+                i++;
             }
         }
 

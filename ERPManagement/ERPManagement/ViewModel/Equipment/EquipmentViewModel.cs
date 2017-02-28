@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace ERPManagement.ViewModel.Equipment
 {
-    class EquipmentViewModel : BaseViewModel
+    public class EquipmentViewModel : BaseViewModel
     {
         #region Variables
         private String number, note;
@@ -70,6 +70,11 @@ namespace ERPManagement.ViewModel.Equipment
             }
         }
         #endregion
+
+        public EquipmentViewModel() : base()
+        {
+
+        }
 
         protected void SyncIndex(IEnumerable<EquipmentDetailViewModel> details)
         {

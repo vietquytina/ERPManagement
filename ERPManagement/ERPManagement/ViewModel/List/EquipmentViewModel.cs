@@ -7,7 +7,7 @@ using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel.List
 {
-    class EquipmentViewModel : ListViewModel
+    public class EquipmentViewModel : ListViewModel
     {
         public static IEnumerable<EquipmentViewModel> GetEquipments()
         {
@@ -25,7 +25,7 @@ namespace ERPManagement.ViewModel.List
 
         #region Variables
         private Int32 equipmentID = 0;
-        private String code, unitMeasure, number, description;
+        private String unitMeasure, number, description;
         private Int32 equipmentTypeID, subjectID, nationalID;
         #endregion
 
@@ -34,18 +34,7 @@ namespace ERPManagement.ViewModel.List
         {
             get { return equipmentID; }
         }
-        public String Code
-        {
-            get { return code; }
-            set
-            {
-                if (code != value)
-                {
-                    code = value;
-                    RaisePropertyChanged("Code");
-                }
-            }
-        }
+
         public String UnitMeasure
         {
             get { return unitMeasure; }

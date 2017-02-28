@@ -5,7 +5,19 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.Equipment
 {
-    class EquipmentDetailViewModel : BaseNotify
+    public class EquipmentIndexViewModel : BaseNotify
+    {
+        public Guid DetailID { get; set; }
+        public Int32 Index { get; set; }
+
+        public EquipmentIndexViewModel()
+        {
+            DetailID = Guid.NewGuid();
+            Index = -1;
+        }
+    }
+
+    public class EquipmentDetailViewModel : EquipmentIndexViewModel
     {
         #region Variables
         private Int32 equipmentID;
@@ -14,10 +26,6 @@ namespace ERPManagement.ViewModel.Equipment
         #endregion
 
         #region Properties
-        public Guid DetailID { get; set; }
-
-        public Int32 Index { get; set; }
-
         public Int32 EquipmentID
         {
             get { return equipmentID; }
@@ -73,10 +81,9 @@ namespace ERPManagement.ViewModel.Equipment
         }
         #endregion
 
-        public EquipmentDetailViewModel()
+        public EquipmentDetailViewModel() : base()
         {
-            DetailID = Guid.NewGuid();
-            Index = -1;
+            RestQuantity = 0;
         }
 
         protected virtual void OnEquipmentChanged(int oldEquipment, int newEquipment)
