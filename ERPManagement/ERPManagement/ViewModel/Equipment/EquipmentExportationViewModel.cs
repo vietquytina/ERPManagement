@@ -9,7 +9,7 @@ using System.Data.Linq;
 
 namespace ERPManagement.ViewModel.Equipment
 {
-    class EquipmentExportationDetailViewModel : EquipmentDetailViewModel
+    public class EquipmentExportationDetailViewModel : EquipmentDetailViewModel
     {
         #region Variables
         private Int32 quantity, statusID;
@@ -73,8 +73,31 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
-    class EquipmentExportationViewModel : EquipmentViewModel
+    public class EquipmentExportationViewModel : EquipmentViewModel
     {
+        public static IEnumerable<EquipmentExportationViewModel> Gets()
+        {
+            List<EquipmentExportationViewModel> equipmentExportvms = new List<EquipmentExportationViewModel>();
+            var equipmentExports = from p in db.EquipmentExportations
+                                   select p;
+            foreach (var equipmentExport in equipmentExports)
+            {
+                EquipmentExportationViewModel equipmentExportvm = new EquipmentExportationViewModel();
+                equipmentExportvm.equipmentExportationID = equipmentExport.ID;
+                equipmentExportvm.Number = equipmentExport.Number;
+                equipmentExportvm.Date = equipmentExport.Date;
+                equipmentExportvm.Receiver = equipmentExport.Receiver;
+                equipmentExportvm.StatusID = equipmentExport.StatusID;
+                foreach (var detail in equipmentExport.EquipmentExportationDetails)
+                {
+
+                }
+                equipmentExportvm.isInserted = false;
+                equipmentExportvms.Add(equipmentExportvm);
+            }
+            return equipmentExportvms;
+        }
+
         #region Variables
         private Int32 receiver;
         private Int32 equipmentExportationID = 0;
@@ -85,6 +108,7 @@ namespace ERPManagement.ViewModel.Equipment
         {
             get { return equipmentExportationID; }
         }
+
         public Int32 Receiver
         {
             get { return receiver; }
@@ -97,6 +121,7 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public ObservableCollection<EquipmentExportationDetailViewModel> Details { get; set; }
         #endregion
 

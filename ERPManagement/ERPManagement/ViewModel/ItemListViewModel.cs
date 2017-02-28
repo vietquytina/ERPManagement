@@ -11,9 +11,24 @@ namespace ERPManagement.ViewModel
     {
         private ICommand newCommand = null;
         private ICommand exportToXLSCommand = null;
+        private T selectedItem;
 
         public ObservableCollection<T> Items { get; set; }
-        public T SelectedItem { get; set; }
+
+        public T SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                if (selectedItem.Equals(value))
+                {
+                    T current = selectedItem;
+                    selectedItem = value;
+                    OnSelectedItemChanged(current, selectedItem);
+                    RaisePropertyChanged("SelectedItem");
+                }
+            }
+        }
 
         public ICommand NewCommand
         {
@@ -29,7 +44,6 @@ namespace ERPManagement.ViewModel
                 return newCommand;
             }
         }
-
 
         public ICommand ExportToXLSCommand
         {
@@ -62,6 +76,11 @@ namespace ERPManagement.ViewModel
         }
 
         protected virtual void OnNewCommandClick()
+        {
+
+        }
+
+        protected virtual void OnSelectedItemChanged(T oldValue, T newValue)
         {
 
         }
