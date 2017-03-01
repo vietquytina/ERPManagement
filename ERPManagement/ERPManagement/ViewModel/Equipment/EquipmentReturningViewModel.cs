@@ -64,6 +64,90 @@ namespace ERPManagement.ViewModel.Equipment
 
     public class EquipmentReturningViewModel : EquipmentViewModel
     {
+        public static IEnumerable<EquipmentReturningViewModel> Gets()
+        {
+            List<EquipmentReturningViewModel> equipmentReturnvms = new List<EquipmentReturningViewModel>();
+            var equipmentReturns = from p in db.EquipmentReturnings
+                                   select p;
+            foreach (var equipmentReturn in equipmentReturns)
+            {
+                EquipmentReturningViewModel equipmentReturnvm = new EquipmentReturningViewModel();
+                equipmentReturnvm.equipmentReturningID = equipmentReturn.ID;
+                equipmentReturnvm.Number = equipmentReturn.Number;
+                equipmentReturnvm.Date = equipmentReturn.Date;
+                equipmentReturnvm.DepartmentID = equipmentReturn.DepartmentID;
+                foreach (var detail in equipmentReturn.EquipmentReturningDetails)
+                {
+                    EquipmentReturningDetailViewModel detailvm = new EquipmentReturningDetailViewModel();
+                    detailvm.DetailID = detail.DetailID;
+                    detailvm.Index = detail.Index;
+                    detailvm.EquipmentID = detail.EquipmentID;
+                    detailvm.Quantity = detail.Quantity;
+                    detailvm.EquipmentStatusID = detail.EquipmentStatusID;
+                    equipmentReturnvm.Details.Add(detailvm);
+                }
+                foreach (var sender in equipmentReturn.EquipmentReturningSenders)
+                {
+                    EquipmentReturningPersonViewModel sendervm = new EquipmentReturningPersonViewModel();
+                    sendervm.DetailID = sender.DetailID;
+                    sendervm.Index = sender.Index;
+                    sendervm.EmployeeID = sender.EmployeeID;
+                    equipmentReturnvm.Senders.Add(sendervm);
+                }
+                foreach (var receiver in equipmentReturn.EquipmentReturningReceivers)
+                {
+                    EquipmentReturningPersonViewModel receivervm = new EquipmentReturningPersonViewModel();
+                    receivervm.DetailID = receiver.DetailID;
+                    receivervm.Index = receiver.Index;
+                    receivervm.EmployeeID = receiver.EmployeeID;
+                    equipmentReturnvm.Receivers.Add(receivervm);
+                }
+                equipmentReturnvm.isInserted = false;
+                equipmentReturnvms.Add(equipmentReturnvm);
+            }
+            return equipmentReturnvms;
+        }
+
+        public static EquipmentReturningViewModel Get(int id)
+        {
+            var equipmentReturn = db.EquipmentReturnings.SingleOrDefault(m => m.ID == id);
+            if (equipmentReturn == null)
+                return null;
+            EquipmentReturningViewModel equipmentReturnvm = new EquipmentReturningViewModel();
+            equipmentReturnvm.equipmentReturningID = equipmentReturn.ID;
+            equipmentReturnvm.Number = equipmentReturn.Number;
+            equipmentReturnvm.Date = equipmentReturn.Date;
+            equipmentReturnvm.DepartmentID = equipmentReturn.DepartmentID;
+            foreach (var detail in equipmentReturn.EquipmentReturningDetails)
+            {
+                EquipmentReturningDetailViewModel detailvm = new EquipmentReturningDetailViewModel();
+                detailvm.DetailID = detail.DetailID;
+                detailvm.Index = detail.Index;
+                detailvm.EquipmentID = detail.EquipmentID;
+                detailvm.Quantity = detail.Quantity;
+                detailvm.EquipmentStatusID = detail.EquipmentStatusID;
+                equipmentReturnvm.Details.Add(detailvm);
+            }
+            foreach (var sender in equipmentReturn.EquipmentReturningSenders)
+            {
+                EquipmentReturningPersonViewModel sendervm = new EquipmentReturningPersonViewModel();
+                sendervm.DetailID = sender.DetailID;
+                sendervm.Index = sender.Index;
+                sendervm.EmployeeID = sender.EmployeeID;
+                equipmentReturnvm.Senders.Add(sendervm);
+            }
+            foreach (var receiver in equipmentReturn.EquipmentReturningReceivers)
+            {
+                EquipmentReturningPersonViewModel receivervm = new EquipmentReturningPersonViewModel();
+                receivervm.DetailID = receiver.DetailID;
+                receivervm.Index = receiver.Index;
+                receivervm.EmployeeID = receiver.EmployeeID;
+                equipmentReturnvm.Receivers.Add(receivervm);
+            }
+            equipmentReturnvm.isInserted = false;
+            return equipmentReturnvm;
+        }
+
         #region Variables
         private Int32 equipmentReturningID = 0;
         private Int32 departmentID;
@@ -133,7 +217,7 @@ namespace ERPManagement.ViewModel.Equipment
             }
         }
 
-        #region Properties
+        #region Sync
         private void Sync(IList<EquipmentReturningDetailViewModel> srcDetails, EntitySet<EquipmentReturningDetail> destDetails)
         {
             int i = 0;

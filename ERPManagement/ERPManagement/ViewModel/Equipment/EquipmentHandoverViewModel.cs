@@ -91,6 +91,13 @@ namespace ERPManagement.ViewModel.Equipment
 
     public class EquipmentHandoverViewModel : EquipmentViewModel
     {
+        public static IEnumerable<EquipmentHandoverViewModel> Gets()
+        {
+            List<EquipmentHandoverViewModel> equipmentHandovervms = new List<EquipmentHandoverViewModel>();
+
+            return equipmentHandovervms;
+        }
+
         #region Variables
         private Int32 departmentID;
         private Int32 id;

@@ -114,6 +114,7 @@
     <Compile Include="ViewModel\Equipment\EquipmentImportationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentLiquidationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentReturningViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentStatusNoteBookListViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentStatusNoteBookViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\ItemListViewModel.cs" />
@@ -178,8 +179,14 @@
     <Compile Include="View\Profession\EquipmentExportationView.xaml.cs">
       <DependentUpon>EquipmentExportationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentHandoverView.xaml.cs">
+      <DependentUpon>EquipmentHandoverView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profession\EquipmentImportationView.xaml.cs">
       <DependentUpon>EquipmentImportationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profession\EquipmentReturningView.xaml.cs">
+      <DependentUpon>EquipmentReturningView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -253,7 +260,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Profession\EquipmentHandoverView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Profession\EquipmentImportationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentReturningView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -99,15 +99,15 @@ namespace ERPManagement.Model
     partial void InsertEquipmentReturning(EquipmentReturning instance);
     partial void UpdateEquipmentReturning(EquipmentReturning instance);
     partial void DeleteEquipmentReturning(EquipmentReturning instance);
-    partial void InsertEquipmentReturningDetail(EquipmentReturningDetail instance);
-    partial void UpdateEquipmentReturningDetail(EquipmentReturningDetail instance);
-    partial void DeleteEquipmentReturningDetail(EquipmentReturningDetail instance);
     partial void InsertEquipmentReturningReceiver(EquipmentReturningReceiver instance);
     partial void UpdateEquipmentReturningReceiver(EquipmentReturningReceiver instance);
     partial void DeleteEquipmentReturningReceiver(EquipmentReturningReceiver instance);
     partial void InsertEquipmentReturningSender(EquipmentReturningSender instance);
     partial void UpdateEquipmentReturningSender(EquipmentReturningSender instance);
     partial void DeleteEquipmentReturningSender(EquipmentReturningSender instance);
+    partial void InsertEquipmentReturningDetail(EquipmentReturningDetail instance);
+    partial void UpdateEquipmentReturningDetail(EquipmentReturningDetail instance);
+    partial void DeleteEquipmentReturningDetail(EquipmentReturningDetail instance);
     #endregion
 		
 		public ERPManagementDataContext() : 
@@ -324,14 +324,6 @@ namespace ERPManagement.Model
 			}
 		}
 		
-		public System.Data.Linq.Table<EquipmentReturningDetail> EquipmentReturningDetails
-		{
-			get
-			{
-				return this.GetTable<EquipmentReturningDetail>();
-			}
-		}
-		
 		public System.Data.Linq.Table<EquipmentReturningReceiver> EquipmentReturningReceivers
 		{
 			get
@@ -345,6 +337,14 @@ namespace ERPManagement.Model
 			get
 			{
 				return this.GetTable<EquipmentReturningSender>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentReturningDetail> EquipmentReturningDetails
+		{
+			get
+			{
+				return this.GetTable<EquipmentReturningDetail>();
 			}
 		}
 	}
@@ -5672,11 +5672,11 @@ namespace ERPManagement.Model
 		
 		private int _DepartmentID;
 		
-		private EntitySet<EquipmentReturningDetail> _EquipmentReturningDetails;
-		
 		private EntitySet<EquipmentReturningReceiver> _EquipmentReturningReceivers;
 		
 		private EntitySet<EquipmentReturningSender> _EquipmentReturningSenders;
+		
+		private EntitySet<EquipmentReturningDetail> _EquipmentReturningDetails;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5694,9 +5694,9 @@ namespace ERPManagement.Model
 		
 		public EquipmentReturning()
 		{
-			this._EquipmentReturningDetails = new EntitySet<EquipmentReturningDetail>(new Action<EquipmentReturningDetail>(this.attach_EquipmentReturningDetails), new Action<EquipmentReturningDetail>(this.detach_EquipmentReturningDetails));
 			this._EquipmentReturningReceivers = new EntitySet<EquipmentReturningReceiver>(new Action<EquipmentReturningReceiver>(this.attach_EquipmentReturningReceivers), new Action<EquipmentReturningReceiver>(this.detach_EquipmentReturningReceivers));
 			this._EquipmentReturningSenders = new EntitySet<EquipmentReturningSender>(new Action<EquipmentReturningSender>(this.attach_EquipmentReturningSenders), new Action<EquipmentReturningSender>(this.detach_EquipmentReturningSenders));
+			this._EquipmentReturningDetails = new EntitySet<EquipmentReturningDetail>(new Action<EquipmentReturningDetail>(this.attach_EquipmentReturningDetails), new Action<EquipmentReturningDetail>(this.detach_EquipmentReturningDetails));
 			OnCreated();
 		}
 		
@@ -5780,19 +5780,6 @@ namespace ERPManagement.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentReturning_EquipmentReturningDetail", Storage="_EquipmentReturningDetails", ThisKey="ID", OtherKey="ID")]
-		public EntitySet<EquipmentReturningDetail> EquipmentReturningDetails
-		{
-			get
-			{
-				return this._EquipmentReturningDetails;
-			}
-			set
-			{
-				this._EquipmentReturningDetails.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentReturning_EquipmentReturningReceiver", Storage="_EquipmentReturningReceivers", ThisKey="ID", OtherKey="ID")]
 		public EntitySet<EquipmentReturningReceiver> EquipmentReturningReceivers
 		{
@@ -5819,6 +5806,19 @@ namespace ERPManagement.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentReturning_EquipmentReturningDetail", Storage="_EquipmentReturningDetails", ThisKey="ID", OtherKey="ID")]
+		public EntitySet<EquipmentReturningDetail> EquipmentReturningDetails
+		{
+			get
+			{
+				return this._EquipmentReturningDetails;
+			}
+			set
+			{
+				this._EquipmentReturningDetails.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5837,18 +5837,6 @@ namespace ERPManagement.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_EquipmentReturningDetails(EquipmentReturningDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.EquipmentReturning = this;
-		}
-		
-		private void detach_EquipmentReturningDetails(EquipmentReturningDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.EquipmentReturning = null;
 		}
 		
 		private void attach_EquipmentReturningReceivers(EquipmentReturningReceiver entity)
@@ -5874,228 +5862,17 @@ namespace ERPManagement.Model
 			this.SendPropertyChanging();
 			entity.EquipmentReturning = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentReturningDetail")]
-	public partial class EquipmentReturningDetail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _DetailID;
-		
-		private int _ID;
-		
-		private int _Index;
-		
-		private int _EquipmentID;
-		
-		private int _Quantity;
-		
-		private int _EquipmentStatusID;
-		
-		private EntityRef<EquipmentReturning> _EquipmentReturning;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnDetailIDChanging(int value);
-    partial void OnDetailIDChanged();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnIndexChanging(int value);
-    partial void OnIndexChanged();
-    partial void OnEquipmentIDChanging(int value);
-    partial void OnEquipmentIDChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnEquipmentStatusIDChanging(int value);
-    partial void OnEquipmentStatusIDChanged();
-    #endregion
-		
-		public EquipmentReturningDetail()
+		private void attach_EquipmentReturningDetails(EquipmentReturningDetail entity)
 		{
-			this._EquipmentReturning = default(EntityRef<EquipmentReturning>);
-			OnCreated();
+			this.SendPropertyChanging();
+			entity.EquipmentReturning = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int DetailID
+		private void detach_EquipmentReturningDetails(EquipmentReturningDetail entity)
 		{
-			get
-			{
-				return this._DetailID;
-			}
-			set
-			{
-				if ((this._DetailID != value))
-				{
-					this.OnDetailIDChanging(value);
-					this.SendPropertyChanging();
-					this._DetailID = value;
-					this.SendPropertyChanged("DetailID");
-					this.OnDetailIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					if (this._EquipmentReturning.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Index]", Storage="_Index", DbType="Int NOT NULL")]
-		public int Index
-		{
-			get
-			{
-				return this._Index;
-			}
-			set
-			{
-				if ((this._Index != value))
-				{
-					this.OnIndexChanging(value);
-					this.SendPropertyChanging();
-					this._Index = value;
-					this.SendPropertyChanged("Index");
-					this.OnIndexChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", DbType="Int NOT NULL")]
-		public int EquipmentID
-		{
-			get
-			{
-				return this._EquipmentID;
-			}
-			set
-			{
-				if ((this._EquipmentID != value))
-				{
-					this.OnEquipmentIDChanging(value);
-					this.SendPropertyChanging();
-					this._EquipmentID = value;
-					this.SendPropertyChanged("EquipmentID");
-					this.OnEquipmentIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentStatusID", DbType="Int NOT NULL")]
-		public int EquipmentStatusID
-		{
-			get
-			{
-				return this._EquipmentStatusID;
-			}
-			set
-			{
-				if ((this._EquipmentStatusID != value))
-				{
-					this.OnEquipmentStatusIDChanging(value);
-					this.SendPropertyChanging();
-					this._EquipmentStatusID = value;
-					this.SendPropertyChanged("EquipmentStatusID");
-					this.OnEquipmentStatusIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentReturning_EquipmentReturningDetail", Storage="_EquipmentReturning", ThisKey="ID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public EquipmentReturning EquipmentReturning
-		{
-			get
-			{
-				return this._EquipmentReturning.Entity;
-			}
-			set
-			{
-				EquipmentReturning previousValue = this._EquipmentReturning.Entity;
-				if (((previousValue != value) 
-							|| (this._EquipmentReturning.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._EquipmentReturning.Entity = null;
-						previousValue.EquipmentReturningDetails.Remove(this);
-					}
-					this._EquipmentReturning.Entity = value;
-					if ((value != null))
-					{
-						value.EquipmentReturningDetails.Add(this);
-						this._ID = value.ID;
-					}
-					else
-					{
-						this._ID = default(int);
-					}
-					this.SendPropertyChanged("EquipmentReturning");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.SendPropertyChanging();
+			entity.EquipmentReturning = null;
 		}
 	}
 	
@@ -6417,6 +6194,229 @@ namespace ERPManagement.Model
 					if ((value != null))
 					{
 						value.EquipmentReturningSenders.Add(this);
+						this._ID = value.ID;
+					}
+					else
+					{
+						this._ID = default(int);
+					}
+					this.SendPropertyChanged("EquipmentReturning");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentReturningDetail")]
+	public partial class EquipmentReturningDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _DetailID;
+		
+		private int _ID;
+		
+		private int _Index;
+		
+		private int _EquipmentID;
+		
+		private int _Quantity;
+		
+		private int _EquipmentStatusID;
+		
+		private EntityRef<EquipmentReturning> _EquipmentReturning;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDetailIDChanging(System.Guid value);
+    partial void OnDetailIDChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnIndexChanging(int value);
+    partial void OnIndexChanged();
+    partial void OnEquipmentIDChanging(int value);
+    partial void OnEquipmentIDChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnEquipmentStatusIDChanging(int value);
+    partial void OnEquipmentStatusIDChanged();
+    #endregion
+		
+		public EquipmentReturningDetail()
+		{
+			this._EquipmentReturning = default(EntityRef<EquipmentReturning>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid DetailID
+		{
+			get
+			{
+				return this._DetailID;
+			}
+			set
+			{
+				if ((this._DetailID != value))
+				{
+					this.OnDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._DetailID = value;
+					this.SendPropertyChanged("DetailID");
+					this.OnDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					if (this._EquipmentReturning.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Index]", Storage="_Index", DbType="Int NOT NULL")]
+		public int Index
+		{
+			get
+			{
+				return this._Index;
+			}
+			set
+			{
+				if ((this._Index != value))
+				{
+					this.OnIndexChanging(value);
+					this.SendPropertyChanging();
+					this._Index = value;
+					this.SendPropertyChanged("Index");
+					this.OnIndexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", DbType="Int NOT NULL")]
+		public int EquipmentID
+		{
+			get
+			{
+				return this._EquipmentID;
+			}
+			set
+			{
+				if ((this._EquipmentID != value))
+				{
+					this.OnEquipmentIDChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentID = value;
+					this.SendPropertyChanged("EquipmentID");
+					this.OnEquipmentIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentStatusID", DbType="Int NOT NULL")]
+		public int EquipmentStatusID
+		{
+			get
+			{
+				return this._EquipmentStatusID;
+			}
+			set
+			{
+				if ((this._EquipmentStatusID != value))
+				{
+					this.OnEquipmentStatusIDChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentStatusID = value;
+					this.SendPropertyChanged("EquipmentStatusID");
+					this.OnEquipmentStatusIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentReturning_EquipmentReturningDetail", Storage="_EquipmentReturning", ThisKey="ID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public EquipmentReturning EquipmentReturning
+		{
+			get
+			{
+				return this._EquipmentReturning.Entity;
+			}
+			set
+			{
+				EquipmentReturning previousValue = this._EquipmentReturning.Entity;
+				if (((previousValue != value) 
+							|| (this._EquipmentReturning.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EquipmentReturning.Entity = null;
+						previousValue.EquipmentReturningDetails.Remove(this);
+					}
+					this._EquipmentReturning.Entity = value;
+					if ((value != null))
+					{
+						value.EquipmentReturningDetails.Add(this);
 						this._ID = value.ID;
 					}
 					else

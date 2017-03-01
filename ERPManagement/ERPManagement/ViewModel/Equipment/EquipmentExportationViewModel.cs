@@ -90,12 +90,45 @@ namespace ERPManagement.ViewModel.Equipment
                 equipmentExportvm.StatusID = equipmentExport.StatusID;
                 foreach (var detail in equipmentExport.EquipmentExportationDetails)
                 {
-
+                    EquipmentExportationDetailViewModel detailvm = new EquipmentExportationDetailViewModel();
+                    detailvm.DetailID = detail.DetailID;
+                    detailvm.Index = detail.Index;
+                    detailvm.RestQuantity = detail.RestQuantity;
+                    detailvm.Quantity = detail.Quantity;
+                    detailvm.StatusID = detail.EquipmentStatusID;
+                    detailvm.Note = detail.Note;
+                    equipmentExportvm.Details.Add(detailvm);
                 }
                 equipmentExportvm.isInserted = false;
                 equipmentExportvms.Add(equipmentExportvm);
             }
             return equipmentExportvms;
+        }
+
+        public static EquipmentExportationViewModel Get(int id)
+        {
+            var equipmentExport = db.EquipmentExportations.SingleOrDefault(m => m.ID == id);
+            if (equipmentExport == null)
+                return null;
+            EquipmentExportationViewModel equipmentExportvm = new EquipmentExportationViewModel();
+            equipmentExportvm.equipmentExportationID = equipmentExport.ID;
+            equipmentExportvm.Number = equipmentExport.Number;
+            equipmentExportvm.Date = equipmentExport.Date;
+            equipmentExportvm.Receiver = equipmentExport.Receiver;
+            equipmentExportvm.StatusID = equipmentExport.StatusID;
+            foreach (var detail in equipmentExport.EquipmentExportationDetails)
+            {
+                EquipmentExportationDetailViewModel detailvm = new EquipmentExportationDetailViewModel();
+                detailvm.DetailID = detail.DetailID;
+                detailvm.Index = detail.Index;
+                detailvm.RestQuantity = detail.RestQuantity;
+                detailvm.Quantity = detail.Quantity;
+                detailvm.StatusID = detail.EquipmentStatusID;
+                detailvm.Note = detail.Note;
+                equipmentExportvm.Details.Add(detailvm);
+            }
+            equipmentExportvm.isInserted = false;
+            return equipmentExportvm;
         }
 
         #region Variables
@@ -215,7 +248,28 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Edit()
         {
+            View.Profession.EquipmentExportationView frmEquipmentExport = new View.Profession.EquipmentExportationView();
+            EquipmentExportationViewModel equipmentExportvm = Get(EquipmentExportationID);
+            equipmentExportvm.ItemAction += new ActionEventHandler(EquipmentExportvm_ItemAction);
+            frmEquipmentExport.DataContext = equipmentExportvm;
+            frmEquipmentExport.ShowDialog();
+        }
 
+        private void EquipmentExportvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                EquipmentExportationViewModel equipmentExportvm = (EquipmentExportationViewModel)sender;
+                Number = equipmentExportvm.Number;
+                Date = equipmentExportvm.Date;
+                Receiver = equipmentExportvm.Receiver;
+                StatusID = equipmentExportvm.StatusID;
+                Details.Clear();
+                foreach (var detailvm in equipmentExportvm.Details)
+                {
+                    Details.Add(detailvm);
+                }
+            }
         }
     }
 }
