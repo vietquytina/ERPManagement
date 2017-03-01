@@ -4,93 +4,45 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
+using ERPManagement.Model;
+using System.Data.Linq;
 
 namespace ERPManagement.ViewModel.Equipment
 {
-    class EquipmentStatusNoteBookDetailViewModel : EquipmentDetailViewModel
+    public class EquipmentStatusNoteBookDetailViewModel : EquipmentDetailViewModel
     {
         #region Variables
-        private Int32 losingBefore, duffBefore, losingAfter, duffAfter, diffBefore, diffAfter;
-        private String note;
+        private Int32 equipmentStatusID;
+        private String cause, note;
         #endregion
 
         #region Properties
-        public Int32 LosingBefore
+        public Int32 EquipmentStatusID
         {
-            get { return losingBefore; }
+            get { return equipmentStatusID; }
             set
             {
-                if (losingBefore != value)
+                if (equipmentStatusID != value)
                 {
-                    losingBefore = value;
-                    DiffBefore = LosingAfter - LosingBefore;
-                    RaisePropertyChanged("LosingBefore");
+                    equipmentStatusID = value;
+                    RaisePropertyChanged("EquipmentStatusID");
                 }
             }
         }
-        public Int32 DuffBefore
+
+        public String Cause
         {
-            get { return duffBefore; }
+            get { return cause; }
             set
             {
-                if (duffBefore != value)
+                if (cause != value)
                 {
-                    duffBefore = value;
-                    DiffAfter = DuffAfter - DuffBefore;
-                    RaisePropertyChanged("DuffBefore");
+                    cause = value;
+                    RaisePropertyChanged("Cause");
                 }
             }
         }
-        public Int32 LosingAfter
-        {
-            get { return losingAfter; }
-            set
-            {
-                if (losingAfter != value)
-                {
-                    losingAfter = value;
-                    DiffBefore = LosingAfter - LosingBefore;
-                    RaisePropertyChanged("LosingAfter");
-                }
-            }
-        }
-        public Int32 DuffAfter
-        {
-            get { return duffAfter; }
-            set
-            {
-                if (duffAfter != value)
-                {
-                    duffAfter = value;
-                    DiffAfter = DuffAfter - DuffBefore;
-                    RaisePropertyChanged("DuffAfter");
-                }
-            }
-        }
-        public Int32 DiffBefore
-        {
-            get { return diffBefore; }
-            set
-            {
-                if (diffBefore != value)
-                {
-                    diffBefore = value;
-                    RaisePropertyChanged("DiffBefore");
-                }
-            }
-        }
-        public Int32 DiffAfter
-        {
-            get { return diffAfter; }
-            set
-            {
-                if (diffAfter != value)
-                {
-                    diffAfter = value;
-                    RaisePropertyChanged("DiffAfter");
-                }
-            }
-        }
+
         public String Note
         {
             get { return note; }
@@ -107,16 +59,67 @@ namespace ERPManagement.ViewModel.Equipment
 
         public EquipmentStatusNoteBookDetailViewModel() : base()
         {
-
         }
     }
 
-    class EquipmentStatusNoteBookViewModel : EquipmentViewModel
+    public class EquipmentStatusNoteBookViewModel : EquipmentViewModel
     {
+        public static IEnumerable<EquipmentStatusNoteBookViewModel> Gets()
+        {
+            List<EquipmentStatusNoteBookViewModel> eqNoteBookvms = new List<EquipmentStatusNoteBookViewModel>();
+            var eqNoteBooks = from p in db.EquipmentStatusNoteBooks
+                              select p;
+            foreach (var eqNoteBook in eqNoteBooks)
+            {
+                EquipmentStatusNoteBookViewModel eqNoteBookvm = new EquipmentStatusNoteBookViewModel();
+                eqNoteBookvm.noteID = eqNoteBook.NoteID;
+                eqNoteBookvm.Date = eqNoteBook.Date;
+                eqNoteBookvm.CompanyID = eqNoteBook.CompanyID;
+                eqNoteBookvm.EmployeeID = eqNoteBook.EmployeeID;
+                foreach (var detail in eqNoteBook.EquipmentStatusNoteBookDetails)
+                {
+                    EquipmentStatusNoteBookDetailViewModel detailvm = new EquipmentStatusNoteBookDetailViewModel();
+                    detailvm.DetailID = detail.DetailID;
+                    detailvm.Index = detail.Index;
+                    detailvm.EquipmentID = detail.EquipmentID;
+                    detailvm.EquipmentStatusID = detail.EquipmentStatusID;
+                    detailvm.Cause = detail.Cause;
+                    detailvm.Note = detail.Note;
+                    eqNoteBookvm.Details.Add(detailvm);
+                }
+                eqNoteBookvm.isInserted = false;
+                eqNoteBookvms.Add(eqNoteBookvm);
+            }
+            return eqNoteBookvms;
+        }
+
+        public static EquipmentStatusNoteBookViewModel Get(int noteID)
+        {
+            var eqNoteBook = db.EquipmentStatusNoteBooks.SingleOrDefault(m => m.NoteID == noteID);
+            if (eqNoteBook == null)
+                return null;
+            EquipmentStatusNoteBookViewModel eqNoteBookvm = new EquipmentStatusNoteBookViewModel();
+            eqNoteBookvm.noteID = eqNoteBook.NoteID;
+            eqNoteBookvm.Date = eqNoteBook.Date;
+            eqNoteBookvm.CompanyID = eqNoteBook.CompanyID;
+            eqNoteBookvm.EmployeeID = eqNoteBook.EmployeeID;
+            foreach (var detail in eqNoteBook.EquipmentStatusNoteBookDetails)
+            {
+                EquipmentStatusNoteBookDetailViewModel detailvm = new EquipmentStatusNoteBookDetailViewModel();
+                detailvm.DetailID = detail.DetailID;
+                detailvm.Index = detail.Index;
+                detailvm.EquipmentID = detail.EquipmentID;
+                detailvm.EquipmentStatusID = detail.EquipmentStatusID;
+                detailvm.Cause = detail.Cause;
+                detailvm.Note = detail.Note;
+                eqNoteBookvm.Details.Add(detailvm);
+            }
+            eqNoteBookvm.isInserted = false;
+            return eqNoteBookvm;
+        }
+
         #region Variables
-        private Int32 noteID, wareHouseID;
-        private DateTime noteDate;
-        private String wareHouseName;
+        private Int32 noteID, employeeID, companyID;
         #endregion
 
         #region Properties
@@ -124,58 +127,122 @@ namespace ERPManagement.ViewModel.Equipment
         {
             get { return noteID; }
         }
-        public DateTime NoteDate
+
+        public Int32 EmployeeID
         {
-            get { return noteDate; }
+            get { return employeeID; }
             set
             {
-                if (noteDate != value)
+                if (employeeID != value)
                 {
-                    noteDate = value;
-                    RaisePropertyChanged("NoteDate");
+                    employeeID = value;
+                    RaisePropertyChanged("EmployeeID");
                 }
             }
         }
-        public Int32 WareHouseID
+
+        public Int32 CompanyID
         {
-            get { return wareHouseID; }
+            get { return companyID; }
             set
             {
-                if (wareHouseID != value)
+                if (companyID != value)
                 {
-                    wareHouseID = value;
-                    RaisePropertyChanged("WareHouseID");
+                    companyID = value;
+                    RaisePropertyChanged("CompanyID");
                 }
             }
         }
-        public String WareHouseName
-        {
-            get { return wareHouseName; }
-            set
-            {
-                if (wareHouseName != value)
-                {
-                    wareHouseName = value;
-                    RaisePropertyChanged("WareHouseName");
-                }
-            }
-        }
+
         public ObservableCollection<EquipmentStatusNoteBookDetailViewModel> Details { get; set; }
         #endregion
 
         public EquipmentStatusNoteBookViewModel() : base()
         {
-            NoteDate = DateTime.Now;
             Details = new ObservableCollection<EquipmentStatusNoteBookDetailViewModel>();
         }
 
         protected override void Save(RadWindow window)
         {
+            EquipmentStatusNoteBook eqNoteBook = null;
+            if (isInserted)
+            {
+                eqNoteBook = new EquipmentStatusNoteBook();
+                db.EquipmentStatusNoteBooks.InsertOnSubmit(eqNoteBook);
+            }
+            else
+            {
+                eqNoteBook = db.EquipmentStatusNoteBooks.SingleOrDefault(m => m.NoteID == NoteID);
+            }
+            if (eqNoteBook != null)
+            {
+                eqNoteBook.Date = Date;
+                if (!isInserted)
+                {
+                    eqNoteBook.EmployeeID = EmployeeID;
+                }
+                Sync(Details, eqNoteBook.EquipmentStatusNoteBookDetails);
+                SyncIndex(eqNoteBook.EquipmentStatusNoteBookDetails);
+                SyncIndex(Details);
+                db.SubmitChanges();
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
+                isInserted = false;
+            }
+        }
+
+        private void Sync(IList<EquipmentStatusNoteBookDetailViewModel> srcDetails, EntitySet<EquipmentStatusNoteBookDetail> destDetails)
+        {
+            int i = 0;
+            int j = 0;
+            if (srcDetails.Count == 0 || (srcDetails.Count > 0 && srcDetails[0].Index == -1))
+            {
+                destDetails.Clear();
+            }
+            while (i < srcDetails.Count && j < destDetails.Count)
+            {
+                if (srcDetails[i].Index == destDetails[j].Index)
+                {
+                    destDetails[j].EquipmentID = srcDetails[i].EquipmentID;
+                    destDetails[j].EquipmentStatusID = srcDetails[i].EquipmentStatusID;
+                    destDetails[j].Cause = srcDetails[i].Cause;
+                    destDetails[j].Note = srcDetails[i].Note;
+                    i++;
+                    j++;
+                }
+                else
+                {
+                    if (srcDetails[i].Index == -1 || srcDetails[i].Index > destDetails[j].Index)
+                    {
+                        destDetails.RemoveAt(j);
+                    }
+                }
+            }
+            while (j < destDetails.Count)
+            {
+                destDetails.RemoveAt(j);
+            }
+            while (i < srcDetails.Count)
+            {
+                EquipmentStatusNoteBookDetail detail = new EquipmentStatusNoteBookDetail();
+                detail.EquipmentID = srcDetails[i].EquipmentID;
+                detail.EquipmentStatusID = srcDetails[i].EquipmentStatusID;
+                detail.Cause = srcDetails[i].Cause;
+                detail.Note = srcDetails[i].Note;
+                destDetails.Add(detail);
+                i++;
+            }
         }
 
         protected override bool Delete()
         {
-            return base.Delete();
+            try
+            {
+                EquipmentStatusNoteBook eqNoteBook = db.EquipmentStatusNoteBooks.SingleOrDefault(m => m.NoteID == NoteID);
+                db.EquipmentStatusNoteBooks.DeleteOnSubmit(eqNoteBook);
+                db.SubmitChanges();
+                return true;
+            }
+            catch { return false; }
         }
 
         protected override void Edit()
