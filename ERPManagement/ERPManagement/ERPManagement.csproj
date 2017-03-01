@@ -107,8 +107,10 @@
     <Compile Include="ViewModel\Employee\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentBreakViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentDetailViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentExportationListViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentExportationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentHandoverViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentImportationListViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentImportationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentLiquidationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentReturningViewModel.cs" />

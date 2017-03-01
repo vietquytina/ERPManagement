@@ -64,6 +64,64 @@ namespace ERPManagement.ViewModel.Equipment
     [Authorize.Authorize(Method = "EquipmentImportation")]
     public class EquipmentImportationViewModel : EquipmentViewModel
     {
+        public static IEnumerable<EquipmentImportationViewModel> Gets()
+        {
+            List<EquipmentImportationViewModel> equipmentImportationvms = new List<EquipmentImportationViewModel>();
+            var equipmentImportations = from p in db.EquipmentImportations
+                                        select p;
+            foreach (var equipmentImportation in equipmentImportations)
+            {
+                EquipmentImportationViewModel equipmentImportationvm = new EquipmentImportationViewModel();
+                equipmentImportationvm.equipmentImportationID = equipmentImportation.ID;
+                equipmentImportationvm.Number = equipmentImportation.Number;
+                equipmentImportationvm.Date = equipmentImportation.Date;
+                equipmentImportationvm.Delivery = equipmentImportation.Deliver;
+                equipmentImportationvm.StatusID = equipmentImportation.StatusID;
+                foreach (var detail in equipmentImportation.EquipmentImportationDetails)
+                {
+                    EquipmentImportationDetailViewModel detailvm = new EquipmentImportationDetailViewModel();
+                    detailvm.DetailID = detail.DetailID;
+                    detailvm.Index = detail.Index;
+                    detailvm.EquipmentID = detail.EquipmentID;
+                    detailvm.RestQuantity = detail.RestQuantity;
+                    detailvm.Quantity = detail.Quantity;
+                    detailvm.EquipmentStatusID = detail.EquipmentStatusID;
+                    detailvm.Note = detail.Note;
+                    equipmentImportationvm.Details.Add(detailvm);
+                }
+                equipmentImportationvm.isInserted = false;
+                equipmentImportationvms.Add(equipmentImportationvm);
+            }
+            return equipmentImportationvms;
+        }
+
+        public static EquipmentImportationViewModel Get(int id)
+        {
+            var equipmentImportation = db.EquipmentImportations.SingleOrDefault(m => m.ID == id);
+            if (equipmentImportation == null)
+                return null;
+            EquipmentImportationViewModel equipmentImportationvm = new EquipmentImportationViewModel();
+            equipmentImportationvm.equipmentImportationID = equipmentImportation.ID;
+            equipmentImportationvm.Number = equipmentImportation.Number;
+            equipmentImportationvm.Date = equipmentImportation.Date;
+            equipmentImportationvm.Delivery = equipmentImportation.Deliver;
+            equipmentImportationvm.StatusID = equipmentImportation.StatusID;
+            foreach (var detail in equipmentImportation.EquipmentImportationDetails)
+            {
+                EquipmentImportationDetailViewModel detailvm = new EquipmentImportationDetailViewModel();
+                detailvm.DetailID = detail.DetailID;
+                detailvm.Index = detail.Index;
+                detailvm.EquipmentID = detail.EquipmentID;
+                detailvm.RestQuantity = detail.RestQuantity;
+                detailvm.Quantity = detail.Quantity;
+                detailvm.EquipmentStatusID = detail.EquipmentStatusID;
+                detailvm.Note = detail.Note;
+                equipmentImportationvm.Details.Add(detailvm);
+            }
+            equipmentImportationvm.isInserted = false;
+            return equipmentImportationvm;
+        }
+
         #region Variables
         private Int32 equipmentImportationID;
         private Int32 delivery;
@@ -181,7 +239,24 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Edit()
         {
+            View.Profession.EquipmentImportationView frmEquipmentImport = new View.Profession.EquipmentImportationView();
+            EquipmentImportationViewModel equipmentImportationvm = Get(EquipmentImportationID);
+            equipmentImportationvm.ItemAction += new ActionEventHandler(EquipmentImportationvm_ItemAction);
+            frmEquipmentImport.DataContext = equipmentImportationvm;
+            frmEquipmentImport.ShowDialog();
+        }
 
+        private void EquipmentImportationvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                EquipmentImportationViewModel equipmentImportationvm = (EquipmentImportationViewModel)sender;
+                Number = equipmentImportationvm.Number;
+                Date = equipmentImportationvm.Date;
+                Delivery = equipmentImportationvm.Delivery;
+                StatusID = equipmentImportationvm.StatusID;
+                Details = equipmentImportationvm.Details;
+            }
         }
     }
 }
