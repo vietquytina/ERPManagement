@@ -180,6 +180,9 @@
     <Compile Include="View\List\WareHouseView.xaml.cs">
       <DependentUpon>WareHouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentBreakDownView.xaml.cs">
+      <DependentUpon>EquipmentBreakDownView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profession\EquipmentExportationView.xaml.cs">
       <DependentUpon>EquipmentExportationView.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,9 @@
     </Compile>
     <Compile Include="View\Profession\EquipmentReturningView.xaml.cs">
       <DependentUpon>EquipmentReturningView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profession\EquipmentStatusNoteBookView.xaml.cs">
+      <DependentUpon>EquipmentStatusNoteBookView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -260,6 +266,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Profession\EquipmentBreakDownView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Profession\EquipmentExportationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -273,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Profession\EquipmentReturningView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentStatusNoteBookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
