@@ -108,6 +108,18 @@ namespace ERPManagement.Model
     partial void InsertEquipmentReturningDetail(EquipmentReturningDetail instance);
     partial void UpdateEquipmentReturningDetail(EquipmentReturningDetail instance);
     partial void DeleteEquipmentReturningDetail(EquipmentReturningDetail instance);
+    partial void InsertEquipmentTransfer(EquipmentTransfer instance);
+    partial void UpdateEquipmentTransfer(EquipmentTransfer instance);
+    partial void DeleteEquipmentTransfer(EquipmentTransfer instance);
+    partial void InsertEquipmentTransferDetail(EquipmentTransferDetail instance);
+    partial void UpdateEquipmentTransferDetail(EquipmentTransferDetail instance);
+    partial void DeleteEquipmentTransferDetail(EquipmentTransferDetail instance);
+    partial void InsertEquipmentTransferReceiver(EquipmentTransferReceiver instance);
+    partial void UpdateEquipmentTransferReceiver(EquipmentTransferReceiver instance);
+    partial void DeleteEquipmentTransferReceiver(EquipmentTransferReceiver instance);
+    partial void InsertEquipmentTransferSender(EquipmentTransferSender instance);
+    partial void UpdateEquipmentTransferSender(EquipmentTransferSender instance);
+    partial void DeleteEquipmentTransferSender(EquipmentTransferSender instance);
     #endregion
 		
 		public ERPManagementDataContext() : 
@@ -345,6 +357,38 @@ namespace ERPManagement.Model
 			get
 			{
 				return this.GetTable<EquipmentReturningDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentTransfer> EquipmentTransfers
+		{
+			get
+			{
+				return this.GetTable<EquipmentTransfer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentTransferDetail> EquipmentTransferDetails
+		{
+			get
+			{
+				return this.GetTable<EquipmentTransferDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentTransferReceiver> EquipmentTransferReceivers
+		{
+			get
+			{
+				return this.GetTable<EquipmentTransferReceiver>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentTransferSender> EquipmentTransferSenders
+		{
+			get
+			{
+				return this.GetTable<EquipmentTransferSender>();
 			}
 		}
 	}
@@ -6424,6 +6468,821 @@ namespace ERPManagement.Model
 						this._ID = default(int);
 					}
 					this.SendPropertyChanged("EquipmentReturning");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentTransfer")]
+	public partial class EquipmentTransfer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Number;
+		
+		private System.DateTime _Date;
+		
+		private string _Note;
+		
+		private EntitySet<EquipmentTransferDetail> _EquipmentTransferDetails;
+		
+		private EntitySet<EquipmentTransferReceiver> _EquipmentTransferReceivers;
+		
+		private EntitySet<EquipmentTransferSender> _EquipmentTransferSenders;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNumberChanging(string value);
+    partial void OnNumberChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnNoteChanging(string value);
+    partial void OnNoteChanged();
+    #endregion
+		
+		public EquipmentTransfer()
+		{
+			this._EquipmentTransferDetails = new EntitySet<EquipmentTransferDetail>(new Action<EquipmentTransferDetail>(this.attach_EquipmentTransferDetails), new Action<EquipmentTransferDetail>(this.detach_EquipmentTransferDetails));
+			this._EquipmentTransferReceivers = new EntitySet<EquipmentTransferReceiver>(new Action<EquipmentTransferReceiver>(this.attach_EquipmentTransferReceivers), new Action<EquipmentTransferReceiver>(this.detach_EquipmentTransferReceivers));
+			this._EquipmentTransferSenders = new EntitySet<EquipmentTransferSender>(new Action<EquipmentTransferSender>(this.attach_EquipmentTransferSenders), new Action<EquipmentTransferSender>(this.detach_EquipmentTransferSenders));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Number", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Number
+		{
+			get
+			{
+				return this._Number;
+			}
+			set
+			{
+				if ((this._Number != value))
+				{
+					this.OnNumberChanging(value);
+					this.SendPropertyChanging();
+					this._Number = value;
+					this.SendPropertyChanged("Number");
+					this.OnNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(350)")]
+		public string Note
+		{
+			get
+			{
+				return this._Note;
+			}
+			set
+			{
+				if ((this._Note != value))
+				{
+					this.OnNoteChanging(value);
+					this.SendPropertyChanging();
+					this._Note = value;
+					this.SendPropertyChanged("Note");
+					this.OnNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentTransfer_EquipmentTransferDetail", Storage="_EquipmentTransferDetails", ThisKey="ID", OtherKey="ID")]
+		public EntitySet<EquipmentTransferDetail> EquipmentTransferDetails
+		{
+			get
+			{
+				return this._EquipmentTransferDetails;
+			}
+			set
+			{
+				this._EquipmentTransferDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentTransfer_EquipmentTransferReceiver", Storage="_EquipmentTransferReceivers", ThisKey="ID", OtherKey="ID")]
+		public EntitySet<EquipmentTransferReceiver> EquipmentTransferReceivers
+		{
+			get
+			{
+				return this._EquipmentTransferReceivers;
+			}
+			set
+			{
+				this._EquipmentTransferReceivers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentTransfer_EquipmentTransferSender", Storage="_EquipmentTransferSenders", ThisKey="ID", OtherKey="ID")]
+		public EntitySet<EquipmentTransferSender> EquipmentTransferSenders
+		{
+			get
+			{
+				return this._EquipmentTransferSenders;
+			}
+			set
+			{
+				this._EquipmentTransferSenders.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_EquipmentTransferDetails(EquipmentTransferDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentTransfer = this;
+		}
+		
+		private void detach_EquipmentTransferDetails(EquipmentTransferDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentTransfer = null;
+		}
+		
+		private void attach_EquipmentTransferReceivers(EquipmentTransferReceiver entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentTransfer = this;
+		}
+		
+		private void detach_EquipmentTransferReceivers(EquipmentTransferReceiver entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentTransfer = null;
+		}
+		
+		private void attach_EquipmentTransferSenders(EquipmentTransferSender entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentTransfer = this;
+		}
+		
+		private void detach_EquipmentTransferSenders(EquipmentTransferSender entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentTransfer = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentTransferDetail")]
+	public partial class EquipmentTransferDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _DetailID;
+		
+		private int _ID;
+		
+		private int _Index;
+		
+		private int _EquipmentID;
+		
+		private int _Quantity;
+		
+		private int _EquipmentStatusID;
+		
+		private string _Note;
+		
+		private EntityRef<EquipmentTransfer> _EquipmentTransfer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDetailIDChanging(System.Guid value);
+    partial void OnDetailIDChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnIndexChanging(int value);
+    partial void OnIndexChanged();
+    partial void OnEquipmentIDChanging(int value);
+    partial void OnEquipmentIDChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnEquipmentStatusIDChanging(int value);
+    partial void OnEquipmentStatusIDChanged();
+    partial void OnNoteChanging(string value);
+    partial void OnNoteChanged();
+    #endregion
+		
+		public EquipmentTransferDetail()
+		{
+			this._EquipmentTransfer = default(EntityRef<EquipmentTransfer>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid DetailID
+		{
+			get
+			{
+				return this._DetailID;
+			}
+			set
+			{
+				if ((this._DetailID != value))
+				{
+					this.OnDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._DetailID = value;
+					this.SendPropertyChanged("DetailID");
+					this.OnDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					if (this._EquipmentTransfer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Index]", Storage="_Index", DbType="Int NOT NULL")]
+		public int Index
+		{
+			get
+			{
+				return this._Index;
+			}
+			set
+			{
+				if ((this._Index != value))
+				{
+					this.OnIndexChanging(value);
+					this.SendPropertyChanging();
+					this._Index = value;
+					this.SendPropertyChanged("Index");
+					this.OnIndexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", DbType="Int NOT NULL")]
+		public int EquipmentID
+		{
+			get
+			{
+				return this._EquipmentID;
+			}
+			set
+			{
+				if ((this._EquipmentID != value))
+				{
+					this.OnEquipmentIDChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentID = value;
+					this.SendPropertyChanged("EquipmentID");
+					this.OnEquipmentIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentStatusID", DbType="Int NOT NULL")]
+		public int EquipmentStatusID
+		{
+			get
+			{
+				return this._EquipmentStatusID;
+			}
+			set
+			{
+				if ((this._EquipmentStatusID != value))
+				{
+					this.OnEquipmentStatusIDChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentStatusID = value;
+					this.SendPropertyChanged("EquipmentStatusID");
+					this.OnEquipmentStatusIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(250)")]
+		public string Note
+		{
+			get
+			{
+				return this._Note;
+			}
+			set
+			{
+				if ((this._Note != value))
+				{
+					this.OnNoteChanging(value);
+					this.SendPropertyChanging();
+					this._Note = value;
+					this.SendPropertyChanged("Note");
+					this.OnNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentTransfer_EquipmentTransferDetail", Storage="_EquipmentTransfer", ThisKey="ID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public EquipmentTransfer EquipmentTransfer
+		{
+			get
+			{
+				return this._EquipmentTransfer.Entity;
+			}
+			set
+			{
+				EquipmentTransfer previousValue = this._EquipmentTransfer.Entity;
+				if (((previousValue != value) 
+							|| (this._EquipmentTransfer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EquipmentTransfer.Entity = null;
+						previousValue.EquipmentTransferDetails.Remove(this);
+					}
+					this._EquipmentTransfer.Entity = value;
+					if ((value != null))
+					{
+						value.EquipmentTransferDetails.Add(this);
+						this._ID = value.ID;
+					}
+					else
+					{
+						this._ID = default(int);
+					}
+					this.SendPropertyChanged("EquipmentTransfer");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentTransferReceiver")]
+	public partial class EquipmentTransferReceiver : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _DetailID;
+		
+		private int _ID;
+		
+		private int _Index;
+		
+		private int _EmployeeID;
+		
+		private EntityRef<EquipmentTransfer> _EquipmentTransfer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDetailIDChanging(System.Guid value);
+    partial void OnDetailIDChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnIndexChanging(int value);
+    partial void OnIndexChanged();
+    partial void OnEmployeeIDChanging(int value);
+    partial void OnEmployeeIDChanged();
+    #endregion
+		
+		public EquipmentTransferReceiver()
+		{
+			this._EquipmentTransfer = default(EntityRef<EquipmentTransfer>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid DetailID
+		{
+			get
+			{
+				return this._DetailID;
+			}
+			set
+			{
+				if ((this._DetailID != value))
+				{
+					this.OnDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._DetailID = value;
+					this.SendPropertyChanged("DetailID");
+					this.OnDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					if (this._EquipmentTransfer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Index]", Storage="_Index", DbType="Int NOT NULL")]
+		public int Index
+		{
+			get
+			{
+				return this._Index;
+			}
+			set
+			{
+				if ((this._Index != value))
+				{
+					this.OnIndexChanging(value);
+					this.SendPropertyChanging();
+					this._Index = value;
+					this.SendPropertyChanged("Index");
+					this.OnIndexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
+		public int EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentTransfer_EquipmentTransferReceiver", Storage="_EquipmentTransfer", ThisKey="ID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public EquipmentTransfer EquipmentTransfer
+		{
+			get
+			{
+				return this._EquipmentTransfer.Entity;
+			}
+			set
+			{
+				EquipmentTransfer previousValue = this._EquipmentTransfer.Entity;
+				if (((previousValue != value) 
+							|| (this._EquipmentTransfer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EquipmentTransfer.Entity = null;
+						previousValue.EquipmentTransferReceivers.Remove(this);
+					}
+					this._EquipmentTransfer.Entity = value;
+					if ((value != null))
+					{
+						value.EquipmentTransferReceivers.Add(this);
+						this._ID = value.ID;
+					}
+					else
+					{
+						this._ID = default(int);
+					}
+					this.SendPropertyChanged("EquipmentTransfer");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentTransferSender")]
+	public partial class EquipmentTransferSender : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _DetailID;
+		
+		private int _ID;
+		
+		private int _Index;
+		
+		private int _EmployeeID;
+		
+		private EntityRef<EquipmentTransfer> _EquipmentTransfer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDetailIDChanging(System.Guid value);
+    partial void OnDetailIDChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnIndexChanging(int value);
+    partial void OnIndexChanged();
+    partial void OnEmployeeIDChanging(int value);
+    partial void OnEmployeeIDChanged();
+    #endregion
+		
+		public EquipmentTransferSender()
+		{
+			this._EquipmentTransfer = default(EntityRef<EquipmentTransfer>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DetailID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid DetailID
+		{
+			get
+			{
+				return this._DetailID;
+			}
+			set
+			{
+				if ((this._DetailID != value))
+				{
+					this.OnDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._DetailID = value;
+					this.SendPropertyChanged("DetailID");
+					this.OnDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					if (this._EquipmentTransfer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Index]", Storage="_Index", DbType="Int NOT NULL")]
+		public int Index
+		{
+			get
+			{
+				return this._Index;
+			}
+			set
+			{
+				if ((this._Index != value))
+				{
+					this.OnIndexChanging(value);
+					this.SendPropertyChanging();
+					this._Index = value;
+					this.SendPropertyChanged("Index");
+					this.OnIndexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
+		public int EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentTransfer_EquipmentTransferSender", Storage="_EquipmentTransfer", ThisKey="ID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public EquipmentTransfer EquipmentTransfer
+		{
+			get
+			{
+				return this._EquipmentTransfer.Entity;
+			}
+			set
+			{
+				EquipmentTransfer previousValue = this._EquipmentTransfer.Entity;
+				if (((previousValue != value) 
+							|| (this._EquipmentTransfer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EquipmentTransfer.Entity = null;
+						previousValue.EquipmentTransferSenders.Remove(this);
+					}
+					this._EquipmentTransfer.Entity = value;
+					if ((value != null))
+					{
+						value.EquipmentTransferSenders.Add(this);
+						this._ID = value.ID;
+					}
+					else
+					{
+						this._ID = default(int);
+					}
+					this.SendPropertyChanged("EquipmentTransfer");
 				}
 			}
 		}
