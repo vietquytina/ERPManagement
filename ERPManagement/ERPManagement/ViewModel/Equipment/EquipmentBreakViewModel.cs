@@ -8,7 +8,7 @@ using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel.Equipment
 {
-    class EquipmentBreakDetailViewModel : EquipmentDetailViewModel
+    public class EquipmentBreakDetailViewModel : EquipmentDetailViewModel
     {
         #region Variables
         private DateTime breakDownDate;
@@ -76,7 +76,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
-    class EquipmentBreakViewModel : EquipmentViewModel
+    public class EquipmentBreakViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentBreakViewModel> GetEquipmentBreaks()
         {
