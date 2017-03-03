@@ -1,12 +1,55 @@
-﻿<telerik:RadWindow x:Class="ERPManagement.View.Profession.EquipmentBreakDownView"
+﻿<telerik:RadWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERPManagement.View.Profession" 
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.Profession.EquipmentBreakDownView" 
         mc:Ignorable="d"
-        Header="Phiếu báo hỏng" Height="545" Width="836" Style="{StaticResource BlueRadWindowStyle}">
+        Header="Phiếu báo hỏng thiết bị" Height="475" Width="836" Style="{StaticResource BlueRadWindowStyle}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <telerik:RadTabControl>
+            <telerik:RadTabItem Header="Thông tin chung" Height="30">
+                <Grid>
+                    <Label Content="Thiết bị" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Số hiệu" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Width="205" Height="26" />
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="96,41,0,0" TextWrapping="Wrap" Text="TextBox" IsEnabled="False" VerticalAlignment="Top" Width="205"/>
+                    <Label Content="Hiện đặt tại" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="96,72,0,0" TextWrapping="Wrap" Text="TextBox" IsEnabled="False" VerticalAlignment="Top" Width="205"/>
+                    <Label Content="Ngày hỏng" HorizontalAlignment="Left" Margin="366,41,0,0" VerticalAlignment="Top"/>
+                    <telerik:RadDatePicker HorizontalAlignment="Left" Margin="474,41,0,0" VerticalAlignment="Top" Width="196" Height="26"/>
+                    <Label Content="Người sử dụng" HorizontalAlignment="Left" Margin="366,10,0,0" VerticalAlignment="Top"/>
+                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="474,10,0,0" VerticalAlignment="Top" Width="196" Height="26"/>
+                    <Label Content="Tình trạng hiện thời" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                    <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="10,134,0,0" TextWrapping="Wrap" Text="MetroTextBox" VerticalAlignment="Top" Width="794" Height="81"/>
+                    <Label Content="Đề nghị" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top"/>
+                    <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="MetroTextBox" VerticalAlignment="Top" Width="794" Height="66"/>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Xử lý của Trung tâm" Height="30">
+                <Grid>
+                    <Label Content="Người giao nhiệm vụ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Người sửa" HorizontalAlignment="Left" Margin="388,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Ngày nhận báo hỏng" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Ngày sửa" HorizontalAlignment="Left" Margin="388,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Kết quả" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                    <ERPManagement:MetroTextBox Height="Auto" TextWrapping="Wrap" Text="" Margin="10,108,10,129"/>
+                    <Label Content="Đề nghị" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,207,0,0"/>
+                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="214" Height="26">
+                    </telerik:RadComboBox>
+                    <telerik:RadDatePicker HorizontalAlignment="Left" Margin="152,41,0,0" VerticalAlignment="Top" Width="214" Height="26"/>
+                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="479,10,0,0" VerticalAlignment="Top" Width="214" Height="26">
+                    </telerik:RadComboBox>
+                    <telerik:RadDatePicker HorizontalAlignment="Left" Margin="479,41,0,0" VerticalAlignment="Top" Width="214" Height="26"/>
+                    <ERPManagement:MetroTextBox Height="Auto" TextWrapping="Wrap" Text="" Margin="10,238,12,27"/>
+                </Grid>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
     </Grid>
 </telerik:RadWindow>

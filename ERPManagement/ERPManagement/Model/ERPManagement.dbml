@@ -139,33 +139,6 @@
       <Column Name="Note" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentBreak" Member="EquipmentBreaks">
-    <Type Name="EquipmentBreak">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
-      <Column Name="Advise" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
-      <Column Name="Assignment" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Repairer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RecvInfoDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="RepairDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="EquipmentBreak_EquipmentBreakDetail" Member="EquipmentBreakDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakDetail" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentBreakDetail" Member="EquipmentBreakDetails">
-    <Type Name="EquipmentBreakDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
-      <Column Name="Advise" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
-      <Association Name="EquipmentBreak_EquipmentBreakDetail" Member="EquipmentBreak" ThisKey="ID" OtherKey="ID" Type="EquipmentBreak" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Employee" Member="Employees">
     <Type Name="Employee">
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -335,6 +308,60 @@
       <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="EquipmentTransfer_EquipmentTransferSender" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentBreak" Member="EquipmentBreaks">
+    <Type Name="EquipmentBreak">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentStatus" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="EmployeeAdvise" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="Assignment" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Repairer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecvInfoDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RepairDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="Advise" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentBreakReport" Member="EquipmentBreakReports">
+    <Type Name="EquipmentBreakReport">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatus" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="Cause" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="HowToRepair" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="EmployeeAdvise" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="ManagerAdvise" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentBreakReport_EquipmentBreakReportManager" Member="EquipmentBreakReportManagers" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReportManager" />
+      <Association Name="EquipmentBreakReport_EquipmentBreakReportUser" Member="EquipmentBreakReportUsers" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReportUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentBreakReportManager" Member="EquipmentBreakReportManagers">
+    <Type Name="EquipmentBreakReportManager">
+      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentBreakReport_EquipmentBreakReportManager" Member="EquipmentBreakReport" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentBreakReportUser" Member="EquipmentBreakReportUsers">
+    <Type Name="EquipmentBreakReportUser">
+      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentBreakReport_EquipmentBreakReportUser" Member="EquipmentBreakReport" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

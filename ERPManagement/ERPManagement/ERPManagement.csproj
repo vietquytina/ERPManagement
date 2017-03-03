@@ -105,6 +105,9 @@
     <Compile Include="ViewModel\Employee\EmployeeListViewModel.cs" />
     <Compile Include="ViewModel\Employee\EmployeePermissionViewModel.cs" />
     <Compile Include="ViewModel\Employee\EmployeeViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentBreakListViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentBreakReportListViewModel.cs" />
+    <Compile Include="ViewModel\Equipment\EquipmentBreakReportViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentBreakViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentDetailViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentExportationListViewModel.cs" />
