@@ -90,6 +90,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\EquipmentExport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentExport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentImport.cs">
+      <DependentUpon>EquipmentImport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentImport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentImport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentReturning.cs">
+      <DependentUpon>EquipmentReturning.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentReturning.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentReturning.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentStatusNoteBook.cs">
+      <DependentUpon>EquipmentStatusNoteBook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentStatusNoteBook.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentStatusNoteBook.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MetroTextBox.cs" />
     <Compile Include="Model\ERPManagement1.designer.cs">
       <AutoGen>True</AutoGen>
@@ -308,7 +337,56 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Report\EquipmentBreakReport.rdlc" />
+    <EmbeddedResource Include="Report\EquipmentExport.rdlc" />
+    <EmbeddedResource Include="Report\EquipmentImport.rdlc" />
+    <EmbeddedResource Include="Report\EquipmentReturning.rdlc" />
+    <EmbeddedResource Include="Report\EquipmentStatusNoteBook.rdlc" />
     <None Include="app.config" />
+    <None Include="Data\EquipmentExport.xsc">
+      <DependentUpon>EquipmentExport.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentExport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipmentExport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\EquipmentExport.xss">
+      <DependentUpon>EquipmentExport.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentImport.xsc">
+      <DependentUpon>EquipmentImport.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentImport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipmentImport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\EquipmentImport.xss">
+      <DependentUpon>EquipmentImport.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentReturning.xsc">
+      <DependentUpon>EquipmentReturning.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentReturning.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipmentReturning.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\EquipmentReturning.xss">
+      <DependentUpon>EquipmentReturning.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentStatusNoteBook.xsc">
+      <DependentUpon>EquipmentStatusNoteBook.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentStatusNoteBook.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipmentStatusNoteBook.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\EquipmentStatusNoteBook.xss">
+      <DependentUpon>EquipmentStatusNoteBook.xsd</DependentUpon>
+    </None>
     <None Include="Model\ERPManagement.dbml.layout">
       <DependentUpon>ERPManagement.dbml</DependentUpon>
     </None>
@@ -322,15 +400,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>ERPManagement1.designer.cs</LastGenOutput>
     </None>
+    <None Include="Properties\DataSources\ERPManagement.ViewModel.Equipment.EquipmentImportationViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

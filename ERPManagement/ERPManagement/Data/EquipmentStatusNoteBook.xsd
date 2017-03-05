@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EquipmentStatusNoteBook" targetNamespace="http://tempuri.org/EquipmentStatusNoteBook.xsd" xmlns:mstns="http://tempuri.org/EquipmentStatusNoteBook.xsd" xmlns="http://tempuri.org/EquipmentStatusNoteBook.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EquipmentStatusNoteBook" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EquipmentStatusNoteBook" msprop:Generator_UserDSName="EquipmentStatusNoteBook">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EquipmentStatusNoteBook" msprop:Generator_TableClassName="EquipmentStatusNoteBookDataTable" msprop:Generator_TableVarName="tableEquipmentStatusNoteBook" msprop:Generator_RowChangedName="EquipmentStatusNoteBookRowChanged" msprop:Generator_TablePropName="_EquipmentStatusNoteBook" msprop:Generator_RowDeletingName="EquipmentStatusNoteBookRowDeleting" msprop:Generator_RowChangingName="EquipmentStatusNoteBookRowChanging" msprop:Generator_RowEvHandlerName="EquipmentStatusNoteBookRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentStatusNoteBookRowDeleted" msprop:Generator_RowClassName="EquipmentStatusNoteBookRow" msprop:Generator_UserTableName="EquipmentStatusNoteBook" msprop:Generator_RowEvArgName="EquipmentStatusNoteBookRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Index" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:int" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EquipmentName" msprop:Generator_ColumnVarNameInTable="columnEquipmentName" msprop:Generator_ColumnPropNameInRow="EquipmentName" msprop:Generator_ColumnPropNameInTable="EquipmentNameColumn" msprop:Generator_UserColumnName="EquipmentName" type="xs:string" minOccurs="0" />
+              <xs:element name="SerialNumber" msprop:Generator_ColumnVarNameInTable="columnSerialNumber" msprop:Generator_ColumnPropNameInRow="SerialNumber" msprop:Generator_ColumnPropNameInTable="SerialNumberColumn" msprop:Generator_UserColumnName="SerialNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="Cause" msprop:Generator_ColumnVarNameInTable="columnCause" msprop:Generator_ColumnPropNameInRow="Cause" msprop:Generator_ColumnPropNameInTable="CauseColumn" msprop:Generator_UserColumnName="Cause" type="xs:string" minOccurs="0" />
+              <xs:element name="Note" msprop:Generator_ColumnVarNameInTable="columnNote" msprop:Generator_ColumnPropNameInRow="Note" msprop:Generator_ColumnPropNameInTable="NoteColumn" msprop:Generator_UserColumnName="Note" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Company" msprop:Generator_TableClassName="CompanyDataTable" msprop:Generator_TableVarName="tableCompany" msprop:Generator_TablePropName="Company" msprop:Generator_RowDeletingName="CompanyRowDeleting" msprop:Generator_RowChangingName="CompanyRowChanging" msprop:Generator_RowEvHandlerName="CompanyRowChangeEventHandler" msprop:Generator_RowDeletedName="CompanyRowDeleted" msprop:Generator_UserTableName="Company" msprop:Generator_RowChangedName="CompanyRowChanged" msprop:Generator_RowEvArgName="CompanyRowChangeEvent" msprop:Generator_RowClassName="CompanyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

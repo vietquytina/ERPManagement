@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EquipmentImport" targetNamespace="http://tempuri.org/EquipmentImport.xsd" xmlns:mstns="http://tempuri.org/EquipmentImport.xsd" xmlns="http://tempuri.org/EquipmentImport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EquipmentImport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EquipmentImport" msprop:Generator_UserDSName="EquipmentImport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EquipmentImportation" msprop:Generator_TableClassName="EquipmentImportationDataTable" msprop:Generator_TableVarName="tableEquipmentImportation" msprop:Generator_RowChangedName="EquipmentImportationRowChanged" msprop:Generator_TablePropName="EquipmentImportation" msprop:Generator_RowDeletingName="EquipmentImportationRowDeleting" msprop:Generator_RowChangingName="EquipmentImportationRowChanging" msprop:Generator_RowEvHandlerName="EquipmentImportationRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentImportationRowDeleted" msprop:Generator_RowClassName="EquipmentImportationRow" msprop:Generator_UserTableName="EquipmentImportation" msprop:Generator_RowEvArgName="EquipmentImportationRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Number" msprop:Generator_ColumnVarNameInTable="columnNumber" msprop:Generator_ColumnPropNameInRow="Number" msprop:Generator_ColumnPropNameInTable="NumberColumn" msprop:Generator_UserColumnName="Number" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Receiver" msprop:Generator_ColumnVarNameInTable="columnReceiver" msprop:Generator_ColumnPropNameInRow="Receiver" msprop:Generator_ColumnPropNameInTable="ReceiverColumn" msprop:Generator_UserColumnName="Receiver" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EquipmentImportationDetail" msprop:Generator_TableClassName="EquipmentImportationDetailDataTable" msprop:Generator_TableVarName="tableEquipmentImportationDetail" msprop:Generator_RowChangedName="EquipmentImportationDetailRowChanged" msprop:Generator_TablePropName="EquipmentImportationDetail" msprop:Generator_RowDeletingName="EquipmentImportationDetailRowDeleting" msprop:Generator_RowChangingName="EquipmentImportationDetailRowChanging" msprop:Generator_RowEvHandlerName="EquipmentImportationDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentImportationDetailRowDeleted" msprop:Generator_RowClassName="EquipmentImportationDetailRow" msprop:Generator_UserTableName="EquipmentImportationDetail" msprop:Generator_RowEvArgName="EquipmentImportationDetailRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DetailID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnDetailID" msprop:Generator_ColumnPropNameInRow="DetailID" msprop:Generator_ColumnPropNameInTable="DetailIDColumn" msprop:Generator_UserColumnName="DetailID" type="xs:string" />
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="EquipmentCode" msprop:Generator_ColumnVarNameInTable="columnEquipmentCode" msprop:Generator_ColumnPropNameInRow="EquipmentCode" msprop:Generator_ColumnPropNameInTable="EquipmentCodeColumn" msprop:Generator_UserColumnName="EquipmentCode" type="xs:string" minOccurs="0" />
+              <xs:element name="EquipmentName" msprop:Generator_ColumnVarNameInTable="columnEquipmentName" msprop:Generator_ColumnPropNameInRow="EquipmentName" msprop:Generator_ColumnPropNameInTable="EquipmentNameColumn" msprop:Generator_UserColumnName="EquipmentName" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitMeasure" msprop:Generator_ColumnVarNameInTable="columnUnitMeasure" msprop:Generator_ColumnPropNameInRow="UnitMeasure" msprop:Generator_ColumnPropNameInTable="UnitMeasureColumn" msprop:Generator_UserColumnName="UnitMeasure" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="StatusName" msprop:Generator_ColumnVarNameInTable="columnStatusName" msprop:Generator_ColumnPropNameInRow="StatusName" msprop:Generator_ColumnPropNameInTable="StatusNameColumn" msprop:Generator_UserColumnName="StatusName" type="xs:string" minOccurs="0" />
+              <xs:element name="Note" msprop:Generator_ColumnVarNameInTable="columnNote" msprop:Generator_ColumnPropNameInRow="Note" msprop:Generator_ColumnPropNameInTable="NoteColumn" msprop:Generator_UserColumnName="Note" type="xs:string" minOccurs="0" />
+              <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EquipmentImportation" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="EquipmentImportationDetail_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EquipmentImportationDetail" />
+      <xs:field xpath="mstns:DetailID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="EquipmentImportationDetail_EquipmentImportation" msdata:parent="EquipmentImportationDetail" msdata:child="EquipmentImportation" msdata:parentkey="ID" msdata:childkey="ID" msprop:Generator_UserChildTable="EquipmentImportation" msprop:Generator_ChildPropName="GetEquipmentImportationRows" msprop:Generator_UserRelationName="EquipmentImportationDetail_EquipmentImportation" msprop:Generator_ParentPropName="EquipmentImportationDetailRow" msprop:Generator_RelationVarName="relationEquipmentImportationDetail_EquipmentImportation" msprop:Generator_UserParentTable="EquipmentImportationDetail" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
