@@ -6,6 +6,7 @@ using ERPManagement.View.List;
 
 namespace ERPManagement.ViewModel.List
 {
+    [Authorize.Authorize(Method = "Company")]
     public class CompanyListViewModel : ItemListViewModel<CompanyViewModel>
     {
         public CompanyListViewModel() : base()

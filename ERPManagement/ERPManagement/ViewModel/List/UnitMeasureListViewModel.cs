@@ -5,6 +5,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.List
 {
+    [Authorize.Authorize(Method = "UnitMeasure")]
     public class UnitMeasureListViewModel : ItemListViewModel<UnitMeasureViewModel>
     {
         public UnitMeasureListViewModel() : base()

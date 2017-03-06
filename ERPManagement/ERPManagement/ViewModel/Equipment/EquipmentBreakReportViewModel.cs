@@ -16,6 +16,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentBreakReport")]
     public class EquipmentBreakReportViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentBreakReportViewModel> Gets()

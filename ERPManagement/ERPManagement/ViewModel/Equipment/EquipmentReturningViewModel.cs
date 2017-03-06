@@ -62,6 +62,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentReturning")]
     public class EquipmentReturningViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentReturningViewModel> Gets()

@@ -11,6 +11,7 @@ namespace ERPManagement.ViewModel.Employee
         public Boolean CanRead { get; set; }
         public Boolean CanWrite { get; set; }
         public Boolean CanDelete { get; set; }
+        public Boolean CanAccept { get; set; }
     }
 
     [Authorize.Authorize(Method = "Employee")]

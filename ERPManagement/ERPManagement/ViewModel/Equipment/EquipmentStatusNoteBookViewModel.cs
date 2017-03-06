@@ -62,6 +62,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentStatusNoteBook")]
     public class EquipmentStatusNoteBookViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentStatusNoteBookViewModel> Gets()

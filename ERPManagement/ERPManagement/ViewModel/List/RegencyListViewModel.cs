@@ -5,6 +5,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.List
 {
+    [Authorize.Authorize(Method = "Regency")]
     public class RegencyListViewModel : ItemListViewModel<RegencyViewModel>
     {
         public RegencyListViewModel() : base()

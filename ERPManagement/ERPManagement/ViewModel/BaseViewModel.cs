@@ -21,7 +21,7 @@ namespace ERPManagement.ViewModel
 
     public delegate void ActionEventHandler(object sender, ActionEventArgs e);
 
-    public class BaseViewModel : BaseNotify
+    public class BaseViewModel : Authorize.AuthorizeViewModel
     {
         protected static ERPManagementDataContext db = new ERPManagementDataContext();
 
@@ -100,24 +100,8 @@ namespace ERPManagement.ViewModel
         }
         #endregion
 
-        #region Permission properties
-        public Boolean CanRead { get; set; }
-
-        public Boolean CanWrite { get; set; }
-
-        public Boolean CanDelete { get; set; }
-        #endregion
-
-        public BaseViewModel()
+        public BaseViewModel() : base()
         {
-            var authAttr = (ERPManagement.ViewModel.Authorize.AuthorizeAttribute)GetType().GetCustomAttributes(true)[0];
-            var methodPers = App.Employee.Permissions.SingleOrDefault(m => m.MethodName == authAttr.Method);
-            if (methodPers != null)
-            {
-                CanRead = methodPers.CanRead;
-                CanWrite = methodPers.CanWrite;
-                CanDelete = methodPers.CanDelete;
-            }
         }
 
         #region Method

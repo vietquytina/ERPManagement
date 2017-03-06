@@ -8,6 +8,7 @@ using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel.Equipment
 {
+    [Authorize.Authorize(Method= "EquipmentBreak")]
     public class EquipmentBreakViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentBreakViewModel> GetEquipmentBreaks()

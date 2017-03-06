@@ -73,6 +73,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentExportation")]
     public class EquipmentExportationViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentExportationViewModel> Gets()

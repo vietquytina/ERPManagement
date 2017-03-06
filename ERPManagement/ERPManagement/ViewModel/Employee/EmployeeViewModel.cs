@@ -11,6 +11,26 @@ namespace ERPManagement.ViewModel.Employee
     [Authorize.Authorize(Method = "Employee")]
     public class EmployeeViewModel : List.ListViewModel
     {
+        public static Boolean Login(String userName, String passWord)
+        {
+            var emp = db.Employees.SingleOrDefault(m => m.Code == userName && m.Password == passWord);
+            if (emp == null)
+                return false;
+            App.Employee = new EmployeePermissionViewModel();
+            App.Employee.UserID = emp.EmployeeID;
+            App.Employee.Name = emp.FamilyName + " " + emp.Name;
+            foreach (var permission in emp.Permissions)
+            {
+                PermissionViewModel permissionvm = new PermissionViewModel();
+                permissionvm.MethodName = permission.Method.Name;
+                permissionvm.CanRead = permission.CanRead;
+                permissionvm.CanWrite = permission.CanWrite;
+                permissionvm.CanAccept = permission.CanAccept;
+                App.Employee.Permissions.Add(permissionvm);
+            }
+            return true;
+        }
+
         public static IEnumerable<EmployeeViewModel> GetEmployees()
         {
             List<EmployeeViewModel> employeevms = new List<EmployeeViewModel>();

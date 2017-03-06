@@ -89,6 +89,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentHandover")]
     public class EquipmentHandoverViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentHandoverViewModel> Gets()

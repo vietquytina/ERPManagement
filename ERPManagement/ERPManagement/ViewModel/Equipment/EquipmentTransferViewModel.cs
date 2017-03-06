@@ -25,6 +25,7 @@ namespace ERPManagement.ViewModel.Equipment
         }
     }
 
+    [Authorize.Authorize(Method = "EquipmentTransfer")]
     public class EquipmentTransferViewModel : EquipmentViewModel
     {
         public static IEnumerable<EquipmentTransferViewModel> Gets()
