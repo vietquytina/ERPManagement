@@ -78,6 +78,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Telerik\UI for WPF R1 2017\Binaries\WPF40\Telerik.Windows.Controls.Navigation.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2017.1.117.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for WPF R1 2017\Binaries\WPF40\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Windows.Data, Version=2017.1.117.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
@@ -118,6 +122,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EquipmentStatusNoteBook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MetroTextBox.cs" />
     <Compile Include="Model\ERPManagement1.designer.cs">
@@ -174,6 +181,7 @@
     <Compile Include="ViewModel\List\UnitMeasureViewModel.cs" />
     <Compile Include="ViewModel\List\WareHouseListViewModel.cs" />
     <Compile Include="ViewModel\List\WareHouseViewModel.cs" />
+    <Compile Include="ViewModel\Login\LoginViewModel.cs" />
     <Compile Include="View\List\Company.xaml.cs">
       <DependentUpon>Company.xaml</DependentUpon>
     </Compile>
@@ -216,11 +224,17 @@
     <Compile Include="View\Profession\EquipmentBreakDownView.xaml.cs">
       <DependentUpon>EquipmentBreakDownView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentExportationListView.xaml.cs">
+      <DependentUpon>EquipmentExportationListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profession\EquipmentExportationView.xaml.cs">
       <DependentUpon>EquipmentExportationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Profession\EquipmentHandoverView.xaml.cs">
       <DependentUpon>EquipmentHandoverView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profession\EquipmentImportationListView.xaml.cs">
+      <DependentUpon>EquipmentImportationListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Profession\EquipmentImportationView.xaml.cs">
       <DependentUpon>EquipmentImportationView.xaml</DependentUpon>
@@ -231,6 +245,10 @@
     <Compile Include="View\Profession\EquipmentStatusNoteBookView.xaml.cs">
       <DependentUpon>EquipmentStatusNoteBookView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -303,11 +321,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Profession\EquipmentExportationListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Profession\EquipmentExportationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Profession\EquipmentHandoverView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentImportationListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -408,7 +434,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\login.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
@@ -439,6 +467,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\export_excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

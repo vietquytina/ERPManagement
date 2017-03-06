@@ -6,6 +6,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.Equipment
 {
+    [Authorize.Authorize(Method = "EquipmentImportation")]
     public class EquipmentImportationListViewModel : ItemListViewModel<EquipmentImportationViewModel>
     {
         private ObservableCollection<EquipmentImportationDetailViewModel> details;

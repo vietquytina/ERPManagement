@@ -28,6 +28,8 @@ namespace ERPManagement
         protected override void OnStartup(StartupEventArgs e)
         {
             StyleManager.ApplicationTheme = new Office_BlueTheme();
+            Login lgWnd = new Login();
+            lgWnd.ShowDialog();
             base.OnStartup(e);
         }
     }

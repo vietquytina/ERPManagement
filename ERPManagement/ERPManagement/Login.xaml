@@ -1,0 +1,75 @@
+﻿<telerik:RadWindow x:Class="ERPManagement.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:local="clr-namespace:ERPManagement" 
+        xmlns:vm="clr-namespace:ERPManagement.ViewModel.Login" 
+        mc:Ignorable="d"
+        Header="Đăng nhập" Height="284" MinHeight="284" MaxHeight="284" Width="448" MinWidth="448" MaxWidth="448" WindowStartupLocation="CenterScreen">
+    <telerik:RadWindow.Resources>
+        <vm:LoginViewModel x:Key="loginvm"></vm:LoginViewModel>
+    </telerik:RadWindow.Resources>
+    <telerik:RadWindow.IconTemplate>
+        <DataTemplate>
+            <Image Source="Resources/login.ico" Width="20" Margin="0,0,5,0"></Image>
+        </DataTemplate>
+    </telerik:RadWindow.IconTemplate>
+    <Grid Name="mainGrid" DataContext="{StaticResource loginvm}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="15" Grid.RowSpan="2">
+            <Label Content="Tài khoản hệ thống" FontWeight="Bold" FontSize="13" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="149"/>
+            <Rectangle Stroke="#E0E0E0" StrokeThickness="1"></Rectangle>
+            <Grid Margin="20,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="82" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.RowSpan="2" Source="Resources/login.png"></Image>
+                <local:MetroTextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" PlaceHolder="Tài khoản" Margin="15,0,0,0" TextWrapping="Wrap" Text="{Binding ElementName=mainGrid, Path=DataContext.UserName}" VerticalAlignment="Center" Width="235" />
+                <PasswordBox x:Name="pw" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="235" PasswordChanged="pw_PasswordChanged">
+                    <PasswordBox.Style>
+                        <Style TargetType="{x:Type PasswordBox}">
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="Height" Value="26"/>
+                            <Setter Property="Padding" Value="3,2,0,0"/>
+                            <Setter Property="BorderBrush" Value="#949494"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+									BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                            <Grid>
+                                                <Grid.Resources>
+                                                    <BooleanToVisibilityConverter x:Key="visibilityConverter"/>
+                                                </Grid.Resources>
+                                                <ScrollViewer x:Name="PART_ContentHost" Height="{TemplateBinding Height}" VerticalContentAlignment="Center" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                                <TextBlock x:Name="tbPlaceHolder" Text="Mật khẩu" FontSize="13" Margin="4,1,0,0" Height="{TemplateBinding Height}" Visibility="{Binding IsVisiblePasswordPlaceHolder, Converter={StaticResource visibilityConverter}}" Foreground="#A0A0A0"/>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="#0078D7"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </PasswordBox.Style>
+                </PasswordBox>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Row="1" Background="#F0F0F0">
+            <telerik:RadButton Content="Đăng nhập" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pw}" IsEnabled="{Binding IsValidate}" HorizontalAlignment="Left" Height="33" Margin="305,14,0,0" VerticalAlignment="Top" Width="111"/>
+        </Grid>
+    </Grid>
+</telerik:RadWindow>

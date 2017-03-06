@@ -7,7 +7,7 @@ using Telerik.Windows.Controls;
 
 namespace ERPManagement.ViewModel
 {
-    public class ItemListViewModel<T> : BaseNotify
+    public class ItemListViewModel<T> : Authorize.AuthorizeViewModel
     {
         private ICommand newCommand = null;
         private ICommand exportToXLSCommand = null;
@@ -70,7 +70,7 @@ namespace ERPManagement.ViewModel
             }
         }
 
-        public ItemListViewModel()
+        public ItemListViewModel() : base()
         {
             Items = new ObservableCollection<T>();
         }

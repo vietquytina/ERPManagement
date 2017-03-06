@@ -6,6 +6,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.Equipment
 {
+    [Authorize.Authorize(Method = "EquipmentReturning")]
     public class EquipmentReturningListViewModel : ItemListViewModel<EquipmentReturningViewModel>
     {
         #region Variables

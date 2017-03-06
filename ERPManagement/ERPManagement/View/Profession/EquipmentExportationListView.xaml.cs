@@ -9,17 +9,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERPManagement
+namespace ERPManagement.View.Profession
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EquipmentExportationListView.xaml
     /// </summary>
-    public partial class MainWindow : Telerik.Windows.Controls.RadWindow
+    public partial class EquipmentExportationListView : Telerik.Windows.Controls.RadWindow
     {
-        public MainWindow()
+        public EquipmentExportationListView()
         {
             InitializeComponent();
         }

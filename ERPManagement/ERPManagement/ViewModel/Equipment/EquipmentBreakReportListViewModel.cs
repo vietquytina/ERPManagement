@@ -5,6 +5,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.Equipment
 {
+    [Authorize.Authorize(Method = "EquipmentBreakReport")]
     public class EquipmentBreakReportListViewModel : ItemListViewModel<EquipmentBreakReportViewModel>
     {
         public EquipmentBreakReportListViewModel() : base()

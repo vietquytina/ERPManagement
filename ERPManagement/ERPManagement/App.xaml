@@ -4,8 +4,7 @@
              xmlns:local="clr-namespace:ERPManagement" 
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
              xmlns:Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" 
-             xmlns:Navigation="clr-namespace:Telerik.Windows.Controls.Navigation;assembly=Telerik.Windows.Controls.Navigation" 
-             StartupUri="MainWindow.xaml">
+             xmlns:Navigation="clr-namespace:Telerik.Windows.Controls.Navigation;assembly=Telerik.Windows.Controls.Navigation">
     <Application.Resources>
         <Style x:Key="BlueRadWindowStyle" TargetType="{x:Type telerik:RadWindow}">
             <Setter Property="ResizeMode" Value="NoResize"></Setter>

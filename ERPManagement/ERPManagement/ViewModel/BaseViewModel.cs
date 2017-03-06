@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
 using System.Windows;
-using ERPManagement.Model;
+using System.Windows.Input;
 
 namespace ERPManagement.ViewModel
 {
@@ -23,8 +19,6 @@ namespace ERPManagement.ViewModel
 
     public class BaseViewModel : Authorize.AuthorizeViewModel
     {
-        protected static ERPManagementDataContext db = new ERPManagementDataContext();
-
         public event RoutedEventHandler Deleted;
         public event ActionEventHandler ItemAction;
 
