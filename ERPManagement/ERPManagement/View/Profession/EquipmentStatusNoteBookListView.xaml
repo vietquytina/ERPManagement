@@ -1,0 +1,13 @@
+﻿<telerik:RadWindow x:Class="ERPManagement.View.Profession.EquipmentStatusNoteBookListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:local="clr-namespace:ERPManagement.View.Profession"
+        mc:Ignorable="d" 
+        Header="Sổ Theo Dõi Tình Hình Thiết Bị" Height="506" Width="802">
+    <Grid>
+        
+    </Grid>
+</telerik:RadWindow>

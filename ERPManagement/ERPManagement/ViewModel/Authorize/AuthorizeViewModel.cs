@@ -8,8 +8,7 @@ namespace ERPManagement.ViewModel.Authorize
 {
     public class AuthorizeViewModel : BaseNotify
     {
-
-
+        #region Properties
         public Boolean CanRead { get; set; }
 
         public Boolean CanWrite { get; set; }
@@ -17,6 +16,7 @@ namespace ERPManagement.ViewModel.Authorize
         public Boolean CanDelete { get; set; }
 
         public Boolean CanAccept { get; set; }
+        #endregion
 
         public AuthorizeViewModel() : base()
         {

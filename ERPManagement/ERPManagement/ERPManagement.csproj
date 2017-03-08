@@ -99,6 +99,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EquipmentExport.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Data\EquipmentHandover.cs">
+      <DependentUpon>EquipmentHandover.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EquipmentHandover.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentHandover.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\EquipmentImport.cs">
       <DependentUpon>EquipmentImport.xsd</DependentUpon>
     </Compile>
@@ -242,6 +250,9 @@
     <Compile Include="View\Profession\EquipmentReturningView.xaml.cs">
       <DependentUpon>EquipmentReturningView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentStatusNoteBookListView.xaml.cs">
+      <DependentUpon>EquipmentStatusNoteBookListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profession\EquipmentStatusNoteBookView.xaml.cs">
       <DependentUpon>EquipmentStatusNoteBookView.xaml</DependentUpon>
     </Compile>
@@ -345,6 +356,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Profession\EquipmentStatusNoteBookListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Profession\EquipmentStatusNoteBookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -366,6 +381,7 @@
     </Compile>
     <EmbeddedResource Include="Report\EquipmentBreakReport.rdlc" />
     <EmbeddedResource Include="Report\EquipmentExport.rdlc" />
+    <EmbeddedResource Include="Report\EquipmentHandover.rdlc" />
     <EmbeddedResource Include="Report\EquipmentImport.rdlc" />
     <EmbeddedResource Include="Report\EquipmentReturning.rdlc" />
     <EmbeddedResource Include="Report\EquipmentStatusNoteBook.rdlc" />
@@ -380,6 +396,17 @@
     </None>
     <None Include="Data\EquipmentExport.xss">
       <DependentUpon>EquipmentExport.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentHandover.xsc">
+      <DependentUpon>EquipmentHandover.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentHandover.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipmentHandover.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\EquipmentHandover.xss">
+      <DependentUpon>EquipmentHandover.xsd</DependentUpon>
     </None>
     <None Include="Data\EquipmentImport.xsc">
       <DependentUpon>EquipmentImport.xsd</DependentUpon>
