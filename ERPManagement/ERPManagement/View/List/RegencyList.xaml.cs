@@ -9,7 +9,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ERPManagement.View.List
@@ -17,11 +16,12 @@ namespace ERPManagement.View.List
     /// <summary>
     /// Interaction logic for RegencyList.xaml
     /// </summary>
-    public partial class RegencyList : UserControl
+    public partial class RegencyList : Telerik.Windows.Controls.RadWindow
     {
         public RegencyList()
         {
             InitializeComponent();
+            DataContext = (App.Current as App).Regencies;
         }
     }
 }

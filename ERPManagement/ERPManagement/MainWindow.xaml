@@ -7,7 +7,111 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         x:Class="ERPManagement.MainWindow"
         mc:Ignorable="d"
-        Header="MainWindow" Height="572" Width="850" Style="{StaticResource BlueRadWindowStyle}">
+        Header="MainWindow" Height="797" Width="1009">
+    <telerik:RadWindow.Resources>
+        <Style x:Key="MenuHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="Foreground" Value="#4B329D"></Setter>
+            <Setter Property="Margin" Value="5,0,0,0"></Setter>
+        </Style>
+
+        <Style x:Key="MenuButton" TargetType="Button" BasedOn="{StaticResource MetroButton}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#D9D9D9"></Setter>
+            <Setter Property="Padding" Value="4"></Setter>
+            <Setter Property="Margin" Value="0,0,15,0"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E5F3FF"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MenuItemTitle" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+    </telerik:RadWindow.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="161*" />
+            <RowDefinition Height="217*" />
+            <RowDefinition Height="188*" />
+            <RowDefinition Height="189*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Grid Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Canvas Width="20">
+                    <Path Stroke="#4B329D" StrokeThickness="1" Data="M8,8 L13,13 L18,8"></Path>
+                </Canvas>
+                <TextBlock Grid.Column="1" Text="Danh mục" Style="{StaticResource MenuHeader}"></TextBlock>
+                <Canvas Grid.Column="2" Margin="10,0,0,0">
+                    <Rectangle Fill="#D9D9D9" Width="900" Height="1" Margin="0,9,0,0"></Rectangle>
+                </Canvas>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="25,10,0,0">
+                <Button Name="btnCompanies" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnCompanies_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/office.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Đơn vị" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnDepartments" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnDepartments_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/office.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phòng ban" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Width="95" Height="95" Style="{StaticResource MenuButton}">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/settings.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Thiết bị" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEquipmentTypes" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnEquipmentTypes_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/archive.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Loại thiết bị" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnRegencies" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnRegencies_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/organization.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Chức vụ" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnUnitMeasure" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnUnitMeasure_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/circular-chart.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Đơn vị tính" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEmp" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnEmp_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/businessman.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Nhân viên" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </telerik:RadWindow>

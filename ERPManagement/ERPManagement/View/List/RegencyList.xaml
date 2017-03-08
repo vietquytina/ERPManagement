@@ -1,11 +1,12 @@
-﻿<UserControl x:Class="ERPManagement.View.List.RegencyList"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ERPManagement.View.List" 
-             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-             mc:Ignorable="d" d:DesignWidth="927" d:DesignHeight="358">
+﻿<telerik:RadWindow x:Class="ERPManagement.View.List.RegencyList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERPManagement.View.List"
+        mc:Ignorable="d" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        Header="Danh mục chức vụ" Height="385" Width="927">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -49,8 +50,8 @@
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Mã chức vụ" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Code}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Tên chức vụ" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Ghi chú" Width="260" HeaderTextAlignment="Center" DataMemberBinding="{Binding PhoneNumber}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Ghi chú" Width="260" HeaderTextAlignment="Center" DataMemberBinding="{Binding Note}"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
     </Grid>
-</UserControl>
+</telerik:RadWindow>

@@ -94,6 +94,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConvertCollection.cs" />
     <Compile Include="Data\EquipmentExport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +239,9 @@
     <Compile Include="View\Profession\EquipmentExportationView.xaml.cs">
       <DependentUpon>EquipmentExportationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentHandoverList.xaml.cs">
+      <DependentUpon>EquipmentHandoverList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profession\EquipmentHandoverView.xaml.cs">
       <DependentUpon>EquipmentHandoverView.xaml</DependentUpon>
     </Compile>
@@ -246,6 +250,9 @@
     </Compile>
     <Compile Include="View\Profession\EquipmentImportationView.xaml.cs">
       <DependentUpon>EquipmentImportationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profession\EquipmentReturningList.xaml.cs">
+      <DependentUpon>EquipmentReturningList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Profession\EquipmentReturningView.xaml.cs">
       <DependentUpon>EquipmentReturningView.xaml</DependentUpon>
@@ -340,6 +347,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Profession\EquipmentHandoverList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Profession\EquipmentHandoverView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -349,6 +360,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Profession\EquipmentImportationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentReturningList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -497,6 +512,38 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\archive.png" />
+    <Resource Include="Resources\bank.png" />
+    <Resource Include="Resources\bar-chart.png" />
+    <Resource Include="Resources\businessman.png" />
+    <Resource Include="Resources\card.png" />
+    <Resource Include="Resources\circular-chart.png" />
+    <Resource Include="Resources\cityscape.png" />
+    <Resource Include="Resources\close16.png" />
+    <Resource Include="Resources\create.png" />
+    <Resource Include="Resources\data_transfer.png" />
+    <Resource Include="Resources\deal.png" />
+    <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\earth-globe.png" />
+    <Resource Include="Resources\edit.png" />
+    <Resource Include="Resources\export.png" />
+    <Resource Include="Resources\import.png" />
+    <Resource Include="Resources\industry.png" />
+    <Resource Include="Resources\insert.png" />
+    <Resource Include="Resources\Kompozer.png" />
+    <Resource Include="Resources\office.png" />
+    <Resource Include="Resources\organization.png" />
+    <Resource Include="Resources\person.png" />
+    <Resource Include="Resources\return.png" />
+    <Resource Include="Resources\school.png" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\settings.png" />
+    <Resource Include="Resources\skills.png" />
+    <Resource Include="Resources\truck.png" />
+    <Resource Include="Resources\user.png" />
+    <Resource Include="Resources\view.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

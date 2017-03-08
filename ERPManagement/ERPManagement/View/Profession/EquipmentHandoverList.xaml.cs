@@ -11,17 +11,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ERPManagement.View.List
+namespace ERPManagement.View.Profession
 {
     /// <summary>
-    /// Interaction logic for UnitMeasureList.xaml
+    /// Interaction logic for EquipmentHandoverList.xaml
     /// </summary>
-    public partial class UnitMeasureList : Telerik.Windows.Controls.RadWindow
+    public partial class EquipmentHandoverList : Telerik.Windows.Controls.RadWindow
     {
-        public UnitMeasureList()
+        public EquipmentHandoverList()
         {
             InitializeComponent();
-            DataContext = (App.Current as App).UnitMeasures;
         }
     }
 }

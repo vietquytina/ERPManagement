@@ -18,7 +18,7 @@ namespace ERPManagement.ViewModel.Converter
 
     public class MainConverter : IValueConverter
     {
-        protected App app = (App)Application.Current;
+        protected App app = (App)(Application.Current);
 
         public virtual object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
