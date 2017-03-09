@@ -494,7 +494,7 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipmentReturningRow AddEquipmentReturningRow(string Number, string Date, string Department) {
+            public EquipmentReturningRow AddEquipmentReturningRow(string Number, System.DateTime Date, string Department) {
                 EquipmentReturningRow rowEquipmentReturningRow = ((EquipmentReturningRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -543,7 +543,7 @@ namespace ERPManagement.Data {
                 base.Columns.Add(this.columnID);
                 this.columnNumber = new global::System.Data.DataColumn("Number", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNumber);
-                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
                 this.columnDepartment = new global::System.Data.DataColumn("Department", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDepartment);
@@ -1578,10 +1578,10 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Date {
+            public System.DateTime Date {
                 get {
                     try {
-                        return ((string)(this[this.tableEquipmentReturning.DateColumn]));
+                        return ((global::System.DateTime)(this[this.tableEquipmentReturning.DateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'EquipmentReturning\' is DBNull.", e);

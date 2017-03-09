@@ -6,7 +6,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:local="clr-namespace:ERPManagement" 
         xmlns:vm="clr-namespace:ERPManagement.ViewModel.Login" 
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Header="Đăng nhập" Height="284" MinHeight="284" MaxHeight="284" Width="448" MinWidth="448" MaxWidth="448" WindowStartupLocation="CenterScreen">
     <telerik:RadWindow.Resources>
         <vm:LoginViewModel x:Key="loginvm"></vm:LoginViewModel>

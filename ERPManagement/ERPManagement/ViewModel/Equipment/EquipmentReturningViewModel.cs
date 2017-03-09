@@ -344,7 +344,70 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Edit()
         {
+            View.Profession.EquipmentReturningView frmEqReturning = new View.Profession.EquipmentReturningView();
+            EquipmentReturningViewModel eqReturningvm = Get(equipmentReturningID);
+            eqReturningvm.ItemAction += new ActionEventHandler(EqReturningvm_ItemAction);
+            frmEqReturning.DataContext = eqReturningvm;
+            frmEqReturning.ShowDialog();
+        }
 
+        private void EqReturningvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                EquipmentReturningViewModel eqReturningvm = (EquipmentReturningViewModel)sender;
+                Number = eqReturningvm.Number;
+                Date = eqReturningvm.Date;
+                DepartmentID = eqReturningvm.DepartmentID;
+                Details.Clear();
+                Senders.Clear();
+                Receivers.Clear();
+                foreach (var detail in eqReturningvm.Details)
+                {
+                    Details.Add(detail);
+                }
+                foreach (var sendervm in eqReturningvm.Senders)
+                {
+                    Senders.Add(sendervm);
+                }
+                foreach (var receivervm in eqReturningvm.Receivers)
+                {
+                    Receivers.Add(receivervm);
+                }
+            }
+        }
+
+        protected override void ExportToReport()
+        {
+            Data.EquipmentReturning eqReturningDS = new Data.EquipmentReturning();
+            ReportWindow rptWnd = new ReportWindow();
+            rptWnd.ReportPath = "Report/EquipmentReturning.rdlc";
+            eqReturningDS._EquipmentReturning.AddEquipmentReturningRow(Number, Date, "");
+            foreach (var detail in Details)
+            {
+                String eqName = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Name);
+                String eqSerial = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Serial);
+                String status = ConvertCollection.ConvertStatus(detail.EquipmentStatusID);
+                eqReturningDS.EquipmentReturningDetail.AddEquipmentReturningDetailRow(detail.Index, eqName, detail.Quantity, eqSerial, status);
+            }
+            foreach (var sender in Senders)
+            {
+                String empName = ConvertCollection.ConvertEmployee(sender.EmployeeID);
+                String regency = ConvertCollection.ConvertEmployee(sender.EmployeeID, ViewModel.Converter.EmployeeConvertation.Regency);
+                eqReturningDS.Sender.AddSenderRow(empName, regency, sender.Index.ToString());
+            }
+            foreach (var receiver in Receivers)
+            {
+                String empName = ConvertCollection.ConvertEmployee(receiver.EmployeeID);
+                String regency = ConvertCollection.ConvertEmployee(receiver.EmployeeID, ViewModel.Converter.EmployeeConvertation.Regency);
+                eqReturningDS.Receiver.AddReceiverRow(empName, regency, receiver.Index.ToString());
+            }
+            rptWnd.AddReportSource("EquipmentReturning", eqReturningDS._EquipmentReturning);
+            rptWnd.AddReportSource("EquipmentReturningDetail", eqReturningDS.EquipmentReturningDetail);
+            rptWnd.AddReportSource("Sender", eqReturningDS.Sender);
+            rptWnd.AddReportSource("Receiver", eqReturningDS.Receiver);
+            rptWnd.RefreshReport();
+            rptWnd.ShowDialog();
         }
     }
 }

@@ -258,5 +258,25 @@ namespace ERPManagement.ViewModel.Equipment
                 Details = equipmentImportationvm.Details;
             }
         }
+
+        protected override void ExportToReport()
+        {
+            Data.EquipmentImport eqImportDS = new Data.EquipmentImport();
+            ReportWindow rptWnd = new ReportWindow();
+            rptWnd.ReportPath = "Report/EquipmentImport.rdlc";
+            eqImportDS.EquipmentImportation.AddEquipmentImportationRow(Number, Date, ConvertCollection.ConvertEmployee(Delivery));
+            foreach (var detail in Details)
+            {
+                String equipmentCode = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Code);
+                String equipmentName = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Name);
+                String unitMeasure = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.UnitMeasure);
+                String status = ConvertCollection.ConvertStatus(detail.EquipmentStatusID);
+                eqImportDS.EquipmentImportationDetail.AddEquipmentImportationDetailRow(detail.DetailID, 0, equipmentCode, equipmentName, unitMeasure, detail.Quantity, status, detail.Note, detail.Index);
+            }
+            rptWnd.AddReportSource("EquipmentImport", eqImportDS.EquipmentImportation);
+            rptWnd.AddReportSource("EquipmentImportDetail", eqImportDS.EquipmentImportationDetail);
+            rptWnd.RefreshReport();
+            rptWnd.ShowDialog();
+        }
     }
 }

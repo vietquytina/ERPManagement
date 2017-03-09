@@ -21,6 +21,7 @@ namespace ERPManagement.View.Profession
         public EquipmentStatusNoteBookListView()
         {
             InitializeComponent();
+            DataContext = (App.Current as App).EquipmentStatusNoteBooks;
         }
     }
 }

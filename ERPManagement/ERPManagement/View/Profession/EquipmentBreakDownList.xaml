@@ -1,17 +1,17 @@
-﻿<telerik:RadWindow x:Class="ERPManagement.View.List.DepartmentList"
+﻿<Window x:Class="ERPManagement.View.Profession.EquipmentBreakDownList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ERPManagement.View.List" 
-        xmlns:convert="clr-namespace:ERPManagement" 
+        xmlns:local="clr-namespace:ERPManagement.View.Profession"
         mc:Ignorable="d" 
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-        Header="Danh mục phòng ban" Height="385" Width="927">
+        Title="EquipmentBreakDownList" Height="445" Width="903">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <telerik:RadToolBar telerik:StyleManager.Theme="Office_Blue">
             <telerik:RadMenuItem Command="{Binding NewCommand}">
@@ -47,13 +47,12 @@
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
         </telerik:RadToolBar>
-        <telerik:RadGridView Name="grItems" CurrentItem="{Binding SelectedItem}" telerik:StyleManager.Theme="Office_Blue" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" ShowGroupPanel="False" AutoGenerateColumns="False">
+        <telerik:RadGridView Name="grItems" CurrentItem="{Binding SelectedItem}" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" Margin="0,5,0,0" ShowGroupPanel="False" AutoGenerateColumns="False">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Header="Mã phòng ban" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Code}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Tên phòng ban" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Ghi chú" Width="260" HeaderTextAlignment="Center" DataMemberBinding="{Binding Note}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Đơn vị" Width="200" HeaderTextAlignment="Center" DataMemberBinding="{Binding CompanyID}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Số" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Number}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Ngày tháng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding Date}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Người nhận" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding PhoneNumber}"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
     </Grid>
-</telerik:RadWindow>
+</Window>

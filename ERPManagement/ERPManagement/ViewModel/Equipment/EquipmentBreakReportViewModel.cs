@@ -334,5 +334,16 @@ namespace ERPManagement.ViewModel.Equipment
         {
 
         }
+
+        protected override void ExportToReport()
+        {
+            Data.EquipmentExport eqExportDS = new Data.EquipmentExport();
+            ReportWindow rptWnd = new ReportWindow();
+            rptWnd.ReportPath = "Report/EquipmentBreakReport.rdlc";
+            rptWnd.AddReportSource("EquipmentExport", eqExportDS.EquipmentImportation);
+            rptWnd.AddReportSource("EquipmentExportDetail", eqExportDS.EquipmentImportationDetail);
+            rptWnd.RefreshReport();
+            rptWnd.ShowDialog();
+        }
     }
 }

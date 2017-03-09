@@ -14,14 +14,13 @@ using System.Windows.Shapes;
 namespace ERPManagement.View.Profession
 {
     /// <summary>
-    /// Interaction logic for EquipmentImportationListView.xaml
+    /// Interaction logic for EquipmentBreakDownList.xaml
     /// </summary>
-    public partial class EquipmentImportationListView : Telerik.Windows.Controls.RadWindow
+    public partial class EquipmentBreakDownList : Window
     {
-        public EquipmentImportationListView()
+        public EquipmentBreakDownList()
         {
             InitializeComponent();
-            DataContext = (App.Current as App).EquipmentImports;
         }
     }
 }

@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.Profession.EquipmentBreakDownView" 
         mc:Ignorable="d"
-        Header="Phiếu báo hỏng thiết bị" Height="475" Width="836" Style="{StaticResource BlueRadWindowStyle}">
+        Header="Phiếu báo hỏng thiết bị" Height="475" Width="836">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

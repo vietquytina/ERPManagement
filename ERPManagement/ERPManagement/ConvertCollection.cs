@@ -23,6 +23,8 @@ namespace ERPManagement
 
         public static IValueConverter EquipmentConverter { get; set; }
 
+        public static IValueConverter StatusConverter { get; set; }
+
         static ConvertCollection()
         {
             CompanyConverter = new CompanyNameConverter();
@@ -32,6 +34,33 @@ namespace ERPManagement
             UnitMeasurConverter = new UnitMeasureNameConverter();
             EmployeeConverter = new EmployeeNameConverter();
             EquipmentConverter = new EquipmentNameConverter();
+            StatusConverter = new StatusConverter();
+        }
+
+        public static String ConvertEmployee(int empID, EmployeeConvertation empConvert = EmployeeConvertation.Name)
+        {
+            Object result = EmployeeConverter.Convert(empID, typeof(String), empConvert, System.Globalization.CultureInfo.CurrentCulture);
+            if (empConvert != EmployeeConvertation.Regency)
+                return result.ToString();
+            else
+            {
+                return ConvertRegency(System.Convert.ToInt32(result));
+            }
+        }
+
+        public static String ConvertEquipment(int equipmentID, ConvertInfomation cvInfo)
+        {
+            return EquipmentConverter.Convert(equipmentID, typeof(String), cvInfo, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
+        public static String ConvertStatus(int statusID)
+        {
+            return StatusConverter.Convert(statusID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
+        public static String ConvertRegency(int regencyID)
+        {
+            return RegencyConverter.Convert(regencyID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
         }
     }
 }

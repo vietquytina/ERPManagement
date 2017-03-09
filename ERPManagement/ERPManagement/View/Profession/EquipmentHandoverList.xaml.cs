@@ -21,6 +21,7 @@ namespace ERPManagement.View.Profession
         public EquipmentHandoverList()
         {
             InitializeComponent();
+            DataContext = (App.Current as App).EquipmentHandovers;
         }
     }
 }

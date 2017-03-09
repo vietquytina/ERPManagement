@@ -21,6 +21,7 @@ namespace ERPManagement.View.Profession
         public EquipmentExportationListView()
         {
             InitializeComponent();
+            DataContext = (App.Current as App).EquipmentExports;
         }
     }
 }

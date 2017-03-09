@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
 using System.Reflection;
+using System.Windows.Input;
 
 namespace ERPManagement.ViewModel.Equipment
 {
@@ -15,6 +16,7 @@ namespace ERPManagement.ViewModel.Equipment
         private String number, note;
         private DateTime date = DateTime.Now;
         private Int32 statusID = 0;
+        private ICommand exportToReportCommand = null;
         #endregion
 
         #region Properties
@@ -69,6 +71,21 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
+        public ICommand ExportToReportCommand
+        {
+            get
+            {
+                if (exportToReportCommand == null)
+                {
+                    exportToReportCommand = new RelayCommand(() =>
+                    {
+                        ExportToReport();
+                    });
+                }
+                return exportToReportCommand;
+            }
+        }
         #endregion
 
         public EquipmentViewModel() : base()
@@ -97,6 +114,11 @@ namespace ERPManagement.ViewModel.Equipment
                     index++;
                 }
             }
+        }
+
+        protected virtual void ExportToReport()
+        {
+
         }
     }
 }

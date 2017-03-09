@@ -21,6 +21,7 @@ namespace ERPManagement.View.Profession
         public EquipmentReturningList()
         {
             InitializeComponent();
+            DataContext = (App.Current as App).EquipmentReturnings;
         }
     }
 }

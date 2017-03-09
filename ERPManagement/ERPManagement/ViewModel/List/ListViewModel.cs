@@ -15,7 +15,6 @@ namespace ERPManagement.ViewModel.List
         private String name = null;
         private String note = null;
         private String code = null;
-        
         #endregion
 
         #region Properties

@@ -48,6 +48,8 @@ namespace ERPManagement
 
         public EquipmentTransferListViewModel EquipmentTransfers { get; set; }
 
+        public StatusListViewModel Statuses { get; set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             StyleManager.ApplicationTheme = new Office_BlueTheme();

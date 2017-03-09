@@ -16,6 +16,13 @@ namespace ERPManagement.ViewModel.Converter
         UnitMeasure = 3
     }
 
+    public enum EmployeeConvertation : uint
+    {
+        Code = 1,
+        Name = 2,
+        Regency = 3
+    }
+
     public class MainConverter : IValueConverter
     {
         protected App app = (App)(Application.Current);
@@ -103,7 +110,14 @@ namespace ERPManagement.ViewModel.Converter
             var employeevm = app.Employees.Items.SingleOrDefault(m => m.EmployeeID == empID);
             if (employeevm == null)
                 return string.Empty;
-            return employeevm.Name;
+            EmployeeConvertation empConvert = (EmployeeConvertation)parameter;
+            if (empConvert == EmployeeConvertation.Code)
+                return employeevm.Code;
+            else
+                if (empConvert == EmployeeConvertation.Name)
+                return employeevm.Name;
+            else
+                return employeevm.RegencyID;
         }
     }
 
@@ -126,6 +140,18 @@ namespace ERPManagement.ViewModel.Converter
                 return equipment.Number;
             else
                 return equipment.UnitMeasure;
+        }
+    }
+
+    public class StatusConverter : MainConverter
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int statusID = System.Convert.ToInt32(value);
+            var status = app.Statuses.Items.SingleOrDefault(m => m.StatusID == statusID);
+            if (status == null)
+                return String.Empty;
+            return status.Name;
         }
     }
 }

@@ -5,11 +5,12 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.List
 {
-    class StatusViewModel : ListViewModel
+    public class StatusViewModel : ListViewModel
     {
         public static IEnumerable<StatusViewModel> GetStatuses()
         {
             List<StatusViewModel> statuses = new List<StatusViewModel>();
+            statuses.Add(new StatusViewModel() { statusID = 1, Code = "", Name = "" });
             return statuses;
         }
 
