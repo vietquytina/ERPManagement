@@ -21,7 +21,7 @@ namespace ERPManagement.ViewModel.Equipment
     {
         #region Variables
         private Int32 equipmentID;
-        private String equipmentName, unitMeasure;
+        private String equipmentName, unitMeasure, equipmentCode, serial;
         private Int32 restQty = 0;
         #endregion
 
@@ -35,8 +35,25 @@ namespace ERPManagement.ViewModel.Equipment
                 {
                     var oldEquipment = equipmentID;
                     equipmentID = value;
+                    EquipmentCode = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.Code);
+                    EquipmentName = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.Name);
+                    UnitMeasure = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.UnitMeasure);
+                    Serial = ConvertCollection.ConvertEquipment(EquipmentID, ViewModel.Converter.ConvertInfomation.Serial);
                     OnEquipmentChanged(oldEquipment, equipmentID);
                     RaisePropertyChanged("EquipmentID");
+                }
+            }
+        }
+
+        public String EquipmentCode
+        {
+            get { return equipmentCode; }
+            set
+            {
+                if (equipmentCode != value)
+                {
+                    equipmentCode = value;
+                    RaisePropertyChanged("EquipmentCode");
                 }
             }
         }
@@ -63,6 +80,19 @@ namespace ERPManagement.ViewModel.Equipment
                 {
                     unitMeasure = value;
                     RaisePropertyChanged("UnitMeasure");
+                }
+            }
+        }
+
+        public String Serial
+        {
+            get { return serial; }
+            set
+            {
+                if (serial != value)
+                {
+                    serial = value;
+                    RaisePropertyChanged("Serial");
                 }
             }
         }

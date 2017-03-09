@@ -29,6 +29,7 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public Int32 StatusID
         {
             get { return statusID; }
@@ -37,10 +38,12 @@ namespace ERPManagement.ViewModel.Equipment
                 if (statusID != value)
                 {
                     statusID = value;
+                    StatusName = ConvertCollection.ConvertStatus(StatusID);
                     RaisePropertyChanged("StatusID");
                 }
             }
         }
+
         public String StatusName
         {
             get { return statusName; }
@@ -53,6 +56,7 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public String Note
         {
             get { return note; }
@@ -151,17 +155,30 @@ namespace ERPManagement.ViewModel.Equipment
                 if (receiver != value)
                 {
                     receiver = value;
+                    ReceiverName = ConvertCollection.ConvertEmployee(receiver, ViewModel.Converter.EmployeeConvertation.Name);
                     RaisePropertyChanged("Receiver");
+                    RaisePropertyChanged("ReceiverName");
                 }
             }
         }
 
+        public String ReceiverName { get; set; }
+
         public ObservableCollection<EquipmentExportationDetailViewModel> Details { get; set; }
+
+        public IEnumerable<Employee.EmployeeViewModel> Employees { get; set; }
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+
+        public IEnumerable<List.StatusViewModel> Statuses { get; set; }
         #endregion
 
         public EquipmentExportationViewModel()
         {
             Details = new ObservableCollection<EquipmentExportationDetailViewModel>();
+            Employees = (App.Current as App).Employees.Items;
+            Equipments = (App.Current as App).Equipments.Items;
+            Statuses = (App.Current as App).Statuses.Items;
         }
 
         protected override void Save(RadWindow window)

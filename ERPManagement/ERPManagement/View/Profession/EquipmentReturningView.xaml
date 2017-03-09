@@ -8,7 +8,7 @@
         xmlns:ERPManagement="clr-namespace:ERPManagement" 
         x:Class="ERPManagement.View.Profession.EquipmentReturningView"
         mc:Ignorable="d" 
-        Header="Biên bản thu hồi thiết bị" Height="534" Width="855" Style="{StaticResource BlueRadWindowStyle}">
+        Header="Biên bản thu hồi thiết bị" Height="534" Width="855">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="135"/>
@@ -26,33 +26,33 @@
         <telerik:RadTabControl Grid.Row="1">
             <telerik:RadTabItem Header="Danh sách thiết bị" Height="30">
                 <Grid>
-                    <telerik:RadGridView ShowGroupPanel="False" AutoGenerateColumns="False">
+                    <telerik:RadGridView ItemsSource="{Binding Details}" ShowGroupPanel="False" AutoGenerateColumns="False">
                         <telerik:RadGridView.Columns>
-                            <telerik:GridViewDataColumn Header="Mã thiết bị" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID}" />
-                            <telerik:GridViewDataColumn Header="Tên thiết bị" Width="200" HeaderTextAlignment="Center" IsReadOnly="True" />
+                            <telerik:GridViewComboBoxColumn Header="Mã thiết bị" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID}" DisplayMemberPath="Code" SelectedValueMemberPath="EquipmentID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Equipments}" />
+                            <telerik:GridViewDataColumn Header="Tên thiết bị" Width="200" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentName}" IsReadOnly="True"></telerik:GridViewDataColumn>
                             <telerik:GridViewDataColumn Header="Số lượng" Width="100" HeaderTextAlignment="Center" DataMemberBinding="{Binding Quantity}" />
-                            <telerik:GridViewDataColumn Header="Serial" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Serial}" IsReadOnly="True" />
-                            <telerik:GridViewDataColumn Header="Tình trạng" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentStatusID}" />
+                            <telerik:GridViewDataColumn Header="ĐVT" Width="80" HeaderTextAlignment="Center" DataMemberBinding="{Binding UnitMeasure}" IsReadOnly="True"></telerik:GridViewDataColumn>
+                            <telerik:GridViewComboBoxColumn Header="Tình trạng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentStatusID}" DisplayMemberPath="Name" SelectedValueMemberPath="StatusID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Statuses}" />
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
                 </Grid>
             </telerik:RadTabItem>
             <telerik:RadTabItem Header="Bên giao" Height="30">
                 <Grid>
-                    <telerik:RadGridView ShowGroupPanel="False" AutoGenerateColumns="False">
+                    <telerik:RadGridView ItemsSource="{Binding Senders}" ShowGroupPanel="False" AutoGenerateColumns="False">
                         <telerik:RadGridView.Columns>
-                            <telerik:GridViewDataColumn Header="Ông(Bà)" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID}" />
-                            <telerik:GridViewDataColumn Header="Chức vụ" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentStatusID}" />
+                            <telerik:GridViewComboBoxColumn Header="Ông(Bà)" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding EmployeeID}" DisplayMemberPath="Name" SelectedValueMemberPath="EmployeeID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Employees}"></telerik:GridViewComboBoxColumn>
+                            <telerik:GridViewDataColumn Header="Chức vụ" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding Regency}" />
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
                 </Grid>
             </telerik:RadTabItem>
             <telerik:RadTabItem Header="Bên nhận" Height="30">
                 <Grid>
-                    <telerik:RadGridView ShowGroupPanel="False" AutoGenerateColumns="False">
+                    <telerik:RadGridView ItemsSource="{Binding Receivers}" ShowGroupPanel="False" AutoGenerateColumns="False">
                         <telerik:RadGridView.Columns>
-                            <telerik:GridViewDataColumn Header="Ông(Bà)" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID}" />
-                            <telerik:GridViewDataColumn Header="Chức vụ" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentStatusID}" />
+                            <telerik:GridViewComboBoxColumn Header="Ông(Bà)" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding EmployeeID}" DisplayMemberPath="Name" SelectedValueMemberPath="EmployeeID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Employees}"></telerik:GridViewComboBoxColumn>
+                            <telerik:GridViewDataColumn Header="Chức vụ" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding Regency}" />
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
                 </Grid>

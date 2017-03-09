@@ -37,6 +37,16 @@ namespace ERPManagement
             StatusConverter = new StatusConverter();
         }
 
+        public static String ConvertCompany(int companyID)
+        {
+            return CompanyConverter.Convert(companyID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
+        public static String ConvertDepartment(int departID)
+        {
+            return DepartmentConverter.Convert(departID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
         public static String ConvertEmployee(int empID, EmployeeConvertation empConvert = EmployeeConvertation.Name)
         {
             Object result = EmployeeConverter.Convert(empID, typeof(String), empConvert, System.Globalization.CultureInfo.CurrentCulture);

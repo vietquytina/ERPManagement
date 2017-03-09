@@ -18,6 +18,7 @@ namespace ERPManagement.ViewModel.Equipment
 
         #region Properties
         public Int32 EquipmentImportationID { get; set; }
+
         public Int32 Quantity
         {
             get { return quantity; }
@@ -30,6 +31,7 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public Int32 EquipmentStatusID
         {
             get { return equipmentStatusID; }
@@ -38,10 +40,13 @@ namespace ERPManagement.ViewModel.Equipment
                 if (equipmentStatusID != value)
                 {
                     equipmentStatusID = value;
+                    EquipmentStatusName = ConvertCollection.ConvertStatus(EquipmentStatusID);
                     RaisePropertyChanged("EquipmentStatusID");
+                    RaisePropertyChanged("EquipmentStatusName");
                 }
             }
         }
+
         public String Note
         {
             get { return note; }
@@ -54,6 +59,8 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
+        public String EquipmentStatusName { get; set; }
         #endregion
 
         public EquipmentImportationDetailViewModel() : base()
@@ -125,6 +132,7 @@ namespace ERPManagement.ViewModel.Equipment
         #region Variables
         private Int32 equipmentImportationID;
         private Int32 delivery;
+        private String deliveryName;
         #endregion
 
         #region Properties
@@ -132,7 +140,9 @@ namespace ERPManagement.ViewModel.Equipment
         {
             get { return equipmentImportationID; }
         }
+
         public ObservableCollection<EquipmentImportationDetailViewModel> Details { get; set; }
+
         public Int32 Delivery
         {
             get { return delivery; }
@@ -141,15 +151,38 @@ namespace ERPManagement.ViewModel.Equipment
                 if (delivery != value)
                 {
                     delivery = value;
+                    DeliveryName = ConvertCollection.ConvertEmployee(delivery, ViewModel.Converter.EmployeeConvertation.Name);
                     RaisePropertyChanged("Delivery");
                 }
             }
         }
+
+        public String DeliveryName
+        {
+            get { return deliveryName; }
+            set
+            {
+                if (deliveryName != value)
+                {
+                    deliveryName = value;
+                    RaisePropertyChanged("DeliveryName");
+                }
+            }
+        }
+
+        public IEnumerable<Employee.EmployeeViewModel> Employees { get; set; }
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+
+        public IEnumerable<List.StatusViewModel> Statuses { get; set; }
         #endregion
 
         public EquipmentImportationViewModel() : base()
         {
             Details = new ObservableCollection<EquipmentImportationDetailViewModel>();
+            Employees = (App.Current as App).Employees.Items;
+            Equipments = (App.Current as App).Equipments.Items;
+            Statuses = (App.Current as App).Statuses.Items;
         }
 
         protected override void Save(RadWindow window)

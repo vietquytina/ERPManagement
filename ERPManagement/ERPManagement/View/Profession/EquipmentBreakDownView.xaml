@@ -14,22 +14,22 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <telerik:RadTabControl>
-            <telerik:RadTabItem Header="Thông tin chung" Height="30">
+            <telerik:RadTabItem Selector.IsSelected="True" Header="Thông tin chung" Height="30">
                 <Grid>
                     <Label Content="Thiết bị" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Số hiệu" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Width="205" Height="26" />
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="96,41,0,0" TextWrapping="Wrap" Text="TextBox" IsEnabled="False" VerticalAlignment="Top" Width="205"/>
+                    <telerik:RadComboBox SelectedValue="{Binding EquipmentID}" ItemsSource="{Binding Equipments}" DisplayMemberPath="Code" SelectedValuePath="EquipmentID" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Width="205" Height="26" />
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="96,41,0,0" TextWrapping="Wrap" Text="{Binding Number}" IsEnabled="False" VerticalAlignment="Top" Width="205"/>
                     <Label Content="Hiện đặt tại" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="96,72,0,0" TextWrapping="Wrap" Text="TextBox" IsEnabled="False" VerticalAlignment="Top" Width="205"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="96,72,0,0" TextWrapping="Wrap" Text="{Binding DepartmentName}" IsEnabled="False" VerticalAlignment="Top" Width="205"/>
                     <Label Content="Ngày hỏng" HorizontalAlignment="Left" Margin="366,41,0,0" VerticalAlignment="Top"/>
-                    <telerik:RadDatePicker HorizontalAlignment="Left" Margin="474,41,0,0" VerticalAlignment="Top" Width="196" Height="26"/>
+                    <telerik:RadDatePicker SelectedValue="{Binding Date}" HorizontalAlignment="Left" Margin="474,41,0,0" VerticalAlignment="Top" Width="196" Height="26"/>
                     <Label Content="Người sử dụng" HorizontalAlignment="Left" Margin="366,10,0,0" VerticalAlignment="Top"/>
-                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="474,10,0,0" VerticalAlignment="Top" Width="196" Height="26"/>
+                    <telerik:RadComboBox SelectedValue="{Binding EmployeeID}" ItemsSource="{Binding Employees}" DisplayMemberPath="Name" SelectedValuePath="EmployeeID" HorizontalAlignment="Left" Margin="474,10,0,0" VerticalAlignment="Top" Width="196" Height="26"/>
                     <Label Content="Tình trạng hiện thời" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-                    <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="10,134,0,0" TextWrapping="Wrap" Text="MetroTextBox" VerticalAlignment="Top" Width="794" Height="81"/>
+                    <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="10,134,0,0" TextWrapping="Wrap" Text="{Binding CurrentStatus}" VerticalAlignment="Top" Width="794" Height="81"/>
                     <Label Content="Đề nghị" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top"/>
-                    <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="MetroTextBox" VerticalAlignment="Top" Width="794" Height="66"/>
+                    <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="{Binding EmployeeAdvise}" VerticalAlignment="Top" Width="794" Height="66"/>
                 </Grid>
             </telerik:RadTabItem>
             <telerik:RadTabItem Header="Xử lý của Trung tâm" Height="30">
@@ -39,17 +39,19 @@
                     <Label Content="Ngày nhận báo hỏng" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                     <Label Content="Ngày sửa" HorizontalAlignment="Left" Margin="388,41,0,0" VerticalAlignment="Top"/>
                     <Label Content="Kết quả" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <ERPManagement:MetroTextBox Height="Auto" TextWrapping="Wrap" Text="" Margin="10,108,10,129"/>
+                    <ERPManagement:MetroTextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Result}" Margin="10,108,10,129"/>
                     <Label Content="Đề nghị" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,207,0,0"/>
-                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="214" Height="26">
-                    </telerik:RadComboBox>
-                    <telerik:RadDatePicker HorizontalAlignment="Left" Margin="152,41,0,0" VerticalAlignment="Top" Width="214" Height="26"/>
-                    <telerik:RadComboBox HorizontalAlignment="Left" Margin="479,10,0,0" VerticalAlignment="Top" Width="214" Height="26">
-                    </telerik:RadComboBox>
-                    <telerik:RadDatePicker HorizontalAlignment="Left" Margin="479,41,0,0" VerticalAlignment="Top" Width="214" Height="26"/>
-                    <ERPManagement:MetroTextBox Height="Auto" TextWrapping="Wrap" Text="" Margin="10,238,12,27"/>
+                    <telerik:RadComboBox SelectedValue="{Binding Assignment}" ItemsSource="{Binding Employees}" DisplayMemberPath="Name" SelectedValuePath="EmployeeID" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="214" Height="26" />
+                    <telerik:RadDatePicker SelectedValue="{Binding RecvInfoDate}" HorizontalAlignment="Left" Margin="152,41,0,0" VerticalAlignment="Top" Width="214" Height="26"/>
+                    <telerik:RadComboBox SelectedValue="{Binding Repairer}" ItemsSource="{Binding Employees}" DisplayMemberPath="Name" SelectedValuePath="EmployeeID" HorizontalAlignment="Left" Margin="479,10,0,0" VerticalAlignment="Top" Width="214" Height="26" />
+                    <telerik:RadDatePicker SelectedValue="{Binding RepairDate}" HorizontalAlignment="Left" Margin="479,41,0,0" VerticalAlignment="Top" Width="214" Height="26"/>
+                    <ERPManagement:MetroTextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Advise}" Margin="10,238,12,27"/>
                 </Grid>
             </telerik:RadTabItem>
         </telerik:RadTabControl>
+        <Grid Grid.Row="1">
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" HorizontalAlignment="Left" Height="30" Margin="589,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" Content="Thoát" HorizontalAlignment="Left" Height="30" Margin="693,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
+        </Grid>
     </Grid>
 </telerik:RadWindow>

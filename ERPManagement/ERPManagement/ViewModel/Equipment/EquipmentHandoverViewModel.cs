@@ -29,6 +29,7 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public Int32 EquipmentStatusID
         {
             get { return equipmentStatusID; }
@@ -37,10 +38,15 @@ namespace ERPManagement.ViewModel.Equipment
                 if (equipmentStatusID != value)
                 {
                     equipmentStatusID = value;
+                    EquipmentStatusName = ConvertCollection.ConvertStatus(EquipmentStatusID);
                     RaisePropertyChanged("EquipmentStatusID");
+                    RaisePropertyChanged("EquipmentStatusName");
                 }
             }
         }
+
+        public String EquipmentStatusName { get; set; }
+
         public String Note
         {
             get { return note; }
@@ -77,10 +83,14 @@ namespace ERPManagement.ViewModel.Equipment
                 if (employeeID != value)
                 {
                     employeeID = value;
+                    Regency = ConvertCollection.ConvertEmployee(EmployeeID, ViewModel.Converter.EmployeeConvertation.Regency);
                     RaisePropertyChanged("EmployeeID");
+                    RaisePropertyChanged("Regency");
                 }
             }
         }
+
+        public String Regency { get; set; }
         #endregion
 
         public EquipmentHandoverPersonViewModel() : base()
@@ -190,6 +200,7 @@ namespace ERPManagement.ViewModel.Equipment
         {
             get { return id; }
         }
+
         public Int32 DepartmentID
         {
             get { return departmentID; }
@@ -202,9 +213,18 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
         public ObservableCollection<EquipmentHandoverDetailViewModel> Details { get; set; }
+
         public ObservableCollection<EquipmentHandoverPersonViewModel> Senders { get; set; }
+
         public ObservableCollection<EquipmentHandoverPersonViewModel> Receivers { get; set; }
+
+        public IEnumerable<Employee.EmployeeViewModel> Employees { get; set; }
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+
+        public IEnumerable<List.StatusViewModel> Statuses { get; set; }
         #endregion
 
         public EquipmentHandoverViewModel() : base()
@@ -212,6 +232,9 @@ namespace ERPManagement.ViewModel.Equipment
             Details = new ObservableCollection<EquipmentHandoverDetailViewModel>();
             Senders = new ObservableCollection<EquipmentHandoverPersonViewModel>();
             Receivers = new ObservableCollection<EquipmentHandoverPersonViewModel>();
+            Employees = (App.Current as App).Employees.Items;
+            Equipments = (App.Current as App).Equipments.Items;
+            Statuses = (App.Current as App).Statuses.Items;
         }
 
         protected override void Save(RadWindow window)

@@ -98,6 +98,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ConvertCollection.cs" />
+    <Compile Include="Data\EquipmentBreak.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentBreak.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\EquipmentExport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -411,6 +416,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Report\EquipmentBreak.rdlc" />
     <EmbeddedResource Include="Report\EquipmentBreakReport.rdlc" />
     <EmbeddedResource Include="Report\EquipmentExport.rdlc" />
     <EmbeddedResource Include="Report\EquipmentHandover.rdlc" />
@@ -418,6 +424,17 @@
     <EmbeddedResource Include="Report\EquipmentReturning.rdlc" />
     <EmbeddedResource Include="Report\EquipmentStatusNoteBook.rdlc" />
     <None Include="app.config" />
+    <None Include="Data\EquipmentBreak.xsc">
+      <DependentUpon>EquipmentBreak.xsd</DependentUpon>
+    </None>
+    <None Include="Data\EquipmentBreak.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EquipmentBreak.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\EquipmentBreak.xss">
+      <DependentUpon>EquipmentBreak.xsd</DependentUpon>
+    </None>
     <None Include="Data\EquipmentExport.xsc">
       <DependentUpon>EquipmentExport.xsd</DependentUpon>
     </None>

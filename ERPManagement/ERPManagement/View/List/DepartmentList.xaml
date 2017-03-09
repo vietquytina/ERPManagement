@@ -52,7 +52,7 @@
                 <telerik:GridViewDataColumn Header="Mã phòng ban" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Code}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Tên phòng ban" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Ghi chú" Width="260" HeaderTextAlignment="Center" DataMemberBinding="{Binding Note}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Đơn vị" Width="200" HeaderTextAlignment="Center" DataMemberBinding="{Binding CompanyID}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Đơn vị" Width="200" HeaderTextAlignment="Center" DataMemberBinding="{Binding CompanyID, Converter={x:Static convert:ConvertCollection.CompanyConverter}}"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
     </Grid>

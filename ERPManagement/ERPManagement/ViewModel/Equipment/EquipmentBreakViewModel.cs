@@ -34,7 +34,8 @@ namespace ERPManagement.ViewModel.Equipment
         private Int32 id;
         private Int32 companyID, assignment, repairer, departmentID, equipmentID;
         private DateTime? recvInfoDate, repairDate;
-        private String advise, currentStatus, employeeAdvise;
+        private String companyName, departmentName, equipmentName, empName, advise, currentStatus, employeeAdvise;
+        private String assignmentName, repairerName;
         #endregion
 
         #region Properties
@@ -53,7 +54,21 @@ namespace ERPManagement.ViewModel.Equipment
                 if (companyID != value)
                 {
                     companyID = value;
+                    CompanyName = ConvertCollection.ConvertCompany(companyID);
                     RaisePropertyChanged("CompanyID");
+                }
+            }
+        }
+
+        public String CompanyName
+        {
+            get { return companyName; }
+            set
+            {
+                if (companyName != value)
+                {
+                    companyName = value;
+                    RaisePropertyChanged("CompanyName");
                 }
             }
         }
@@ -66,7 +81,21 @@ namespace ERPManagement.ViewModel.Equipment
                 if (departmentID != value)
                 {
                     departmentID = value;
+                    DepartmentName = ConvertCollection.ConvertDepartment(departmentID);
                     RaisePropertyChanged("DepartmentID");
+                }
+            }
+        }
+
+        public String DepartmentName
+        {
+            get { return departmentName; }
+            set
+            {
+                if (departmentName != value)
+                {
+                    departmentName = value;
+                    RaisePropertyChanged("DepartmentName");
                 }
             }
         }
@@ -79,7 +108,21 @@ namespace ERPManagement.ViewModel.Equipment
                 if (equipmentID != value)
                 {
                     equipmentID = value;
+                    EquipmentName = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.Name);
                     RaisePropertyChanged("EquipmentID");
+                }
+            }
+        }
+
+        public String EquipmentName
+        {
+            get { return equipmentName; }
+            set
+            {
+                if (equipmentName != value)
+                {
+                    equipmentName = value;
+                    RaisePropertyChanged("EquipmentName");
                 }
             }
         }
@@ -175,11 +218,25 @@ namespace ERPManagement.ViewModel.Equipment
                 if (assignment != value)
                 {
                     assignment = value;
+                    AssignmentName = ConvertCollection.ConvertEmployee(Assignment, ViewModel.Converter.EmployeeConvertation.Name);
                     RaisePropertyChanged("Assignment");
                 }
             }
         }
         
+        public String AssignmentName
+        {
+            get { return assignmentName; }
+            set
+            {
+                if (assignmentName != value)
+                {
+                    assignmentName = value;
+                    RaisePropertyChanged("AssignmentName");
+                }
+            }
+        }
+
         /// <summary>
         /// Người thực hiện
         /// </summary>
@@ -191,16 +248,35 @@ namespace ERPManagement.ViewModel.Equipment
                 if (repairer != value)
                 {
                     repairer = value;
+                    RepairerName = ConvertCollection.ConvertEmployee(Repairer);
                     RaisePropertyChanged("Repairer");
                 }
             }
         }
+
+        public String RepairerName
+        {
+            get { return repairerName; }
+            set
+            {
+                if (repairerName != value)
+                {
+                    repairerName = value;
+                    RaisePropertyChanged("RepairerName");
+                }
+            }
+        }
         #endregion
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+        public IEnumerable<Employee.EmployeeViewModel> Employees { get; set; }
         #endregion
 
         public EquipmentBreakViewModel() : base()
         {
             RepairDate = DateTime.Now;
+            Equipments = (App.Current as App).Equipments.Items;
+            Employees = (App.Current as App).Employees.Items;
         }
 
         protected override void Save(RadWindow window)
@@ -274,6 +350,15 @@ namespace ERPManagement.ViewModel.Equipment
                 Advise = equipmentBreakvm.Advise;
                 StatusID = equipmentBreakvm.StatusID;
             }
+        }
+
+        protected override void ExportToReport()
+        {
+            Data.EquipmentBreak eqBreakDS = new Data.EquipmentBreak();
+            ReportWindow rptWnd = new ReportWindow();
+            rptWnd.ReportPath = "Report/EquipmentBreak.rdlc";
+
+            rptWnd.ShowDialog();
         }
     }
 }

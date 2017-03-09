@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EquipmentBreak" targetNamespace="http://tempuri.org/EquipmentBreak.xsd" xmlns:mstns="http://tempuri.org/EquipmentBreak.xsd" xmlns="http://tempuri.org/EquipmentBreak.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EquipmentBreak" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EquipmentBreak" msprop:Generator_UserDSName="EquipmentBreak">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EquipmentBreak" msprop:Generator_TableClassName="EquipmentBreakDataTable" msprop:Generator_TableVarName="tableEquipmentBreak" msprop:Generator_TablePropName="_EquipmentBreak" msprop:Generator_RowDeletingName="EquipmentBreakRowDeleting" msprop:Generator_RowChangingName="EquipmentBreakRowChanging" msprop:Generator_RowEvHandlerName="EquipmentBreakRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentBreakRowDeleted" msprop:Generator_UserTableName="EquipmentBreak" msprop:Generator_RowChangedName="EquipmentBreakRowChanged" msprop:Generator_RowEvArgName="EquipmentBreakRowChangeEvent" msprop:Generator_RowClassName="EquipmentBreakRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EquipmentName" msprop:Generator_ColumnVarNameInTable="columnEquipmentName" msprop:Generator_ColumnPropNameInRow="EquipmentName" msprop:Generator_ColumnPropNameInTable="EquipmentNameColumn" msprop:Generator_UserColumnName="EquipmentName" type="xs:string" minOccurs="0" />
+              <xs:element name="Serial" msprop:Generator_ColumnVarNameInTable="columnSerial" msprop:Generator_ColumnPropNameInRow="Serial" msprop:Generator_ColumnPropNameInTable="SerialColumn" msprop:Generator_UserColumnName="Serial" type="xs:string" minOccurs="0" />
+              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CurrentStatus" msprop:Generator_ColumnVarNameInTable="columnCurrentStatus" msprop:Generator_ColumnPropNameInRow="CurrentStatus" msprop:Generator_ColumnPropNameInTable="CurrentStatusColumn" msprop:Generator_UserColumnName="CurrentStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployeeAdvise" msprop:Generator_ColumnVarNameInTable="columnEmployeeAdvise" msprop:Generator_ColumnPropNameInRow="EmployeeAdvise" msprop:Generator_ColumnPropNameInTable="EmployeeAdviseColumn" msprop:Generator_UserColumnName="EmployeeAdvise" type="xs:string" minOccurs="0" />
+              <xs:element name="AssignmentName" msprop:Generator_ColumnVarNameInTable="columnAssignmentName" msprop:Generator_ColumnPropNameInRow="AssignmentName" msprop:Generator_ColumnPropNameInTable="AssignmentNameColumn" msprop:Generator_UserColumnName="AssignmentName" type="xs:string" minOccurs="0" />
+              <xs:element name="RepairerName" msprop:Generator_ColumnVarNameInTable="columnRepairerName" msprop:Generator_ColumnPropNameInRow="RepairerName" msprop:Generator_ColumnPropNameInTable="RepairerNameColumn" msprop:Generator_UserColumnName="RepairerName" type="xs:string" minOccurs="0" />
+              <xs:element name="Result" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" type="xs:string" minOccurs="0" />
+              <xs:element name="Advise" msprop:Generator_ColumnVarNameInTable="columnAdvise" msprop:Generator_ColumnPropNameInRow="Advise" msprop:Generator_ColumnPropNameInTable="AdviseColumn" msprop:Generator_UserColumnName="Advise" type="xs:string" minOccurs="0" />
+              <xs:element name="RecvInfoDate" msprop:Generator_ColumnVarNameInTable="columnRecvInfoDate" msprop:Generator_ColumnPropNameInRow="RecvInfoDate" msprop:Generator_ColumnPropNameInTable="RecvInfoDateColumn" msprop:Generator_UserColumnName="RecvInfoDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RepairDate" msprop:Generator_ColumnVarNameInTable="columnRepairDate" msprop:Generator_ColumnPropNameInRow="RepairDate" msprop:Generator_ColumnPropNameInTable="RepairDateColumn" msprop:Generator_UserColumnName="RepairDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EquipmentBreak" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

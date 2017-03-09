@@ -45,10 +45,14 @@ namespace ERPManagement.ViewModel.Equipment
                 if (equipmentStatusID != value)
                 {
                     equipmentStatusID = value;
+                    EquipmentStatusName = ConvertCollection.ConvertStatus(EquipmentStatusID);
                     RaisePropertyChanged("EquipmentStatusID");
+                    RaisePropertyChanged("EquipmentStatusName");
                 }
             }
         }
+
+        public String EquipmentStatusName { get; set; }
         #endregion
 
         public EquipmentReturningDetailViewModel() : base()
@@ -176,6 +180,12 @@ namespace ERPManagement.ViewModel.Equipment
         public ObservableCollection<EquipmentReturningDetailViewModel> Details { get; set; }
         public ObservableCollection<EquipmentReturningPersonViewModel> Receivers { get; set; }
         public ObservableCollection<EquipmentReturningPersonViewModel> Senders { get; set; }
+
+        public IEnumerable<Employee.EmployeeViewModel> Employees { get; set; }
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+
+        public IEnumerable<List.StatusViewModel> Statuses { get; set; }
         #endregion
 
         public EquipmentReturningViewModel() : base()
@@ -183,6 +193,9 @@ namespace ERPManagement.ViewModel.Equipment
             Details = new ObservableCollection<EquipmentReturningDetailViewModel>();
             Receivers = new ObservableCollection<EquipmentReturningPersonViewModel>();
             Senders = new ObservableCollection<EquipmentReturningPersonViewModel>();
+            Employees = (App.Current as App).Employees.Items;
+            Equipments = (App.Current as App).Equipments.Items;
+            Statuses = (App.Current as App).Statuses.Items;
         }
 
         protected override void Save(RadWindow window)

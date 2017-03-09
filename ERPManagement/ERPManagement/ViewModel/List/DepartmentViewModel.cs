@@ -67,11 +67,13 @@ namespace ERPManagement.ViewModel.List
                 }
             }
         }
+
+        public IEnumerable<CompanyViewModel> Companies { get; set; }
         #endregion
 
         public DepartmentViewModel() : base()
         {
-
+            Companies = (App.Current as App).Companies.Items;
         }
 
         protected override void Save(RadWindow window)

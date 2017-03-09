@@ -51,21 +51,21 @@
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Số" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Number}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Ngày tháng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding Date}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Người giao" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding PhoneNumber}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Người giao" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding DeliveryName}"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <telerik:RadTabControl Grid.Row="2">
             <telerik:RadTabItem Header="Chi tiết" Height="30">
                 <Grid Background="Transparent">
-                    <telerik:RadGridView ItemsSource="{Binding Details}" ShowGroupPanel="False">
+                    <telerik:RadGridView ItemsSource="{Binding Details}" IsReadOnly="True" ShowGroupPanel="False">
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewDataColumn Header="STT" HeaderTextAlignment="Center" Width="60" DataMemberBinding="{Binding Index}"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Mã thiết bị" HeaderTextAlignment="Center" Width="120"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Tên thiết bị" HeaderTextAlignment="Center" Width="170"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="ĐVT" HeaderTextAlignment="Center" Width="100"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Số lượng" HeaderTextAlignment="Center" Width="110"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Tình trạng" HeaderTextAlignment="Center" Width="130"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Ghi chú" HeaderTextAlignment="Center" Width="160"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="Mã thiết bị" HeaderTextAlignment="Center" Width="120" DataMemberBinding="{Binding EquipmentCode}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="Tên thiết bị" HeaderTextAlignment="Center" Width="170" DataMemberBinding="{Binding EquipmentName}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="ĐVT" HeaderTextAlignment="Center" Width="100" DataMemberBinding="{Binding UnitMeasure}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="Số lượng" HeaderTextAlignment="Center" Width="110" DataMemberBinding="{Binding Quantity}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="Tình trạng" HeaderTextAlignment="Center" Width="130" DataMemberBinding="{Binding EquipmentStatusName}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="Ghi chú" HeaderTextAlignment="Center" Width="160" DataMemberBinding="{Binding Note}"></telerik:GridViewDataColumn>
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
                 </Grid>
