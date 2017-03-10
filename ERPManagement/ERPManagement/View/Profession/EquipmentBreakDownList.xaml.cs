@@ -21,6 +21,7 @@ namespace ERPManagement.View.Profession
         public EquipmentBreakDownList()
         {
             InitializeComponent();
+            DataContext = (App.Current as App).EquipmentBreaks.Items;
         }
     }
 }

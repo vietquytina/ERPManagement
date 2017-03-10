@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -9,6 +10,21 @@ namespace ERPManagement.ViewModel.Equipment
     [Authorize.Authorize(Method = "EquipmentStatusNoteBook")]
     public class EquipmentStatusNoteBookListViewModel : ItemListViewModel<EquipmentStatusNoteBookViewModel>
     {
+        private ObservableCollection<EquipmentStatusNoteBookDetailViewModel> details = null;
+
+        public ObservableCollection<EquipmentStatusNoteBookDetailViewModel> Details
+        {
+            get { return details; }
+            set
+            {
+                if (details != value)
+                {
+                    details = value;
+                    RaisePropertyChanged("Details");
+                }
+            }
+        }
+
         public EquipmentStatusNoteBookListViewModel() : base()
         {
             foreach (var eqNoteBook in EquipmentStatusNoteBookViewModel.Gets())
@@ -29,7 +45,7 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void OnSelectedItemChanged(EquipmentStatusNoteBookViewModel oldValue, EquipmentStatusNoteBookViewModel newValue)
         {
-
+            Details = newValue.Details;
         }
     }
 }

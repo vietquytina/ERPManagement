@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         x:Class="ERPManagement.MainWindow"
         mc:Ignorable="d"
-        Header="MainWindow" Height="797" Width="1009">
+        Header="Cửa số chính" Height="797" Width="1009">
     <telerik:RadWindow.Resources>
         <Style x:Key="MenuHeader" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15"></Setter>
@@ -21,6 +21,8 @@
             <Setter Property="BorderBrush" Value="#D9D9D9"></Setter>
             <Setter Property="Padding" Value="4"></Setter>
             <Setter Property="Margin" Value="0,0,15,0"></Setter>
+            <Setter Property="Width" Value="95"></Setter>
+            <Setter Property="Height" Value="110"></Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#E5F3FF"></Setter>
@@ -30,6 +32,8 @@
 
         <Style x:Key="MenuItemTitle" TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
         </Style>
     </telerik:RadWindow.Resources>
     <Grid>
@@ -55,7 +59,7 @@
                 </Canvas>
             </Grid>
             <StackPanel Orientation="Horizontal" Margin="25,10,0,0">
-                <Button Name="btnCompanies" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnCompanies_Click">
+                <Button Name="btnCompanies" Style="{StaticResource MenuButton}" Click="btnCompanies_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/office.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
@@ -63,7 +67,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="btnDepartments" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnDepartments_Click">
+                <Button Name="btnDepartments" Style="{StaticResource MenuButton}" Click="btnDepartments_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/office.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
@@ -71,7 +75,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Width="95" Height="95" Style="{StaticResource MenuButton}">
+                <Button Style="{StaticResource MenuButton}">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/settings.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
@@ -79,7 +83,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="btnEquipmentTypes" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnEquipmentTypes_Click">
+                <Button Name="btnEquipmentTypes" Style="{StaticResource MenuButton}" Click="btnEquipmentTypes_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/archive.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
@@ -87,7 +91,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="btnRegencies" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnRegencies_Click">
+                <Button Name="btnRegencies" Style="{StaticResource MenuButton}" Click="btnRegencies_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/organization.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
@@ -95,7 +99,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="btnUnitMeasure" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnUnitMeasure_Click">
+                <Button Name="btnUnitMeasure" Style="{StaticResource MenuButton}" Click="btnUnitMeasure_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/circular-chart.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
@@ -103,11 +107,85 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="btnEmp" Width="95" Height="95" Style="{StaticResource MenuButton}" Click="btnEmp_Click">
+                <Button Name="btnEmp" Style="{StaticResource MenuButton}" Click="btnEmp_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/businessman.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
                             <TextBlock Text="Nhân viên" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Canvas Width="20">
+                    <Path Stroke="#4B329D" StrokeThickness="1" Data="M8,8 L13,13 L18,8"></Path>
+                </Canvas>
+                <TextBlock Grid.Column="1" Text="Nghiệp vụ" Style="{StaticResource MenuHeader}"></TextBlock>
+                <Canvas Grid.Column="2" Margin="10,0,0,0">
+                    <Rectangle Fill="#D9D9D9" Width="900" Height="1" Margin="0,9,0,0"></Rectangle>
+                </Canvas>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="25,10,0,0">
+                <Button Name="btnEqBreak" Style="{StaticResource MenuButton}" Click="btnEqBreak_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phiếu báo hỏng" TextWrapping="Wrap" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEqImport" Style="{StaticResource MenuButton}" Click="btnEqImport_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phiếu nhập kho" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEqExport" Style="{StaticResource MenuButton}" Click="btnEqExport_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phiếu xuất kho" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEqHandover" Style="{StaticResource MenuButton}" Click="btnEqHandover_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phiếu bàn giao" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEqStatusNote" Style="{StaticResource MenuButton}" Click="btnEqStatusNote_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Sổ theo dõi" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnTransfer" Style="{StaticResource MenuButton}" Click="btnTransfer_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phiếu điều chuyển" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="btnEqReturning" Style="{StaticResource MenuButton}" Click="btnEqReturning_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/report.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Phiếu thu hồi" Style="{StaticResource MenuItemTitle}"></TextBlock>
                         </StackPanel>
                     </Button.Content>
                 </Button>

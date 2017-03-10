@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using ERPManagement.View.List;
+using ERPManagement.View.Profession;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -69,6 +70,45 @@ namespace ERPManagement
         private void btnEmp_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnEqBreak_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnEqImport_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentImportationListView frmEqImportList = new EquipmentImportationListView();
+            ShowWindow(frmEqImportList);
+        }
+
+        private void btnEqExport_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentExportationListView frmEqExportList = new EquipmentExportationListView();
+            ShowWindow(frmEqExportList);
+        }
+
+        private void btnEqHandover_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentHandoverList frmEqHandoverList = new EquipmentHandoverList();
+            ShowWindow(frmEqHandoverList);
+        }
+
+        private void btnEqStatusNote_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentStatusNoteBookListView frmEqStatusNote = new EquipmentStatusNoteBookListView();
+            ShowWindow(frmEqStatusNote);
+        }
+
+        private void btnTransfer_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void btnEqReturning_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentReturningList frmEqReturning = new EquipmentReturningList();
+            ShowWindow(frmEqReturning);
         }
     }
 }
