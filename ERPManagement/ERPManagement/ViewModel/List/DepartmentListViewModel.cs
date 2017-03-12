@@ -33,7 +33,7 @@ namespace ERPManagement.ViewModel.List
 
         private void Departmentvm_ItemAction(object sender, ActionEventArgs e)
         {
-            if (e.Action == ViewModelAction.Edit)
+            if (e.Action == ViewModelAction.Add)
             {
                 DepartmentViewModel departmentvm = (DepartmentViewModel)sender;
                 Items.Add(departmentvm);

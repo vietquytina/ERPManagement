@@ -11,22 +11,34 @@ namespace ERPManagement.ViewModel.List
     {
         public static IEnumerable<EquipmentViewModel> GetEquipments()
         {
-            List<EquipmentViewModel> equipments = new List<EquipmentViewModel>();
-
-            return equipments;
+            var equipments = from p in db.Equipments
+                             select p;
+            List<EquipmentViewModel> equipmentvms = new List<EquipmentViewModel>();
+            foreach (var equipment in equipments)
+            {
+                EquipmentViewModel equipmentvm = new EquipmentViewModel();
+                equipmentvm.equipmentID = equipment.EquipmentID;
+                equipmentvm.Code = equipment.Code;
+                equipmentvm.Name = equipment.Name;
+                equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
+                equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
+                equipmentvm.Description = equipment.Description;
+                equipmentvm.isInserted = false;
+                equipmentvms.Add(equipmentvm);
+            }
+            return equipmentvms;
         }
 
         public static EquipmentViewModel GetEquipment(Int32 equipmentID)
         {
-
             EquipmentViewModel equipment = new EquipmentViewModel();
             return equipment;
         }
 
         #region Variables
         private Int32 equipmentID = 0;
-        private String unitMeasure, number, description;
-        private Int32 equipmentTypeID, subjectID, nationalID;
+        private String unitMeasureName, equipmentTypeName, number, description;
+        private Int32 equipmentTypeID, unitMeasureID;
         #endregion
 
         #region Properties
@@ -35,30 +47,33 @@ namespace ERPManagement.ViewModel.List
             get { return equipmentID; }
         }
 
-        public String UnitMeasure
+        public Int32 UnitMeasureID
         {
-            get { return unitMeasure; }
+            get { return unitMeasureID; }
             set
             {
-                if (unitMeasure != value)
+                if (unitMeasureID != value)
                 {
-                    unitMeasure = value;
-                    RaisePropertyChanged("UnitMeasure");
+                    unitMeasureID = value;
+                    UnitMeasureName = ConvertCollection.ConvertUnitMeasure(UnitMeasureID);
+                    RaisePropertyChanged("UnitMeasureID");
                 }
             }
         }
-        public String Number
+
+        public String UnitMeasureName
         {
-            get { return number; }
+            get { return unitMeasureName; }
             set
             {
-                if (number != value)
+                if (unitMeasureName!=value)
                 {
-                    number = value;
-                    RaisePropertyChanged("Number");
+                    unitMeasureName = value;
+                    RaisePropertyChanged("UnitMeasureName");
                 }
             }
         }
+
         public String Description
         {
             get { return description; }
@@ -71,6 +86,7 @@ namespace ERPManagement.ViewModel.List
                 }
             }
         }
+
         public Int32 EquipmentTypeID
         {
             get { return equipmentTypeID; }
@@ -79,31 +95,34 @@ namespace ERPManagement.ViewModel.List
                 if (equipmentTypeID != value)
                 {
                     equipmentTypeID = value;
+                    EquipmentTypeName = ConvertCollection.ConvertEquipmentType(equipmentTypeID);
                     RaisePropertyChanged("EquipmentTypeID");
                 }
             }
         }
-        public Int32 SubjectID
+
+        public String EquipmentTypeName
         {
-            get { return subjectID; }
+            get { return unitMeasureName; }
             set
             {
-                if (subjectID != value)
+                if (unitMeasureName != value)
                 {
-                    subjectID = value;
-                    RaisePropertyChanged("SubjectID");
+                    unitMeasureName = value;
+                    RaisePropertyChanged("EquipmentTypeName");
                 }
             }
         }
-        public Int32 NationalID
+
+        public String Number
         {
-            get { return nationalID; }
+            get { return number; }
             set
             {
-                if (nationalID != value)
+                if (number != value)
                 {
-                    nationalID = value;
-                    RaisePropertyChanged("NationalID");
+                    number = value;
+                    RaisePropertyChanged("Number");
                 }
             }
         }

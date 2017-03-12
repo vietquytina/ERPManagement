@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.UnitMeasureView" 
         mc:Ignorable="d"
-        Header="Đơn vị tính" Height="246" Width="505">
+        Header="Đơn vị tính" Height="223" Width="505" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,7 +19,7 @@
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="104,10,0,0" TextWrapping="Wrap" Text="{Binding Code}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="362"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="104,41,0,0" TextWrapping="Wrap" Text="{Binding Name}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="362"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="104,72,0,0" TextWrapping="Wrap" Text="{Binding Note}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="362"/>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Lưu" IsEnabled="{Binding CanWrite}" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="31" Margin="275,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Thoát" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="31" Margin="379,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Lưu" IsEnabled="{Binding CanWrite}" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="26" Margin="275,0,0,0" VerticalAlignment="Center" Width="86" Grid.Row="1"/>
+        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Thoát" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="26" Margin="379,0,0,0" VerticalAlignment="Center" Width="86" Grid.Row="1"/>
     </Grid>
 </telerik:RadWindow>

@@ -63,6 +63,11 @@ namespace ERPManagement
             return EquipmentConverter.Convert(equipmentID, typeof(String), cvInfo, System.Globalization.CultureInfo.CurrentCulture).ToString();
         }
 
+        public static String ConvertEquipmentType(int typeID)
+        {
+            return EquipmentTypeConverter.Convert(typeID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
         public static String ConvertStatus(int statusID)
         {
             return StatusConverter.Convert(statusID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
@@ -71,6 +76,11 @@ namespace ERPManagement
         public static String ConvertRegency(int regencyID)
         {
             return RegencyConverter.Convert(regencyID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
+        public static String ConvertUnitMeasure(int unitMeasureID)
+        {
+            return UnitMeasurConverter.Convert(unitMeasureID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
         }
     }
 }

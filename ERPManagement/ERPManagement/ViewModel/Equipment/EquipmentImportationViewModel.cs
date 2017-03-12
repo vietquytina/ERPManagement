@@ -191,6 +191,7 @@ namespace ERPManagement.ViewModel.Equipment
             if (isInserted)
             {
                 eqImport = new EquipmentImportation();
+                eqImport.EquipmentImportationDetails = new EntitySet<EquipmentImportationDetail>();
                 db.EquipmentImportations.InsertOnSubmit(eqImport);
             }
             else
@@ -248,6 +249,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentImportationDetail detail = new EquipmentImportationDetail();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
                 detail.RestQuantity = srcDetails[i].RestQuantity;
                 detail.Quantity = srcDetails[i].Quantity;
@@ -288,7 +290,11 @@ namespace ERPManagement.ViewModel.Equipment
                 Date = equipmentImportationvm.Date;
                 Delivery = equipmentImportationvm.Delivery;
                 StatusID = equipmentImportationvm.StatusID;
-                Details = equipmentImportationvm.Details;
+                Details.Clear();
+                foreach (var detailvm in equipmentImportationvm.Details)
+                {
+                    Details.Add(detailvm);
+                }
             }
         }
 

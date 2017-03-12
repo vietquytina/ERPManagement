@@ -8,7 +8,7 @@
         xmlns:ERPManagement="clr-namespace:ERPManagement" 
         x:Class="ERPManagement.View.List.Company"
         mc:Ignorable="d" telerik:StyleManager.Theme="Office_Blue" 
-        Header="Đơn vị" Height="254.84" Width="505" CanClose="True">
+        Header="Đơn vị" Height="254.84" Width="505" CanClose="True" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

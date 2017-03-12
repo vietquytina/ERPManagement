@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.RegencyView" 
         mc:Ignorable="d" 
-        Header="Chức vụ" Height="246" Width="505">
+        Header="Chức vụ" Height="217" Width="505" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

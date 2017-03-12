@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         x:Class="ERPManagement.MainWindow"
         mc:Ignorable="d"
-        Header="Cửa số chính" Height="797" Width="1009">
+        Header="Cửa số chính" Height="797" Width="1009" WindowStartupLocation="CenterScreen">
     <telerik:RadWindow.Resources>
         <Style x:Key="MenuHeader" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15"></Setter>

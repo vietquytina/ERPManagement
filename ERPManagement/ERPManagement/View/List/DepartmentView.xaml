@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.DepartmentView"
         mc:Ignorable="d" 
-        Header="Phòng ban" Height="249" Width="505">
+        Header="Phòng ban" Height="249" Width="505" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

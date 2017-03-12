@@ -130,6 +130,7 @@ namespace ERPManagement.ViewModel.List
             CompanyViewModel companyvm = GetCompany(CompanyID);
             frmCompany.DataContext = companyvm;
             companyvm.ItemAction += new ActionEventHandler(Companyvm_ItemAction);
+            frmCompany.ShowDialog();
         }
 
         private void Companyvm_ItemAction(object sender, ActionEventArgs e)

@@ -129,17 +129,32 @@ namespace ERPManagement.ViewModel.Converter
             var cvInfo = (ConvertInfomation)parameter;
             var equipment = app.Equipments.Items.SingleOrDefault(m => m.EquipmentID == eqID);
             if (equipment == null)
+            {
                 return null;
+            }
             if (cvInfo == ConvertInfomation.Code)
+            {
                 return equipment.Code;
+            }
             else
+            {
                 if (cvInfo == ConvertInfomation.Name)
-                return equipment.Name;
-            else
-                if (cvInfo == ConvertInfomation.Serial)
-                return equipment.Number;
-            else
-                return equipment.UnitMeasure;
+                {
+                    return equipment.Name;
+                }
+                else
+                {
+                    if (cvInfo == ConvertInfomation.Serial)
+                    {
+                        return String.IsNullOrEmpty(equipment.Number) ? "" : equipment.Number;
+                    }
+                    else
+                    {
+                        UnitMeasureNameConverter unitMeasureCvt = new UnitMeasureNameConverter();
+                        return unitMeasureCvt.Convert(equipment.UnitMeasureID, typeof(String), null, CultureInfo.CurrentCulture);
+                    }
+                }
+            }
         }
     }
 

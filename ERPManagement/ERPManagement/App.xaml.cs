@@ -53,9 +53,29 @@ namespace ERPManagement
         protected override void OnStartup(StartupEventArgs e)
         {
             StyleManager.ApplicationTheme = new Office_BlueTheme();
-            RadWindow lgWnd = new MainWindow();
+            RadWindow lgWnd = new Login();
             lgWnd.ShowDialog();
             base.OnStartup(e);
+        }
+
+        public void Load()
+        {
+            Companies = new CompanyListViewModel();
+            Departments = new DepartmentListViewModel();
+            EquipmentTypes = new EquipmentTypeListViewModel();
+            Regencies = new RegencyListViewModel();
+            UnitMeasures = new UnitMeasureListViewModel();
+            Employees = new EmployeeListViewModel();
+            Equipments = new EquipmentListViewModel();
+            Statuses = new StatusListViewModel();
+            EquipmentImports = new EquipmentImportationListViewModel();
+            this.EquipmentExports = new EquipmentExportationListViewModel();
+            this.EquipmentHandovers = new EquipmentHandoverListViewModel();
+            this.EquipmentReturnings = new EquipmentReturningListViewModel();
+            this.EquipmentStatusNoteBooks = new EquipmentStatusNoteBookListViewModel();
+            this.EquipmentBreaks = new EquipmentBreakListViewModel();
+            this.EquipmentBreakReports = new EquipmentBreakReportListViewModel();
+            this.EquipmentReturnings = new EquipmentReturningListViewModel();
         }
     }
 }

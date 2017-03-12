@@ -7,7 +7,7 @@ using Telerik.Windows.Controls;
 
 namespace ERPManagement.ViewModel
 {
-    public class ItemListViewModel<T> : Authorize.AuthorizeViewModel
+    public class ItemListViewModel<T> : BaseNotify
     {
         private ICommand newCommand = null;
         private ICommand exportToXLSCommand = null;
@@ -20,7 +20,7 @@ namespace ERPManagement.ViewModel
             get { return selectedItem; }
             set
             {
-                if (selectedItem.Equals(value))
+                if ((selectedItem == null) || (selectedItem != null && !selectedItem.Equals(value)))
                 {
                     T current = selectedItem;
                     selectedItem = value;

@@ -68,7 +68,7 @@ namespace ERPManagement.ViewModel.List
             {
                 eqType = db.EquipmentTypes.SingleOrDefault(m => m.EquipmentTypeID == TypeID);
             }
-            if (isInserted)
+            if (eqType != null)
             {
                 eqType.Name = Name;
                 eqType.Note = Note;

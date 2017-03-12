@@ -10,7 +10,8 @@ namespace ERPManagement.ViewModel.List
         public static IEnumerable<StatusViewModel> GetStatuses()
         {
             List<StatusViewModel> statuses = new List<StatusViewModel>();
-            statuses.Add(new StatusViewModel() { statusID = 1, Code = "", Name = "" });
+            statuses.Add(new StatusViewModel() { statusID = 1, Name = "Hoạt động tốt" });
+            statuses.Add(new StatusViewModel() { statusID = 2, Name = "Hỏng" });
             return statuses;
         }
 

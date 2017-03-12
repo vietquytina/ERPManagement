@@ -17,7 +17,7 @@ namespace ERPManagement.ViewModel
 
     public delegate void ActionEventHandler(object sender, ActionEventArgs e);
 
-    public class BaseViewModel : Authorize.AuthorizeViewModel
+    public class BaseViewModel : BaseNotify
     {
         public event RoutedEventHandler Deleted;
         public event ActionEventHandler ItemAction;

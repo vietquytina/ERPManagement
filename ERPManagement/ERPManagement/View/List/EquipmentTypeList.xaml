@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ERPManagement.View.List"
         mc:Ignorable="d" 
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-        Header="Danh mục loại vật tư" Height="385" Width="927">
+        Header="Danh mục loại vật tư" Height="385" Width="927" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -46,9 +46,8 @@
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
         </telerik:RadToolBar>
-        <telerik:RadGridView Name="grItems" CurrentItem="{Binding SelectedItem}" telerik:StyleManager.Theme="Office_Blue" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" ShowGroupPanel="False" AutoGenerateColumns="False">
+        <telerik:RadGridView Name="grItems" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" telerik:StyleManager.Theme="Office_Blue" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" ShowGroupPanel="False" AutoGenerateColumns="False">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Header="Mã loại" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Code}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Tên loại" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding Name}"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Ghi chú" Width="260" HeaderTextAlignment="Center" DataMemberBinding="{Binding Note}"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>

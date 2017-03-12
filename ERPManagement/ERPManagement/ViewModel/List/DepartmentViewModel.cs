@@ -124,11 +124,14 @@ namespace ERPManagement.ViewModel.List
 
         private void Departmentvm_ItemAction(object sender, ActionEventArgs e)
         {
-            DepartmentViewModel departmentvm = (DepartmentViewModel)sender;
-            Code = departmentvm.Code;
-            Name = departmentvm.Name;
-            Note = departmentvm.Note;
-            CompanyID = departmentvm.CompanyID;
+            if (e.Action == ViewModelAction.Edit)
+            {
+                DepartmentViewModel departmentvm = (DepartmentViewModel)sender;
+                Code = departmentvm.Code;
+                Name = departmentvm.Name;
+                Note = departmentvm.Note;
+                CompanyID = departmentvm.CompanyID;
+            }
         }
     }
 }

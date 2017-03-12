@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.EquipmentTypeView" 
         mc:Ignorable="d"
-        Header="Loại thiết bị" Height="199" Width="505">
+        Header="Loại thiết bị" Height="184" Width="505" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

@@ -55,6 +55,7 @@ namespace ERPManagement.ViewModel.Login
                             Boolean lgResult = Employee.EmployeeViewModel.Login(UserName, pw.Password);
                             if (lgResult)
                             {
+                                (App.Current as App).Load();
                                 MainWindow mainWnd = new MainWindow();
                                 Application.Current.MainWindow.Close();
                                 mainWnd.ShowDialog();

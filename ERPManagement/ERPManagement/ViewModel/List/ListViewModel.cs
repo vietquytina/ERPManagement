@@ -23,7 +23,7 @@ namespace ERPManagement.ViewModel.List
             get { return code; }
             set
             {
-                if (code != null)
+                if (code != value)
                 {
                     code = value;
                     RaisePropertyChanged("Code");
@@ -36,7 +36,7 @@ namespace ERPManagement.ViewModel.List
             get { return name; }
             set
             {
-                if (name != null)
+                if (name != value)
                 {
                     name = value;
                     RaisePropertyChanged("Name");
@@ -49,7 +49,7 @@ namespace ERPManagement.ViewModel.List
             get { return note; }
             set
             {
-                if (note != null)
+                if (note != value)
                 {
                     note = value;
                     RaisePropertyChanged("Note");
