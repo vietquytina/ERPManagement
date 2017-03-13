@@ -187,6 +187,7 @@ namespace ERPManagement.ViewModel.Equipment
             if (isInserted)
             {
                 eqExport = new EquipmentExportation();
+                eqExport.EquipmentExportationDetails = new EntitySet<EquipmentExportationDetail>();
                 db.EquipmentExportations.InsertOnSubmit(eqExport);
             }
             else
@@ -242,6 +243,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentExportationDetail detail = new EquipmentExportationDetail();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
                 detail.RestQuantity = srcDetails[i].RestQuantity;
                 detail.Quantity = srcDetails[i].Quantity;

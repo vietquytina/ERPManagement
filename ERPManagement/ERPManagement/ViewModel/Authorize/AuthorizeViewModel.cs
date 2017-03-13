@@ -8,14 +8,66 @@ namespace ERPManagement.ViewModel.Authorize
 {
     public class AuthorizeViewModel : BaseNotify
     {
+        #region Variables
+        private Boolean canRead, canWrite, canDel, canAccept;
+        #endregion
+
         #region Properties
-        public Boolean CanRead { get; set; }
+        public Boolean CanRead
+        {
+            get { return canRead; }
+            set
+            {
+                if (canRead != value)
+                {
+                    canRead = value;
+                    if (!canRead)
+                    {
+                        CanWrite = CanDelete = CanAccept = false;
+                    }
+                    RaisePropertyChanged("CanRead");
+                }
+            }
+        }
 
-        public Boolean CanWrite { get; set; }
+        public Boolean CanWrite
+        {
+            get { return canWrite; }
+            set
+            {
+                if (canWrite != value)
+                {
+                    canWrite = value;
+                    RaisePropertyChanged("CanWrite");
+                }
+            }
+        }
 
-        public Boolean CanDelete { get; set; }
+        public Boolean CanDelete
+        {
+            get { return canDel; }
+            set
+            {
+                if (canDel != value)
+                {
+                    canDel = value;
+                    RaisePropertyChanged("CanDelete");
+                }
+            }
+        }
 
-        public Boolean CanAccept { get; set; }
+        public Boolean CanAccept
+        {
+            get { return canAccept; }
+            set
+            {
+                if (canAccept != value)
+                {
+                    canAccept = value;
+                    RaisePropertyChanged("CanAccept");
+                }
+            }
+        }
         #endregion
 
         public AuthorizeViewModel() : base()
@@ -28,14 +80,6 @@ namespace ERPManagement.ViewModel.Authorize
                 CanWrite = methodPers.CanWrite;
                 CanDelete = methodPers.CanDelete;
                 CanAccept = methodPers.CanAccept;
-            }
-            if (!CanRead)
-            {
-                MessageBox.Show("Ban khong du quyen de truy cap");
-                if (Application.Current.Windows.Count > 0)
-                {
-                    Application.Current.Windows[Application.Current.Windows.Count - 1].Close();
-                }
             }
         }
     }
