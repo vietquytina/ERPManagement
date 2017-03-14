@@ -226,6 +226,8 @@ namespace ERPManagement.ViewModel.Equipment
         public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
 
         public IEnumerable<List.StatusViewModel> Statuses { get; set; }
+
+        public IEnumerable<List.DepartmentViewModel> Departments { get; set; }
         #endregion
 
         public EquipmentHandoverViewModel() : base()
@@ -237,6 +239,7 @@ namespace ERPManagement.ViewModel.Equipment
             Employees = (App.Current as App).Employees.Items;
             Equipments = (App.Current as App).Equipments.Items;
             Statuses = (App.Current as App).Statuses.Items;
+            Departments = (App.Current as App).Departments.Items;
         }
 
         private void Details_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -333,6 +336,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentHandOverDetail detail = new EquipmentHandOverDetail();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
                 detail.Quantity = srcDetails[i].Quantity;
                 detail.EquipmentStatusID = srcDetails[i].EquipmentStatusID;
@@ -373,6 +377,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentHandOverReceiver detail = new EquipmentHandOverReceiver();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.Employee = db.Employees.Single(m => m.EmployeeID == srcDetails[i].EmployeeID);
                 destDetails.Add(detail);
                 i++;
@@ -410,6 +415,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentHandOverSender detail = new EquipmentHandOverSender();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.Employee = db.Employees.Single(m => m.EmployeeID == srcDetails[i].EmployeeID);
                 destDetails.Add(detail);
                 i++;

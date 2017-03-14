@@ -22,6 +22,7 @@ namespace ERPManagement.ViewModel.List
                 equipmentvm.equipmentID = equipment.EquipmentID;
                 equipmentvm.Code = equipment.Code;
                 equipmentvm.Name = equipment.Name;
+                equipmentvm.Number = equipment.Number;
                 equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
                 equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
                 equipmentvm.Description = equipment.Description;
@@ -42,6 +43,7 @@ namespace ERPManagement.ViewModel.List
                 equipmentvm.equipmentID = equipment.EquipmentID;
                 equipmentvm.Code = equipment.Code;
                 equipmentvm.Name = equipment.Name;
+                equipmentvm.Number = equipment.Number;
                 equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
                 equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
                 equipmentvm.Description = equipment.Description;

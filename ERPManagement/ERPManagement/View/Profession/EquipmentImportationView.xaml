@@ -25,7 +25,7 @@
         <telerik:RadGridView ItemsSource="{Binding Details}" GroupRenderMode="Flat" NewRowPosition="Bottom" Grid.Row="1" AutoGenerateColumns="False" ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="STT" Width="70" HeaderTextAlignment="Center" DataMemberBinding="{Binding Index}"></telerik:GridViewDataColumn>
-                <telerik:GridViewComboBoxColumn Header="Mã thiết bị" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID}" DisplayMemberPath="Code" SelectedValueMemberPath="EquipmentID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Equipments}" />
+                <telerik:GridViewComboBoxColumn Header="Mã thiết bị" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Code" SelectedValueMemberPath="EquipmentID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Equipments}" />
                 <telerik:GridViewDataColumn Header="Tên thiết bị" Width="200" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentName}" IsReadOnly="True"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="ĐVT" Width="80" HeaderTextAlignment="Center" DataMemberBinding="{Binding UnitMeasure}" IsReadOnly="True"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Số lượng" Width="110" HeaderTextAlignment="Center" DataMemberBinding="{Binding Quantity}" DataFormatString="#,##0.00"></telerik:GridViewDataColumn>

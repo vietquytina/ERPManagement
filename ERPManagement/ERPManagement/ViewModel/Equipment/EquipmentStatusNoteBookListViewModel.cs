@@ -41,6 +41,19 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void OnNewCommandClick()
         {
+            View.Profession.EquipmentStatusNoteBookView frmStatusNote = new View.Profession.EquipmentStatusNoteBookView();
+            EquipmentStatusNoteBookViewModel eqStatusNote = new EquipmentStatusNoteBookViewModel();
+            frmStatusNote.DataContext = eqStatusNote;
+            eqStatusNote.ItemAction += new ActionEventHandler(EqStatusNote_ItemAction);
+            frmStatusNote.ShowDialog();
+        }
+
+        private void EqStatusNote_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((EquipmentStatusNoteBookViewModel)sender);
+            }
         }
 
         protected override void OnSelectedItemChanged(EquipmentStatusNoteBookViewModel oldValue, EquipmentStatusNoteBookViewModel newValue)

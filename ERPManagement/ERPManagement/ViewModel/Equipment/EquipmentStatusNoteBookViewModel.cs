@@ -25,10 +25,14 @@ namespace ERPManagement.ViewModel.Equipment
                 if (equipmentStatusID != value)
                 {
                     equipmentStatusID = value;
+                    EquipmentStatusName = ConvertCollection.ConvertStatus(EquipmentStatusID);
                     RaisePropertyChanged("EquipmentStatusID");
+                    RaisePropertyChanged("EquipmentStatusName");
                 }
             }
         }
+
+        public String EquipmentStatusName { get; set; }
 
         public String Cause
         {
@@ -156,11 +160,17 @@ namespace ERPManagement.ViewModel.Equipment
         }
 
         public ObservableCollection<EquipmentStatusNoteBookDetailViewModel> Details { get; set; }
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+
+        public IEnumerable<List.StatusViewModel> Statuses { get; set; }
         #endregion
 
         public EquipmentStatusNoteBookViewModel() : base()
         {
             Details = new ObservableCollection<EquipmentStatusNoteBookDetailViewModel>();
+            Equipments = (App.Current as App).Equipments.Items;
+            Statuses = (App.Current as App).Statuses.Items;
         }
 
         protected override void Save(RadWindow window)
@@ -186,11 +196,13 @@ namespace ERPManagement.ViewModel.Equipment
                 SyncIndex(eqNoteBook.EquipmentStatusNoteBookDetails);
                 SyncIndex(Details);
                 db.SubmitChanges();
+                noteID = eqNoteBook.NoteID;
                 RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
             }
         }
 
+        #region Sync
         private void Sync(IList<EquipmentStatusNoteBookDetailViewModel> srcDetails, EntitySet<EquipmentStatusNoteBookDetail> destDetails)
         {
             int i = 0;
@@ -225,6 +237,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentStatusNoteBookDetail detail = new EquipmentStatusNoteBookDetail();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.EquipmentID = srcDetails[i].EquipmentID;
                 detail.EquipmentStatusID = srcDetails[i].EquipmentStatusID;
                 detail.Cause = srcDetails[i].Cause;
@@ -233,6 +246,7 @@ namespace ERPManagement.ViewModel.Equipment
                 i++;
             }
         }
+        #endregion
 
         protected override bool Delete()
         {
@@ -248,7 +262,26 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Edit()
         {
+            View.Profession.EquipmentStatusNoteBookView frmEqStatusNote = new View.Profession.EquipmentStatusNoteBookView();
+            EquipmentStatusNoteBookViewModel eqStatusNotevm = Get(NoteID);
+            eqStatusNotevm.ItemAction += new ActionEventHandler(EqStatusNotevm_ItemAction);
+            frmEqStatusNote.DataContext = eqStatusNotevm;
+            frmEqStatusNote.ShowDialog();
+        }
 
+        private void EqStatusNotevm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                EquipmentStatusNoteBookViewModel eqStatusNotevm = (EquipmentStatusNoteBookViewModel)sender;
+                Number = eqStatusNotevm.Number;
+                Date = eqStatusNotevm.Date;
+                Details.Clear();
+                foreach (var detail in eqStatusNotevm.Details)
+                {
+                    Details.Add(detail);
+                }
+            }
         }
     }
 }

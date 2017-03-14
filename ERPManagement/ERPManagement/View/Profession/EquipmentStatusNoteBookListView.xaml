@@ -6,7 +6,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:local="clr-namespace:ERPManagement.View.Profession"
         mc:Ignorable="d" 
-        Header="Sổ Theo Dõi Tình Hình Thiết Bị" Height="506" Width="802">
+        Header="Sổ Theo Dõi Tình Hình Thiết Bị" WindowStartupLocation="CenterScreen" Height="506" Width="802">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -47,23 +47,23 @@
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
         </telerik:RadToolBar>
-        <telerik:RadGridView Name="grItems" CurrentItem="{Binding SelectedItem}" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" Margin="0,5,0,0" ShowGroupPanel="False" AutoGenerateColumns="False">
+        <telerik:RadGridView Name="grItems" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" Margin="0,5,0,0" ShowGroupPanel="False" AutoGenerateColumns="False">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Header="Số" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Number}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Ngày tháng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding Date}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Ngày tháng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding Date}" DataFormatString="dd/MM/yyyy"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <telerik:RadTabControl Grid.Row="2">
             <telerik:RadTabItem Header="Chi tiết" Height="30">
                 <Grid Background="Transparent">
-                    <telerik:RadGridView ItemsSource="{Binding Details}" ShowGroupPanel="False">
+                    <telerik:RadGridView ItemsSource="{Binding Details}" AutoGenerateColumns="False" ShowGroupPanel="False">
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewDataColumn Header="STT" HeaderTextAlignment="Center" Width="60" DataMemberBinding="{Binding Index}"></telerik:GridViewDataColumn>
                             <telerik:GridViewDataColumn Header="Mã thiết bị" HeaderTextAlignment="Center" Width="120" DataMemberBinding="{Binding EquipmentCode}"></telerik:GridViewDataColumn>
                             <telerik:GridViewDataColumn Header="Tên thiết bị" HeaderTextAlignment="Center" Width="170" DataMemberBinding="{Binding EquipmentName}"></telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Số lượng" HeaderTextAlignment="Center" Width="110" DataMemberBinding="{Binding Quantity}"></telerik:GridViewDataColumn>
                             <telerik:GridViewDataColumn Header="Serial" HeaderTextAlignment="Center" Width="130" DataMemberBinding="{Binding Serial}"></telerik:GridViewDataColumn>
                             <telerik:GridViewDataColumn Header="Tình trạng" HeaderTextAlignment="Center" Width="130" DataMemberBinding="{Binding EquipmentStatusName}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="Nguyên nhân" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding Cause}" />
+                            <telerik:GridViewDataColumn Header="Ghi chú" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding Note}" />
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
                 </Grid>

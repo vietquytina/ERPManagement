@@ -210,7 +210,7 @@ namespace ERPManagement.ViewModel.Equipment
             {
                 eqReturning = db.EquipmentReturnings.SingleOrDefault(m => m.ID == EquipmentReturningID);
             }
-            if (isInserted)
+            if (eqReturning != null)
             {
                 eqReturning.Number = Number;
                 eqReturning.Date = Date;
@@ -265,9 +265,11 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentReturningDetail detail = new EquipmentReturningDetail();
+                detail.DetailID = srcDetails[i].DetailID;
                 detail.EquipmentID = srcDetails[i].EquipmentID;
                 detail.Quantity = srcDetails[i].Quantity;
                 detail.EquipmentStatusID = srcDetails[i].EquipmentStatusID;
+                destDetails.Add(detail);
                 i++;
             }
         }
@@ -285,6 +287,8 @@ namespace ERPManagement.ViewModel.Equipment
                 if (srcDetails[i].Index == destDetails[j].Index)
                 {
                     destDetails[j].EmployeeID = srcDetails[i].EmployeeID;
+                    i++;
+                    j++;
                 }
                 else
                 {
@@ -301,6 +305,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentReturningReceiver receiver = new EquipmentReturningReceiver();
+                receiver.DetailID = srcDetails[i].DetailID;
                 receiver.EmployeeID = srcDetails[i].EmployeeID;
                 destDetails.Add(receiver);
                 i++;
@@ -320,6 +325,8 @@ namespace ERPManagement.ViewModel.Equipment
                 if (srcDetails[i].Index == destDetails[j].Index)
                 {
                     destDetails[j].EmployeeID = srcDetails[i].EmployeeID;
+                    i++;
+                    j++;
                 }
                 else
                 {
@@ -336,6 +343,7 @@ namespace ERPManagement.ViewModel.Equipment
             while (i < srcDetails.Count)
             {
                 EquipmentReturningSender sender = new EquipmentReturningSender();
+                sender.DetailID = srcDetails[i].DetailID;
                 sender.EmployeeID = srcDetails[i].EmployeeID;
                 destDetails.Add(sender);
                 i++;

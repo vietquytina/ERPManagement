@@ -356,6 +356,7 @@
       <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UnitMeasureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />

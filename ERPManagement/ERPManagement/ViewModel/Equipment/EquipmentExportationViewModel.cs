@@ -98,6 +98,7 @@ namespace ERPManagement.ViewModel.Equipment
                     EquipmentExportationDetailViewModel detailvm = new EquipmentExportationDetailViewModel();
                     detailvm.DetailID = detail.DetailID;
                     detailvm.Index = detail.Index;
+                    detailvm.EquipmentID = detail.EquipmentID;
                     detailvm.RestQuantity = detail.RestQuantity;
                     detailvm.Quantity = detail.Quantity;
                     detailvm.StatusID = detail.EquipmentStatusID;
@@ -126,6 +127,7 @@ namespace ERPManagement.ViewModel.Equipment
                 EquipmentExportationDetailViewModel detailvm = new EquipmentExportationDetailViewModel();
                 detailvm.DetailID = detail.DetailID;
                 detailvm.Index = detail.Index;
+                detailvm.EquipmentID = detail.EquipmentID;
                 detailvm.RestQuantity = detail.RestQuantity;
                 detailvm.Quantity = detail.Quantity;
                 detailvm.StatusID = detail.EquipmentStatusID;
@@ -227,6 +229,8 @@ namespace ERPManagement.ViewModel.Equipment
                     destDetails[j].Quantity = srcDetails[i].Quantity;
                     destDetails[j].EquipmentStatusID = srcDetails[i].StatusID;
                     destDetails[j].Note = srcDetails[i].Note;
+                    i++;
+                    j++;
                 }
                 else
                 {

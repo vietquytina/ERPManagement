@@ -7578,6 +7578,8 @@ namespace ERPManagement.Model
 		
 		private string _Name;
 		
+		private string _Number;
+		
 		private int _EquipmentTypeID;
 		
 		private int _UnitMeasureID;
@@ -7604,6 +7606,8 @@ namespace ERPManagement.Model
     partial void OnCodeChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
+    partial void OnNumberChanging(string value);
+    partial void OnNumberChanged();
     partial void OnEquipmentTypeIDChanging(int value);
     partial void OnEquipmentTypeIDChanged();
     partial void OnUnitMeasureIDChanging(int value);
@@ -7679,6 +7683,26 @@ namespace ERPManagement.Model
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Number", DbType="NVarChar(30)")]
+		public string Number
+		{
+			get
+			{
+				return this._Number;
+			}
+			set
+			{
+				if ((this._Number != value))
+				{
+					this.OnNumberChanging(value);
+					this.SendPropertyChanging();
+					this._Number = value;
+					this.SendPropertyChanged("Number");
+					this.OnNumberChanged();
 				}
 			}
 		}

@@ -50,7 +50,7 @@
         <telerik:RadGridView Name="grItems" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" IsReadOnly="True" ItemsSource="{Binding Items}" Grid.Row="1" Margin="0,5,0,0" ShowGroupPanel="False" AutoGenerateColumns="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Số" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding Number}"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Ngày tháng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding Date}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Ngày tháng" Width="120" HeaderTextAlignment="Center" DataMemberBinding="{Binding Date}" DataFormatString="dd/MM/yyyy"></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn Header="Người giao" Width="220" HeaderTextAlignment="Center" DataMemberBinding="{Binding DeliveryName}"></telerik:GridViewDataColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
