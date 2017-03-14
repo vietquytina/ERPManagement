@@ -223,6 +223,9 @@
     <Compile Include="View\List\EquipmentTypeView.xaml.cs">
       <DependentUpon>EquipmentTypeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\List\PermissionView.xaml.cs">
+      <DependentUpon>PermissionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\List\RegencyList.xaml.cs">
       <DependentUpon>RegencyList.xaml</DependentUpon>
     </Compile>
@@ -326,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\List\EquipmentTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\PermissionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

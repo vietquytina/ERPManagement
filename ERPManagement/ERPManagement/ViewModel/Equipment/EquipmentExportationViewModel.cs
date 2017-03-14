@@ -222,7 +222,7 @@ namespace ERPManagement.ViewModel.Equipment
             {
                 if (srcDetails[i].Index == destDetails[j].Index)
                 {
-                    destDetails[j].Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
+                    destDetails[j].EquipmentID = srcDetails[i].EquipmentID;
                     destDetails[j].RestQuantity = srcDetails[i].RestQuantity;
                     destDetails[j].Quantity = srcDetails[i].Quantity;
                     destDetails[j].EquipmentStatusID = srcDetails[i].StatusID;
@@ -244,7 +244,7 @@ namespace ERPManagement.ViewModel.Equipment
             {
                 EquipmentExportationDetail detail = new EquipmentExportationDetail();
                 detail.DetailID = srcDetails[i].DetailID;
-                detail.Equipment = db.Equipments.Single(m => m.EquipmentID == srcDetails[i].EquipmentID);
+                detail.EquipmentID = srcDetails[i].EquipmentID;
                 detail.RestQuantity = srcDetails[i].RestQuantity;
                 detail.Quantity = srcDetails[i].Quantity;
                 detail.EquipmentStatusID = srcDetails[i].StatusID;

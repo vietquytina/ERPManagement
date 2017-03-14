@@ -5,6 +5,14 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.Equipment
 {
+    public class EquipmentChangedEventArgs : EventArgs
+    {
+        public Int32 OldEquipmentID { get; set; }
+        public Int32 NewEquipmentID { get; set; }
+    }
+
+    public delegate void EquipmentChangedEventHandler(object sender, EquipmentChangedEventArgs e);
+
     public class EquipmentIndexViewModel : BaseNotify
     {
         public Guid DetailID { get; set; }
@@ -25,6 +33,10 @@ namespace ERPManagement.ViewModel.Equipment
         private Int32 restQty = 0;
         #endregion
 
+        #region Event
+        public event EquipmentChangedEventHandler EquipmentChanged;
+        #endregion
+
         #region Properties
         public Int32 EquipmentID
         {
@@ -39,6 +51,10 @@ namespace ERPManagement.ViewModel.Equipment
                     EquipmentName = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.Name);
                     UnitMeasure = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.UnitMeasure);
                     Serial = ConvertCollection.ConvertEquipment(EquipmentID, ViewModel.Converter.ConvertInfomation.Serial);
+                    if (EquipmentChanged != null)
+                    {
+                        EquipmentChanged(this, new EquipmentChangedEventArgs() { OldEquipmentID = oldEquipment, NewEquipmentID = equipmentID });
+                    }
                     OnEquipmentChanged(oldEquipment, equipmentID);
                     RaisePropertyChanged("EquipmentID");
                 }

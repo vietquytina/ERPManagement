@@ -7,11 +7,13 @@ using ERPManagement.Model;
 
 namespace ERPManagement.ViewModel.List
 {
+    [Authorize.Authorize(Method = "Equipment")]
     public class EquipmentViewModel : ListViewModel
     {
-        public static IEnumerable<EquipmentViewModel> GetEquipments()
+        public static IEnumerable<EquipmentViewModel> GetEquipments(Int32 parentEquipmentID)
         {
             var equipments = from p in db.Equipments
+                             where p.ParentEquipmentID == parentEquipmentID
                              select p;
             List<EquipmentViewModel> equipmentvms = new List<EquipmentViewModel>();
             foreach (var equipment in equipments)
@@ -29,16 +31,51 @@ namespace ERPManagement.ViewModel.List
             return equipmentvms;
         }
 
+        public static IEnumerable<EquipmentViewModel> GetEquipments()
+        {
+            var equipments = from p in db.Equipments
+                             select p;
+            List<EquipmentViewModel> equipmentvms = new List<EquipmentViewModel>();
+            foreach (var equipment in equipments)
+            {
+                EquipmentViewModel equipmentvm = new EquipmentViewModel();
+                equipmentvm.equipmentID = equipment.EquipmentID;
+                equipmentvm.Code = equipment.Code;
+                equipmentvm.Name = equipment.Name;
+                equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
+                equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
+                equipmentvm.Description = equipment.Description;
+                equipmentvm.ParentEquipmentID = equipment.ParentEquipmentID;
+                equipmentvm.isInserted = false;
+                equipmentvms.Add(equipmentvm);
+            }
+            return equipmentvms;
+        }
+
         public static EquipmentViewModel GetEquipment(Int32 equipmentID)
         {
-            EquipmentViewModel equipment = new EquipmentViewModel();
-            return equipment;
+            var equipment = db.Equipments.SingleOrDefault(m => m.EquipmentID == equipmentID);
+            if (equipment == null)
+            {
+                return null;
+            }
+            EquipmentViewModel equipmentvm = new EquipmentViewModel();
+            equipmentvm.equipmentID = equipment.EquipmentID;
+            equipmentvm.Code = equipment.Code;
+            equipmentvm.Name = equipment.Name;
+            equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
+            equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
+            equipmentvm.Description = equipment.Description;
+            equipmentvm.ParentEquipmentID = equipment.ParentEquipmentID;
+            equipmentvm.isInserted = false;
+            return equipmentvm;
         }
 
         #region Variables
         private Int32 equipmentID = 0;
         private String unitMeasureName, equipmentTypeName, number, description;
         private Int32 equipmentTypeID, unitMeasureID;
+        private Int32? parentEqID;
         #endregion
 
         #region Properties
@@ -66,7 +103,7 @@ namespace ERPManagement.ViewModel.List
             get { return unitMeasureName; }
             set
             {
-                if (unitMeasureName!=value)
+                if (unitMeasureName != value)
                 {
                     unitMeasureName = value;
                     RaisePropertyChanged("UnitMeasureName");
@@ -103,12 +140,12 @@ namespace ERPManagement.ViewModel.List
 
         public String EquipmentTypeName
         {
-            get { return unitMeasureName; }
+            get { return equipmentTypeName; }
             set
             {
-                if (unitMeasureName != value)
+                if (equipmentTypeName != value)
                 {
-                    unitMeasureName = value;
+                    equipmentTypeName = value;
                     RaisePropertyChanged("EquipmentTypeName");
                 }
             }
@@ -126,6 +163,19 @@ namespace ERPManagement.ViewModel.List
                 }
             }
         }
+
+        public Int32? ParentEquipmentID
+        {
+            get { return parentEqID; }
+            set
+            {
+                if (parentEqID != value)
+                {
+                    parentEqID = value;
+                    RaisePropertyChanged("ParentEquipmentID");
+                }
+            }
+        }
         #endregion
 
         public EquipmentViewModel() : base()
@@ -135,14 +185,38 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Save(RadWindow window)
         {
-
+            Model.Equipment equipment = null;
+            if (isInserted)
+            {
+                equipment = new Model.Equipment();
+                db.Equipments.InsertOnSubmit(equipment);
+            }
+            else
+            {
+                equipment = db.Equipments.SingleOrDefault(m => m.EquipmentID == EquipmentID);
+            }
+            if (equipment != null)
+            {
+                equipment.Code = Code;
+                equipment.Name = Name;
+                equipment.EquipmentType = db.EquipmentTypes.Single(m => m.EquipmentTypeID == EquipmentTypeID);
+                equipment.UnitMeasure = db.UnitMeasures.Single(m => m.UnitMeasureID == UnitMeasureID);
+                equipment.Description = Description;
+                equipment.ParentEquipmentID = ParentEquipmentID;
+                db.SubmitChanges();
+                equipmentID = equipment.EquipmentID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
+                isInserted = false;
+            }
         }
 
         protected override Boolean Delete()
         {
             try
             {
-
+                Model.Equipment equipment = db.Equipments.SingleOrDefault(m => m.EquipmentID == EquipmentID);
+                db.Equipments.DeleteOnSubmit(equipment);
+                db.SubmitChanges();
                 return true;
             }
             catch { return false; }

@@ -6,6 +6,7 @@ using System.Text;
 using Telerik.Windows.Controls;
 using ERPManagement.Model;
 using System.Data.Linq;
+using System.Collections.Specialized;
 
 namespace ERPManagement.ViewModel.Equipment
 {
@@ -230,11 +231,34 @@ namespace ERPManagement.ViewModel.Equipment
         public EquipmentHandoverViewModel() : base()
         {
             Details = new ObservableCollection<EquipmentHandoverDetailViewModel>();
+            Details.CollectionChanged += new NotifyCollectionChangedEventHandler(Details_CollectionChanged);
             Senders = new ObservableCollection<EquipmentHandoverPersonViewModel>();
             Receivers = new ObservableCollection<EquipmentHandoverPersonViewModel>();
             Employees = (App.Current as App).Employees.Items;
             Equipments = (App.Current as App).Equipments.Items;
             Statuses = (App.Current as App).Statuses.Items;
+        }
+
+        private void Details_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                EquipmentHandoverDetailViewModel itemDetail = Details[e.NewStartingIndex];
+                itemDetail.EquipmentChanged += new EquipmentChangedEventHandler(ItemDetail_EquipmentChanged);
+            }
+        }
+
+        private void ItemDetail_EquipmentChanged(object sender, EquipmentChangedEventArgs e)
+        {
+            var subEquipments = Equipments.Where(m => m.ParentEquipmentID == e.NewEquipmentID);
+            foreach (var subEquipment in subEquipments)
+            {
+                EquipmentHandoverDetailViewModel detail = new EquipmentHandoverDetailViewModel();
+                detail.EquipmentID = subEquipment.EquipmentID;
+                detail.Quantity = 0;
+                detail.EquipmentStatusID = 1;
+                Details.Add(detail);
+            }
         }
 
         protected override void Save(RadWindow window)
@@ -243,6 +267,9 @@ namespace ERPManagement.ViewModel.Equipment
             if (isInserted)
             {
                 eqHandover = new EquipmentHandOver();
+                eqHandover.EquipmentHandOverDetails = new EntitySet<EquipmentHandOverDetail>();
+                eqHandover.EquipmentHandOverReceivers = new EntitySet<EquipmentHandOverReceiver>();
+                eqHandover.EquipmentHandOverSenders = new EntitySet<EquipmentHandOverSender>();
                 db.EquipmentHandOvers.InsertOnSubmit(eqHandover);
             }
             else
