@@ -58,7 +58,9 @@
                 </Grid>
             </telerik:RadTabItem>
         </telerik:RadTabControl>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" HorizontalAlignment="Left" Height="30" Margin="621,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" Content="Thoát" HorizontalAlignment="Left" Height="30" Margin="725,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
+        <Grid Grid.Row="2" Background="#F0F0F0">
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" HorizontalAlignment="Left" Height="30" Margin="621,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" Content="Thoát" HorizontalAlignment="Left" Height="30" Margin="725,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
+        </Grid>
     </Grid>
 </telerik:RadWindow>

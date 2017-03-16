@@ -16,12 +16,12 @@ namespace ERPManagement.View.Profession
     /// <summary>
     /// Interaction logic for EquipmentBreakDownList.xaml
     /// </summary>
-    public partial class EquipmentBreakDownList : Window
+    public partial class EquipmentBreakDownList : Telerik.Windows.Controls.RadWindow
     {
         public EquipmentBreakDownList()
         {
             InitializeComponent();
-            DataContext = (App.Current as App).EquipmentBreaks.Items;
+            DataContext = (App.Current as App).EquipmentBreaks;
         }
     }
 }

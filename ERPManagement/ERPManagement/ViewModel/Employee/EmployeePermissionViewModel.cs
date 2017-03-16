@@ -18,8 +18,13 @@ namespace ERPManagement.ViewModel.Employee
     public class EmployeePermissionViewModel : BaseViewModel
     {
         public Int32 UserID { get; set; }
+
         public String Name { get; set; }
+
         public Int32 DepartmentID { get; set; }
+
+        public Int32 CompanyID { get; set; }
+
         public List<PermissionViewModel> Permissions { get; set; }
 
         public EmployeePermissionViewModel()

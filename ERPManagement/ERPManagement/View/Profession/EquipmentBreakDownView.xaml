@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.Profession.EquipmentBreakDownView" 
         mc:Ignorable="d"
-        Header="Phiếu báo hỏng thiết bị" Height="475" Width="836">
+        Header="Phiếu báo hỏng thiết bị" WindowStartupLocation="CenterScreen" Height="475" Width="836">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -49,7 +49,7 @@
                 </Grid>
             </telerik:RadTabItem>
         </telerik:RadTabControl>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Background="#F0F0F0">
             <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" HorizontalAlignment="Left" Height="30" Margin="589,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
             <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" Content="Thoát" HorizontalAlignment="Left" Height="30" Margin="693,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="2"/>
         </Grid>

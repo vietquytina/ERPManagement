@@ -38,6 +38,14 @@
                     </StackPanel>
                 </telerik:RadMenuItem.Header>
             </telerik:RadMenuItem>
+            <telerik:RadMenuItem Command="{Binding ExportToReportCommand}">
+                <telerik:RadMenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../../Resources/export_report.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                        <TextBlock Text="In báo cáo" Margin="3,0,0,0" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </telerik:RadMenuItem.Header>
+            </telerik:RadMenuItem>
             <telerik:RadMenuItem Command="{Binding ExportToXLSCommand}" CommandParameter="{Binding ElementName=grItems}">
                 <telerik:RadMenuItem.Header>
                     <StackPanel Orientation="Horizontal">

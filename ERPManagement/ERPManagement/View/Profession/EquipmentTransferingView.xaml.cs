@@ -16,9 +16,9 @@ namespace ERPManagement.View.Profession
     /// <summary>
     /// Interaction logic for EquipmentTrasnferingView.xaml
     /// </summary>
-    public partial class EquipmentTrasnferingView : Telerik.Windows.Controls.RadWindow
+    public partial class EquipmentTransferingView : Telerik.Windows.Controls.RadWindow
     {
-        public EquipmentTrasnferingView()
+        public EquipmentTransferingView()
         {
             InitializeComponent();
         }

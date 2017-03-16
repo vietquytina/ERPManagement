@@ -489,7 +489,7 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipmentBreakRow AddEquipmentBreakRow(int ID, string Company, System.DateTime Date, string EquipmentName, string Serial, System.DateTime CreateDate, string CurrentStatus, string EmployeeAdvise, string AssignmentName, string RepairerName, string Result, string Advise, System.DateTime RecvInfoDate, System.DateTime RepairDate) {
+            public EquipmentBreakRow AddEquipmentBreakRow(int ID, string Company, System.DateTime Date, string EquipmentName, string Serial, System.DateTime CreateDate, string CurrentStatus, string EmployeeAdvise, string AssignmentName, string RepairerName, string Result, string Advise, string RecvInfoDate, string RepairDate) {
                 EquipmentBreakRow rowEquipmentBreakRow = ((EquipmentBreakRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -578,9 +578,9 @@ namespace ERPManagement.Data {
                 base.Columns.Add(this.columnResult);
                 this.columnAdvise = new global::System.Data.DataColumn("Advise", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdvise);
-                this.columnRecvInfoDate = new global::System.Data.DataColumn("RecvInfoDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnRecvInfoDate = new global::System.Data.DataColumn("RecvInfoDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRecvInfoDate);
-                this.columnRepairDate = new global::System.Data.DataColumn("RepairDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnRepairDate = new global::System.Data.DataColumn("RepairDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRepairDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
@@ -917,10 +917,10 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime RecvInfoDate {
+            public string RecvInfoDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableEquipmentBreak.RecvInfoDateColumn]));
+                        return ((string)(this[this.tableEquipmentBreak.RecvInfoDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'RecvInfoDate\' in table \'EquipmentBreak\' is DBNull.", e);
@@ -933,10 +933,10 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime RepairDate {
+            public string RepairDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableEquipmentBreak.RepairDateColumn]));
+                        return ((string)(this[this.tableEquipmentBreak.RepairDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'RepairDate\' in table \'EquipmentBreak\' is DBNull.", e);

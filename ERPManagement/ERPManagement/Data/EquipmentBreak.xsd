@@ -27,8 +27,8 @@
               <xs:element name="RepairerName" msprop:Generator_ColumnVarNameInTable="columnRepairerName" msprop:Generator_ColumnPropNameInRow="RepairerName" msprop:Generator_ColumnPropNameInTable="RepairerNameColumn" msprop:Generator_UserColumnName="RepairerName" type="xs:string" minOccurs="0" />
               <xs:element name="Result" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" type="xs:string" minOccurs="0" />
               <xs:element name="Advise" msprop:Generator_ColumnVarNameInTable="columnAdvise" msprop:Generator_ColumnPropNameInRow="Advise" msprop:Generator_ColumnPropNameInTable="AdviseColumn" msprop:Generator_UserColumnName="Advise" type="xs:string" minOccurs="0" />
-              <xs:element name="RecvInfoDate" msprop:Generator_ColumnVarNameInTable="columnRecvInfoDate" msprop:Generator_ColumnPropNameInRow="RecvInfoDate" msprop:Generator_ColumnPropNameInTable="RecvInfoDateColumn" msprop:Generator_UserColumnName="RecvInfoDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RepairDate" msprop:Generator_ColumnVarNameInTable="columnRepairDate" msprop:Generator_ColumnPropNameInRow="RepairDate" msprop:Generator_ColumnPropNameInTable="RepairDateColumn" msprop:Generator_UserColumnName="RepairDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecvInfoDate" msprop:Generator_ColumnVarNameInTable="columnRecvInfoDate" msprop:Generator_ColumnPropNameInRow="RecvInfoDate" msprop:Generator_ColumnPropNameInTable="RecvInfoDateColumn" msprop:Generator_UserColumnName="RecvInfoDate" type="xs:string" minOccurs="0" />
+              <xs:element name="RepairDate" msprop:Generator_ColumnVarNameInTable="columnRepairDate" msprop:Generator_ColumnPropNameInRow="RepairDate" msprop:Generator_ColumnPropNameInTable="RepairDateColumn" msprop:Generator_UserColumnName="RepairDate" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

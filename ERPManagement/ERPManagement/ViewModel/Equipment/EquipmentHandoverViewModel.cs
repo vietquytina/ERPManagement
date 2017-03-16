@@ -470,5 +470,38 @@ namespace ERPManagement.ViewModel.Equipment
                 }
             }
         }
+
+        protected override void ExportToReport()
+        {
+            Data.EquipmentReturning eqReturningDS = new Data.EquipmentReturning();
+            ReportWindow rptWnd = new ReportWindow();
+            rptWnd.ReportPath = "Report/EquipmentHandover.rdlc";
+            eqReturningDS._EquipmentReturning.AddEquipmentReturningRow(Number, Date, "");
+            foreach (var detail in Details)
+            {
+                String eqName = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Name);
+                String eqSerial = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Serial);
+                String status = ConvertCollection.ConvertStatus(detail.EquipmentStatusID);
+                eqReturningDS.EquipmentReturningDetail.AddEquipmentReturningDetailRow(detail.Index, eqName, detail.Quantity, eqSerial, status);
+            }
+            foreach (var sender in Senders)
+            {
+                String empName = ConvertCollection.ConvertEmployee(sender.EmployeeID);
+                String regency = ConvertCollection.ConvertEmployee(sender.EmployeeID, ViewModel.Converter.EmployeeConvertation.Regency);
+                eqReturningDS.Sender.AddSenderRow(empName, regency, sender.Index.ToString());
+            }
+            foreach (var receiver in Receivers)
+            {
+                String empName = ConvertCollection.ConvertEmployee(receiver.EmployeeID);
+                String regency = ConvertCollection.ConvertEmployee(receiver.EmployeeID, ViewModel.Converter.EmployeeConvertation.Regency);
+                eqReturningDS.Receiver.AddReceiverRow(empName, regency, receiver.Index.ToString());
+            }
+            rptWnd.AddReportSource("EquipmentReturning", eqReturningDS._EquipmentReturning);
+            rptWnd.AddReportSource("EquipmentReturningDetail", eqReturningDS.EquipmentReturningDetail);
+            rptWnd.AddReportSource("Sender", eqReturningDS.Sender);
+            rptWnd.AddReportSource("Receiver", eqReturningDS.Receiver);
+            rptWnd.RefreshReport();
+            rptWnd.ShowDialog();
+        }
     }
 }

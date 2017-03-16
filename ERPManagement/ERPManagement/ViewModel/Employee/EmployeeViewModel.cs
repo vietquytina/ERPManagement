@@ -18,6 +18,7 @@ namespace ERPManagement.ViewModel.Employee
                 return false;
             App.Employee = new EmployeePermissionViewModel();
             App.Employee.UserID = emp.EmployeeID;
+            App.Employee.CompanyID = emp.Department.CompanyID;
             App.Employee.Name = emp.FamilyName + " " + emp.Name;
             foreach (var permission in emp.Permissions)
             {

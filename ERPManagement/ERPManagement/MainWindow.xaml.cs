@@ -70,7 +70,8 @@ namespace ERPManagement
 
         private void btnEqBreak_Click(object sender, RoutedEventArgs e)
         {
-            
+            EquipmentBreakDownList frmEqBreakList = new EquipmentBreakDownList();
+            ShowWindow(frmEqBreakList);
         }
 
         private void btnEqImport_Click(object sender, RoutedEventArgs e)

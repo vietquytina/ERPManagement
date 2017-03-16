@@ -10,6 +10,7 @@ namespace ERPManagement.ViewModel.Equipment
     [Authorize.Authorize(Method = "EquipmentStatusNoteBook")]
     public class EquipmentStatusNoteBookListViewModel : ItemListViewModel<EquipmentStatusNoteBookViewModel>
     {
+        private ICommand exportToReportCommand = null;
         private ObservableCollection<EquipmentStatusNoteBookDetailViewModel> details = null;
 
         public ObservableCollection<EquipmentStatusNoteBookDetailViewModel> Details
@@ -59,6 +60,35 @@ namespace ERPManagement.ViewModel.Equipment
         protected override void OnSelectedItemChanged(EquipmentStatusNoteBookViewModel oldValue, EquipmentStatusNoteBookViewModel newValue)
         {
             Details = newValue.Details;
+        }
+
+        public ICommand ExportToReportCommand
+        {
+            get
+            {
+                if (exportToReportCommand == null)
+                {
+                    exportToReportCommand = new RelayCommand(() =>
+                    {
+                        Data.EquipmentStatusNoteBook eqStatusNoteDS = new Data.EquipmentStatusNoteBook();
+                        ReportWindow rptWnd = new ReportWindow();
+                        rptWnd.ReportPath = "Report/EquipmentStatusNoteBook.rdlc";
+                        foreach (var eqStatusNote in Items)
+                        {
+                            foreach (var detail in eqStatusNote.Details)
+                            {
+                                eqStatusNoteDS._EquipmentStatusNoteBook.AddEquipmentStatusNoteBookRow(eqStatusNote.Date, detail.EquipmentName, detail.Serial, detail.EquipmentStatusName, detail.Cause, detail.Note);
+                            }
+                        }
+                        eqStatusNoteDS.Company.AddCompanyRow(ConvertCollection.ConvertCompany(App.Employee.CompanyID));
+                        rptWnd.AddReportSource("EquipmentStatusNoteBook", eqStatusNoteDS._EquipmentStatusNoteBook);
+                        rptWnd.AddReportSource("Company", eqStatusNoteDS.Company);
+                        rptWnd.RefreshReport();
+                        rptWnd.ShowDialog();
+                    });
+                }
+                return exportToReportCommand;
+            }
         }
     }
 }

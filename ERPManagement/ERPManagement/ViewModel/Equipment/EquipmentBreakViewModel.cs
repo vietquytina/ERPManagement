@@ -16,6 +16,13 @@ namespace ERPManagement.ViewModel.Equipment
             List<EquipmentBreakViewModel> equipmentBreakvms = new List<EquipmentBreakViewModel>();
             var equipmentBreaks = from p in db.EquipmentBreaks
                                   select p;
+            foreach (var equipmentBreak in equipmentBreaks)
+            {
+                EquipmentBreakViewModel equipmentBreakvm = new EquipmentBreakViewModel();
+                equipmentBreakvm.id = equipmentBreak.ID;
+                equipmentBreakvm.isInserted = false;
+                equipmentBreakvms.Add(equipmentBreakvm);
+            }
             return equipmentBreakvms;
         }
 
@@ -109,6 +116,7 @@ namespace ERPManagement.ViewModel.Equipment
                 {
                     equipmentID = value;
                     EquipmentName = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.Name);
+                    Number = ConvertCollection.ConvertEquipment(equipmentID, ViewModel.Converter.ConvertInfomation.Serial);
                     RaisePropertyChanged("EquipmentID");
                 }
             }
@@ -286,7 +294,6 @@ namespace ERPManagement.ViewModel.Equipment
             {
                 eqBreak = new EquipmentBreak();
                 db.EquipmentBreaks.InsertOnSubmit(eqBreak);
-                db.SubmitChanges();
             }
             else
             {
@@ -296,7 +303,7 @@ namespace ERPManagement.ViewModel.Equipment
             {
                 if (isInserted || eqBreak.EmployeeID == App.Employee.UserID)
                 {
-                    eqBreak.CompanyID = CompanyID;
+                    eqBreak.CompanyID = App.Employee.CompanyID;
                     eqBreak.DepartmentID = App.Employee.DepartmentID;
                     eqBreak.Date = Date;
                     eqBreak.EmployeeID = App.Employee.UserID;
@@ -311,6 +318,9 @@ namespace ERPManagement.ViewModel.Equipment
                 eqBreak.Advise = Advise;
                 eqBreak.StatusID = StatusID;
                 db.SubmitChanges();
+                id = eqBreak.ID;
+                RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
+                isInserted = false;
             }
         }
 
@@ -357,7 +367,11 @@ namespace ERPManagement.ViewModel.Equipment
             Data.EquipmentBreak eqBreakDS = new Data.EquipmentBreak();
             ReportWindow rptWnd = new ReportWindow();
             rptWnd.ReportPath = "Report/EquipmentBreak.rdlc";
-
+            String company = ConvertCollection.ConvertCompany(App.Employee.CompanyID);
+            String serial = ConvertCollection.ConvertEquipment(EquipmentID, ViewModel.Converter.ConvertInfomation.Serial);
+            eqBreakDS._EquipmentBreak.AddEquipmentBreakRow(ID, company, Date, EquipmentName, serial, DateTime.Now, CurrentStatus, EmployeeAdvise, AssignmentName, RepairerName, Result, Advise, RecvInfoDate.HasValue ? RecvInfoDate.Value.ToString("dd/MM/yyyy") : "", RepairDate.HasValue ? RepairDate.Value.ToString("dd/MM/yyyy") : "");
+            rptWnd.AddReportSource("EquipmentBreak", eqBreakDS);
+            rptWnd.RefreshReport();
             rptWnd.ShowDialog();
         }
     }
