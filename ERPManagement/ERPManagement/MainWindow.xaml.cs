@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using ERPManagement.View.List;
+﻿using ERPManagement.View.List;
 using ERPManagement.View.Profession;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ERPManagement.ViewModel.Authorize;
+using System.Windows;
 
 namespace ERPManagement
 {
@@ -31,8 +20,15 @@ namespace ERPManagement
         {
             try
             {
-
                 window.ShowDialog();
+                /*if (window.IsAuthorize())
+                {
+                    window.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bạn chưa được cấp quyền chức năng này!");
+                }*/
             }
             catch { }
         }

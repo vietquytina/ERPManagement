@@ -155,6 +155,7 @@
     </Compile>
     <Compile Include="StringToVisibilityConverter.cs" />
     <Compile Include="ViewModel\Authorize\AuthorizeAttribute.cs" />
+    <Compile Include="ViewModel\Authorize\AuthorizeValidation.cs" />
     <Compile Include="ViewModel\Authorize\AuthorizeViewModel.cs" />
     <Compile Include="ViewModel\BaseNotify.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />

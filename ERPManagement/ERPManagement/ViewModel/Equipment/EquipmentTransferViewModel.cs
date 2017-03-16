@@ -28,6 +28,7 @@ namespace ERPManagement.ViewModel.Equipment
     [Authorize.Authorize(Method = "EquipmentTransfer")]
     public class EquipmentTransferViewModel : EquipmentViewModel
     {
+        #region Get data
         public static IEnumerable<EquipmentTransferViewModel> Gets()
         {
             List<EquipmentTransferViewModel> equipmentTransfervms = new List<EquipmentTransferViewModel>();
@@ -115,6 +116,7 @@ namespace ERPManagement.ViewModel.Equipment
             equipmentTransfervm.isInserted = false;
             return equipmentTransfervm;
         }
+        #endregion
 
         #region Variables
         private int id;
@@ -125,6 +127,13 @@ namespace ERPManagement.ViewModel.Equipment
         public ObservableCollection<EquipmentTransferDetailViewModel> Details { get; set; }
         public ObservableCollection<EquipmentTransferPersonViewModel> Senders { get; set; }
         public ObservableCollection<EquipmentTransferPersonViewModel> Receivers { get; set; }
+        public ObservableCollection<EquipmentTransferPersonViewModel> ITManagers { get; set; }
+
+        public IEnumerable<List.EquipmentViewModel> Equipments { get; set; }
+
+        public IEnumerable<Employee.EmployeeViewModel> Employees { get; set; }
+
+        public IEnumerable<List.StatusViewModel> Statuses { get; set; }
         #endregion
 
         public EquipmentTransferViewModel() : base()
@@ -132,6 +141,10 @@ namespace ERPManagement.ViewModel.Equipment
             Details = new ObservableCollection<EquipmentTransferDetailViewModel>();
             Senders = new ObservableCollection<EquipmentTransferPersonViewModel>();
             Receivers = new ObservableCollection<EquipmentTransferPersonViewModel>();
+            ITManagers = new ObservableCollection<EquipmentTransferPersonViewModel>();
+            Employees = (App.Current as App).Employees.Items;
+            Equipments = (App.Current as App).Equipments.Items;
+            Statuses = (App.Current as App).Statuses.Items;
         }
 
         protected override void Save(RadWindow window)
@@ -154,12 +167,15 @@ namespace ERPManagement.ViewModel.Equipment
                 Sync(Details, eqTransfer.EquipmentTransferDetails);
                 Sync(Senders, eqTransfer.EquipmentTransferSenders);
                 Sync(Receivers, eqTransfer.EquipmentTransferReceivers);
+                Sync(ITManagers, eqTransfer.EquipmentTransferITManagers);
                 SyncIndex(eqTransfer.EquipmentTransferDetails);
                 SyncIndex(eqTransfer.EquipmentTransferSenders);
                 SyncIndex(eqTransfer.EquipmentTransferReceivers);
+                SyncIndex(eqTransfer.EquipmentTransferITManagers);
                 SyncIndex(Details);
                 SyncIndex(Senders);
                 SyncIndex(Receivers);
+                SyncIndex(ITManagers);
                 db.SubmitChanges();
                 id = eqTransfer.ID;
                 RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
@@ -281,6 +297,43 @@ namespace ERPManagement.ViewModel.Equipment
                 EquipmentTransferReceiver receiver = new EquipmentTransferReceiver();
                 receiver.EmployeeID = srcDetails[i].EmployeeID;
                 destDetails.Add(receiver);
+                i++;
+            }
+        }
+
+        private void Sync(IList<EquipmentTransferPersonViewModel> srcDetails, EntitySet<EquipmentTransferITManager> destDetails)
+        {
+            int i = 0;
+            int j = 0;
+            if (srcDetails.Count == 0 || (srcDetails.Count > 0 && srcDetails[0].Index == -1))
+            {
+                destDetails.Clear();
+            }
+            while (i < srcDetails.Count && j < destDetails.Count)
+            {
+                if (srcDetails[i].Index == destDetails[j].Index)
+                {
+                    destDetails[j].EmployeeID = srcDetails[i].EmployeeID;
+                    i++;
+                    j++;
+                }
+                else
+                {
+                    if (srcDetails[i].Index == -1 || srcDetails[i].Index > destDetails[j].Index)
+                    {
+                        destDetails.RemoveAt(j);
+                    }
+                }
+            }
+            while (j < destDetails.Count)
+            {
+                destDetails.RemoveAt(j);
+            }
+            while (i < srcDetails.Count)
+            {
+                EquipmentTransferITManager manager = new EquipmentTransferITManager();
+                manager.EmployeeID = srcDetails[i].EmployeeID;
+                destDetails.Add(manager);
                 i++;
             }
         }
