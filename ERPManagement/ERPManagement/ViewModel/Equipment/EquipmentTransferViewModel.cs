@@ -68,6 +68,14 @@ namespace ERPManagement.ViewModel.Equipment
                     receivervm.EmployeeID = receiver.EmployeeID;
                     equipmentTransfervm.Receivers.Add(receivervm);
                 }
+                foreach (var itmanager in equipmentTransfer.EquipmentTransferITManagers)
+                {
+                    EquipmentTransferPersonViewModel itmanagervm = new EquipmentTransferPersonViewModel();
+                    itmanagervm.DetailID = itmanager.DetailID;
+                    itmanagervm.Index = itmanager.Index;
+                    itmanagervm.EmployeeID = itmanager.EmployeeID;
+                    equipmentTransfervm.ITManagers.Add(itmanagervm);
+                }
                 equipmentTransfervm.isInserted = false;
                 equipmentTransfervms.Add(equipmentTransfervm);
             }
@@ -112,6 +120,14 @@ namespace ERPManagement.ViewModel.Equipment
                 receivervm.Index = receiver.Index;
                 receivervm.EmployeeID = receiver.EmployeeID;
                 equipmentTransfervm.Receivers.Add(receivervm);
+            }
+            foreach (var itmanager in equipmentTransfer.EquipmentTransferITManagers)
+            {
+                EquipmentTransferPersonViewModel itmanagervm = new EquipmentTransferPersonViewModel();
+                itmanagervm.DetailID = itmanager.DetailID;
+                itmanagervm.Index = itmanager.Index;
+                itmanagervm.EmployeeID = itmanager.EmployeeID;
+                equipmentTransfervm.ITManagers.Add(itmanagervm);
             }
             equipmentTransfervm.isInserted = false;
             return equipmentTransfervm;
@@ -353,7 +369,41 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void Edit()
         {
+            View.Profession.EquipmentTransferingView frmEqTransfer = new View.Profession.EquipmentTransferingView();
+            EquipmentTransferViewModel equipmentTransfervm = Get(ID);
+            equipmentTransfervm.ItemAction += new ActionEventHandler(EquipmentTransfervm_ItemAction);
+            frmEqTransfer.DataContext = equipmentTransfervm;
+            frmEqTransfer.ShowDialog();
+        }
 
+        private void EquipmentTransfervm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                EquipmentTransferViewModel equipmentTransfervm = (EquipmentTransferViewModel)sender;
+                Number = equipmentTransfervm.Number;
+                Date = equipmentTransfervm.Date;
+                Details.Clear();
+                Senders.Clear();
+                Receivers.Clear();
+                ITManagers.Clear();
+                foreach(var detailvm in equipmentTransfervm.Details)
+                {
+                    Details.Add(detailvm);
+                }
+                foreach (var sendervm in equipmentTransfervm.Senders)
+                {
+                    Senders.Add(sendervm);
+                }
+                foreach (var receivervm in equipmentTransfervm.Receivers)
+                {
+                    Receivers.Add(receivervm);
+                }
+                foreach (var itmanagervm in equipmentTransfervm.ITManagers)
+                {
+                    ITManagers.Add(itmanagervm);
+                }
+            }
         }
     }
 }

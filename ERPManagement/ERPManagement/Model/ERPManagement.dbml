@@ -377,4 +377,11 @@
       <Association Name="EquipmentTransfer_EquipmentTransferITManager" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.[National]" Member="Nationals">
+    <Type Name="National">
+      <Column Name="NationalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

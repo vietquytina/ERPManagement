@@ -177,7 +177,6 @@
     <Compile Include="ViewModel\Equipment\EquipmentHandoverViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentImportationListViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentImportationViewModel.cs" />
-    <Compile Include="ViewModel\Equipment\EquipmentLiquidationViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentReturningListViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentReturningViewModel.cs" />
     <Compile Include="ViewModel\Equipment\EquipmentStatusNoteBookListViewModel.cs" />
@@ -203,8 +202,6 @@
     <Compile Include="ViewModel\List\StatusViewModel.cs" />
     <Compile Include="ViewModel\List\UnitMeasureListViewModel.cs" />
     <Compile Include="ViewModel\List\UnitMeasureViewModel.cs" />
-    <Compile Include="ViewModel\List\WareHouseListViewModel.cs" />
-    <Compile Include="ViewModel\List\WareHouseViewModel.cs" />
     <Compile Include="ViewModel\Login\LoginViewModel.cs" />
     <Compile Include="View\List\Company.xaml.cs">
       <DependentUpon>Company.xaml</DependentUpon>
@@ -226,6 +223,12 @@
     </Compile>
     <Compile Include="View\List\EquipmentTypeView.xaml.cs">
       <DependentUpon>EquipmentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\List\NationalList.xaml.cs">
+      <DependentUpon>NationalList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\List\NationalView.xaml.cs">
+      <DependentUpon>NationalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\List\PermissionView.xaml.cs">
       <DependentUpon>PermissionView.xaml</DependentUpon>
@@ -284,6 +287,9 @@
     <Compile Include="View\Profession\EquipmentStatusNoteBookView.xaml.cs">
       <DependentUpon>EquipmentStatusNoteBookView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Profession\EquipmentTransferingList.xaml.cs">
+      <DependentUpon>EquipmentTransferingList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profession\EquipmentTransferingView.xaml.cs">
       <DependentUpon>EquipmentTransferingView.xaml</DependentUpon>
     </Compile>
@@ -336,6 +342,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\List\EquipmentTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\NationalList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\NationalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -412,6 +426,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Profession\EquipmentStatusNoteBookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profession\EquipmentTransferingList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

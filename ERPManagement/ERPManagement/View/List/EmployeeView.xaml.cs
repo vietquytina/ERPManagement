@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.IO;
 
 namespace ERPManagement.View.List
 {
@@ -19,6 +20,8 @@ namespace ERPManagement.View.List
     /// </summary>
     public partial class EmployeeView : Telerik.Windows.Controls.RadWindow
     {
+        private ViewModel.Employee.EmployeeViewModel employeevm = null;
+
         public EmployeeView()
         {
             InitializeComponent();
@@ -33,8 +36,18 @@ namespace ERPManagement.View.List
             var result = opDlg.ShowDialog();
             if (result != null && result.Value)
             {
-
+                FileStream fs = File.Open(opDlg.FileName, FileMode.Open);
+                BitmapImage bmpSrc = new BitmapImage();
+                bmpSrc.BeginInit();
+                bmpSrc.StreamSource = fs;
+                bmpSrc.EndInit();
+                imgAvatar.Source = bmpSrc;
             }
+        }
+
+        private void RadWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

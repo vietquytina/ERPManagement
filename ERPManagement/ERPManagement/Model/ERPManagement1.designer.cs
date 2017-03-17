@@ -129,6 +129,9 @@ namespace ERPManagement.Model
     partial void InsertEquipmentTransferITManager(EquipmentTransferITManager instance);
     partial void UpdateEquipmentTransferITManager(EquipmentTransferITManager instance);
     partial void DeleteEquipmentTransferITManager(EquipmentTransferITManager instance);
+    partial void InsertNational(National instance);
+    partial void UpdateNational(National instance);
+    partial void DeleteNational(National instance);
     #endregion
 		
 		public ERPManagementDataContext() : 
@@ -422,6 +425,14 @@ namespace ERPManagement.Model
 			get
 			{
 				return this.GetTable<EquipmentTransferITManager>();
+			}
+		}
+		
+		public System.Data.Linq.Table<National> Nationals
+		{
+			get
+			{
+				return this.GetTable<National>();
 			}
 		}
 	}
@@ -8123,6 +8134,116 @@ namespace ERPManagement.Model
 						this._ID = default(int);
 					}
 					this.SendPropertyChanged("EquipmentTransfer");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[National]")]
+	public partial class National : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _NationalID;
+		
+		private string _Name;
+		
+		private string _Note;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNationalIDChanging(int value);
+    partial void OnNationalIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnNoteChanging(string value);
+    partial void OnNoteChanged();
+    #endregion
+		
+		public National()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int NationalID
+		{
+			get
+			{
+				return this._NationalID;
+			}
+			set
+			{
+				if ((this._NationalID != value))
+				{
+					this.OnNationalIDChanging(value);
+					this.SendPropertyChanging();
+					this._NationalID = value;
+					this.SendPropertyChanged("NationalID");
+					this.OnNationalIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(250)")]
+		public string Note
+		{
+			get
+			{
+				return this._Note;
+			}
+			set
+			{
+				if ((this._Note != value))
+				{
+					this.OnNoteChanging(value);
+					this.SendPropertyChanging();
+					this._Note = value;
+					this.SendPropertyChanged("Note");
+					this.OnNoteChanged();
 				}
 			}
 		}

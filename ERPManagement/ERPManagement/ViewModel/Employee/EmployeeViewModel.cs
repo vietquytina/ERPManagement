@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using Telerik.Windows.Controls;
-using ERPManagement.Model;
-using System.Windows.Media;
 
 namespace ERPManagement.ViewModel.Employee
 {
@@ -86,6 +84,7 @@ namespace ERPManagement.ViewModel.Employee
         private String familyName, fullName, name, birthPlace, ethnic, phoneNumber, email;
         private Int32 sex, regencyID, departmentID;
         private DateTime birthDate;
+        private Byte[] avatarBuff = null;
         #endregion
 
         #region Properties
@@ -224,11 +223,17 @@ namespace ERPManagement.ViewModel.Employee
                 }
             }
         }
+
+        public IEnumerable<List.RegencyViewModel> Regencies { get; set; }
+
+        public IEnumerable<List.DepartmentViewModel> Departments { get; set; }
         #endregion
 
         public EmployeeViewModel() : base()
         {
             BirthDate = DateTime.Now;
+            Regencies = (App.Current as App).Regencies.Items;
+            Departments = (App.Current as App).Departments.Items;
         }
 
         protected override void Save(RadWindow window)
@@ -255,6 +260,8 @@ namespace ERPManagement.ViewModel.Employee
                 emp.Email = Email;
                 emp.Regency = db.Regencies.Single(m => m.RegencyID == RegencyID);
                 emp.Department = db.Departments.Single(m => m.DepartmentID == DepartmentID);
+                if (avatarBuff != null)
+                    emp.Avatar = new System.Data.Linq.Binary(avatarBuff);
                 db.SubmitChanges();
                 employeeID = emp.EmployeeID;
                 RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
@@ -299,6 +306,12 @@ namespace ERPManagement.ViewModel.Employee
                 RegencyID = empvm.RegencyID;
                 DepartmentID = empvm.DepartmentID;
             }
+        }
+
+        public void SetAvatar(FileStream fs)
+        {
+            avatarBuff = new Byte[fs.Length];
+            fs.Read(avatarBuff, 0, (int)fs.Length);
         }
     }
 }

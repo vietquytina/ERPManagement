@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ERPManagement.ViewModel.List
 {
-    class NationalListViewModel : ItemListViewModel<NationalViewModel>
+    public class NationalListViewModel : ItemListViewModel<NationalViewModel>
     {
         public NationalListViewModel() : base()
         {
@@ -19,6 +19,23 @@ namespace ERPManagement.ViewModel.List
         private void National_Deleted(object sender, System.Windows.RoutedEventArgs e)
         {
             Items.Remove((NationalViewModel)sender);
+        }
+
+        protected override void OnNewCommandClick()
+        {
+            View.List.NationalView frmNational = new View.List.NationalView();
+            NationalViewModel nationalvm = new NationalViewModel();
+            nationalvm.ItemAction += new ActionEventHandler(Nationalvm_ItemAction);
+            frmNational.DataContext = nationalvm;
+            frmNational.ShowDialog();
+        }
+
+        private void Nationalvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((NationalViewModel)sender);
+            }
         }
     }
 }

@@ -71,7 +71,19 @@ namespace ERPManagement.ViewModel.Equipment
 
         protected override void OnNewCommandClick()
         {
+            View.Profession.EquipmentTransferingView frmEqTransfer = new View.Profession.EquipmentTransferingView();
+            EquipmentTransferViewModel equipmentTransfervm = new EquipmentTransferViewModel();
+            equipmentTransfervm.ItemAction += new ActionEventHandler(EquipmentTransfervm_ItemAction);
+            frmEqTransfer.DataContext = equipmentTransfervm;
+            frmEqTransfer.ShowDialog();
+        }
 
+        private void EquipmentTransfervm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((EquipmentTransferViewModel)sender);
+            }
         }
 
         protected override void OnSelectedItemChanged(EquipmentTransferViewModel oldValue, EquipmentTransferViewModel newValue)
