@@ -218,11 +218,17 @@
     <Compile Include="View\List\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\List\EquipmentList.xaml.cs">
+      <DependentUpon>EquipmentList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\List\EquipmentTypeList.xaml.cs">
       <DependentUpon>EquipmentTypeList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\List\EquipmentTypeView.xaml.cs">
       <DependentUpon>EquipmentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\List\EquipmentView.xaml.cs">
+      <DependentUpon>EquipmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\List\NationalList.xaml.cs">
       <DependentUpon>NationalList.xaml</DependentUpon>
@@ -337,11 +343,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\List\EquipmentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\List\EquipmentTypeList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\List\EquipmentTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\List\EquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -452,6 +466,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Report\EquipmentBreak.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

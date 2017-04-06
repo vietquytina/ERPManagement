@@ -352,22 +352,6 @@
       <Association Name="Method_Permission" Member="Method" ThisKey="MethodID" OtherKey="MethodID" Type="Method" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Equipment" Member="Equipments">
-    <Type Name="Equipment">
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="Number" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UnitMeasureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
-      <Column Name="ParentEquipmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Equipment_EquipmentImportationDetail" Member="EquipmentImportationDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentImportationDetail" />
-      <Association Name="Equipment_EquipmentHandOverDetail" Member="EquipmentHandOverDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentHandOverDetail" />
-      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
-      <Association Name="UnitMeasure_Equipment" Member="UnitMeasure" ThisKey="UnitMeasureID" OtherKey="UnitMeasureID" Type="UnitMeasure" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EquipmentTransferITManager" Member="EquipmentTransferITManagers">
     <Type Name="EquipmentTransferITManager">
       <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -382,6 +366,23 @@
       <Column Name="NationalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Equipment" Member="Equipments">
+    <Type Name="Equipment">
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitMeasureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NationalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="ParentEquipmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Equipment_EquipmentImportationDetail" Member="EquipmentImportationDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentImportationDetail" />
+      <Association Name="Equipment_EquipmentHandOverDetail" Member="EquipmentHandOverDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentHandOverDetail" />
+      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
+      <Association Name="UnitMeasure_Equipment" Member="UnitMeasure" ThisKey="UnitMeasureID" OtherKey="UnitMeasureID" Type="UnitMeasure" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

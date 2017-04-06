@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 namespace ERPManagement.View.List
 {
     /// <summary>
-    /// Interaction logic for NationalList.xaml
+    /// Interaction logic for EquipmentList.xaml
     /// </summary>
-    public partial class NationalList : Telerik.Windows.Controls.RadWindow
+    public partial class EquipmentList : Telerik.Windows.Controls.RadWindow
     {
-        public NationalList()
+        public EquipmentList()
         {
             InitializeComponent();
-            DataContext = (App.Current as App).Nationals.Items;
+            DataContext = (App.Current as App).Equipments;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ERPManagement.ViewModel
             get { return selectedItem; }
             set
             {
-                if ((selectedItem == null) || (selectedItem != null && !selectedItem.Equals(value)))
+                if (((selectedItem == null) || (selectedItem != null && !selectedItem.Equals(value))) && (value != null))
                 {
                     T current = selectedItem;
                     selectedItem = value;

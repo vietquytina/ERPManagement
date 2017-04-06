@@ -25,6 +25,8 @@ namespace ERPManagement
 
         public static IValueConverter StatusConverter { get; set; }
 
+        public static IValueConverter NationalConverter { get; set; }
+
         static ConvertCollection()
         {
             CompanyConverter = new CompanyNameConverter();
@@ -35,6 +37,7 @@ namespace ERPManagement
             EmployeeConverter = new EmployeeNameConverter();
             EquipmentConverter = new EquipmentNameConverter();
             StatusConverter = new StatusConverter();
+            NationalConverter = new NationalConverter();
         }
 
         public static String ConvertCompany(int companyID)
@@ -81,6 +84,11 @@ namespace ERPManagement
         public static String ConvertUnitMeasure(int unitMeasureID)
         {
             return UnitMeasurConverter.Convert(unitMeasureID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
+        }
+
+        public static String ConvertNational(int nationalID)
+        {
+            return NationalConverter.Convert(nationalID, typeof(String), null, System.Globalization.CultureInfo.CurrentCulture).ToString();
         }
     }
 }

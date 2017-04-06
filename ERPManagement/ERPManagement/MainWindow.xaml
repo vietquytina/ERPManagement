@@ -75,7 +75,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button Style="{StaticResource MenuButton}">
+                <Button Name="btnEquipment" Style="{StaticResource MenuButton}" Click="btnEquipment_Click">
                     <Button.Content>
                         <StackPanel>
                             <Image Source="Resources/settings.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>

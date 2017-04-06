@@ -41,8 +41,10 @@
         <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding RegencyID}" HorizontalAlignment="Left" Margin="111,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
         <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding DepartmentID}" HorizontalAlignment="Left" Margin="460,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="565,142,0,0" TextWrapping="Wrap" Text="{Binding Ethnic}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="208"/>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="31" Margin="634,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" Content="Thoát" HorizontalAlignment="Left" Height="31" Margin="738,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <Grid Grid.Row="1" Background="#F0F0F0">
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="31" Margin="634,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" Content="Thoát" HorizontalAlignment="Left" Height="31" Margin="738,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </telerik:RadWindow>

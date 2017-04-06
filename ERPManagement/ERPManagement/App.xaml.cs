@@ -32,6 +32,8 @@ namespace ERPManagement
 
         public EquipmentListViewModel Equipments { get; set; }
 
+        public NationalListViewModel Nationals { get; set; }
+
         public EquipmentImportationListViewModel EquipmentImports { get; set; }
 
         public EquipmentExportationListViewModel EquipmentExports { get; set; }
@@ -62,12 +64,13 @@ namespace ERPManagement
         {
             Companies = new CompanyListViewModel();
             Departments = new DepartmentListViewModel();
+            Nationals = new NationalListViewModel();
+            Statuses = new StatusListViewModel();
             EquipmentTypes = new EquipmentTypeListViewModel();
             Regencies = new RegencyListViewModel();
             UnitMeasures = new UnitMeasureListViewModel();
             Employees = new EmployeeListViewModel();
             Equipments = new EquipmentListViewModel();
-            Statuses = new StatusListViewModel();
             EquipmentImports = new EquipmentImportationListViewModel();
             this.EquipmentExports = new EquipmentExportationListViewModel();
             this.EquipmentHandovers = new EquipmentHandoverListViewModel();

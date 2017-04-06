@@ -20,5 +20,22 @@ namespace ERPManagement.ViewModel.List
         {
             Items.Remove((EquipmentViewModel)sender);
         }
+
+        protected override void OnNewCommandClick()
+        {
+            View.List.EquipmentView frmEquipment = new View.List.EquipmentView();
+            EquipmentViewModel equipmentvm = new EquipmentViewModel();
+            frmEquipment.DataContext = equipmentvm;
+            equipmentvm.ItemAction += new ActionEventHandler(Equipmentvm_ItemAction);
+            frmEquipment.ShowDialog();
+        }
+
+        private void Equipmentvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Add)
+            {
+                Items.Add((EquipmentViewModel)sender);
+            }
+        }
     }
 }

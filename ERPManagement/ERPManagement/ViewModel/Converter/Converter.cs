@@ -130,7 +130,7 @@ namespace ERPManagement.ViewModel.Converter
             var equipment = app.Equipments.Items.SingleOrDefault(m => m.EquipmentID == eqID);
             if (equipment == null)
             {
-                return null;
+                return "";
             }
             if (cvInfo == ConvertInfomation.Code)
             {
@@ -167,6 +167,18 @@ namespace ERPManagement.ViewModel.Converter
             if (status == null)
                 return String.Empty;
             return status.Name;
+        }
+    }
+
+    public class NationalConverter : MainConverter
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var nationalID = System.Convert.ToInt32(value);
+            var national = app.Nationals.Items.SingleOrDefault(m => m.NationalID == nationalID);
+            if (national == null)
+                return "";
+            return national.Name;
         }
     }
 }

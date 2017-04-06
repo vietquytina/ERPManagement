@@ -25,6 +25,7 @@ namespace ERPManagement.ViewModel.List
                 equipmentvm.Number = equipment.Number;
                 equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
                 equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
+                equipmentvm.NationalID = equipment.NationalID;
                 equipmentvm.Description = equipment.Description;
                 equipmentvm.isInserted = false;
                 equipmentvms.Add(equipmentvm);
@@ -46,6 +47,7 @@ namespace ERPManagement.ViewModel.List
                 equipmentvm.Number = equipment.Number;
                 equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
                 equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
+                equipmentvm.NationalID = equipment.NationalID;
                 equipmentvm.Description = equipment.Description;
                 equipmentvm.ParentEquipmentID = equipment.ParentEquipmentID;
                 equipmentvm.isInserted = false;
@@ -65,8 +67,10 @@ namespace ERPManagement.ViewModel.List
             equipmentvm.equipmentID = equipment.EquipmentID;
             equipmentvm.Code = equipment.Code;
             equipmentvm.Name = equipment.Name;
+            equipmentvm.Number = equipment.Number;
             equipmentvm.EquipmentTypeID = equipment.EquipmentTypeID;
             equipmentvm.UnitMeasureID = equipment.UnitMeasureID;
+            equipmentvm.NationalID = equipment.NationalID;
             equipmentvm.Description = equipment.Description;
             equipmentvm.ParentEquipmentID = equipment.ParentEquipmentID;
             equipmentvm.isInserted = false;
@@ -75,8 +79,8 @@ namespace ERPManagement.ViewModel.List
 
         #region Variables
         private Int32 equipmentID = 0;
-        private String unitMeasureName, equipmentTypeName, number, description;
-        private Int32 equipmentTypeID, unitMeasureID;
+        private String unitMeasureName, equipmentTypeName, number, description, nationalName;
+        private Int32 equipmentTypeID, unitMeasureID, nationalID;
         private Int32? parentEqID;
         #endregion
 
@@ -153,6 +157,33 @@ namespace ERPManagement.ViewModel.List
             }
         }
 
+        public Int32 NationalID
+        {
+            get { return nationalID; }
+            set
+            {
+                if (nationalID != value)
+                {
+                    nationalID = value;
+                    NationalName = ConvertCollection.ConvertNational(nationalID);
+                    RaisePropertyChanged("NationalID");
+                }
+            }
+        }
+
+        public String NationalName
+        {
+            get { return nationalName; }
+            set
+            {
+                if (nationalName != value)
+                {
+                    nationalName = value;
+                    RaisePropertyChanged("NationalName");
+                }
+            }
+        }
+
         public String Number
         {
             get { return number; }
@@ -178,11 +209,19 @@ namespace ERPManagement.ViewModel.List
                 }
             }
         }
+
+        public IEnumerable<UnitMeasureViewModel> UnitMeasures { get; set; }
+
+        public IEnumerable<EquipmentTypeViewModel> EquipmentTypes { get; set; }
+
+        public IEnumerable<NationalViewModel> Nationals { get; set; }
         #endregion
 
         public EquipmentViewModel() : base()
         {
-
+            UnitMeasures = (App.Current as App).UnitMeasures.Items;
+            EquipmentTypes = (App.Current as App).EquipmentTypes.Items;
+            Nationals = (App.Current as App).Nationals.Items;
         }
 
         protected override void Save(RadWindow window)
@@ -201,8 +240,10 @@ namespace ERPManagement.ViewModel.List
             {
                 equipment.Code = Code;
                 equipment.Name = Name;
+                equipment.Number = Number;
                 equipment.EquipmentType = db.EquipmentTypes.Single(m => m.EquipmentTypeID == EquipmentTypeID);
                 equipment.UnitMeasure = db.UnitMeasures.Single(m => m.UnitMeasureID == UnitMeasureID);
+                equipment.NationalID = NationalID;
                 equipment.Description = Description;
                 equipment.ParentEquipmentID = ParentEquipmentID;
                 db.SubmitChanges();
@@ -226,7 +267,25 @@ namespace ERPManagement.ViewModel.List
 
         protected override void Edit()
         {
+            View.List.EquipmentView frmEquipment = new View.List.EquipmentView();
+            EquipmentViewModel equipmentvm = GetEquipment(EquipmentID);
+            frmEquipment.DataContext = equipmentvm;
+            equipmentvm.ItemAction += new ActionEventHandler(Equipmentvm_ItemAction);
+            frmEquipment.ShowDialog();
+        }
 
+        private void Equipmentvm_ItemAction(object sender, ActionEventArgs e)
+        {
+            if (e.Action == ViewModelAction.Edit)
+            {
+                EquipmentViewModel equipmentvm = (EquipmentViewModel)sender;
+                Code = equipmentvm.Code;
+                Name = equipmentvm.Name;
+                Number = equipmentvm.Number;
+                EquipmentTypeID = equipmentvm.EquipmentTypeID;
+                UnitMeasureID = equipmentvm.UnitMeasureID;
+                Description = equipmentvm.Description;
+            }
         }
     }
 }

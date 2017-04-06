@@ -107,5 +107,11 @@ namespace ERPManagement
             EquipmentReturningList frmEqReturning = new EquipmentReturningList();
             ShowWindow(frmEqReturning);
         }
+
+        private void btnEquipment_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentList frmEquipmentList = new EquipmentList();
+            ShowWindow(frmEquipmentList);
+        }
     }
 }

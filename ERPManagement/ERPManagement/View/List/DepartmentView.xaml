@@ -21,7 +21,9 @@
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="104,41,0,0" TextWrapping="Wrap" Text="{Binding Name}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="362"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="104,72,0,0" TextWrapping="Wrap" Text="{Binding Note}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="362"/>
         <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" ItemsSource="{Binding Companies}" SelectedValuePath="CompanyID" DisplayMemberPath="Name" SelectedValue="{Binding CompanyID}" IsEnabled="{Binding CanWrite}" HorizontalAlignment="Left" Margin="104,103,0,0" VerticalAlignment="Top" Width="362" Height="26" />
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Lưu" IsEnabled="{Binding CanWrite}" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="31" Margin="275,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
-        <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Content="Thoát" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="31" Margin="379,0,0,0" VerticalAlignment="Center" Width="96" Grid.Row="1"/>
+        <Grid Grid.Row="1" Background="#F0F0F0">
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" HorizontalAlignment="Left" Height="26" Margin="269,0,0,0" VerticalAlignment="Center" Width="91"/>
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=telerik:RadWindow}}" Content="Thoát" HorizontalAlignment="Left" Height="26" Margin="373,0,0,0" VerticalAlignment="Center" Width="91"/>
+        </Grid>
     </Grid>
 </telerik:RadWindow>
