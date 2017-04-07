@@ -307,7 +307,7 @@ namespace ERPManagement.ViewModel.Equipment
                 String equipmentName = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.Name);
                 String unitMeasure = ConvertCollection.ConvertEquipment(detail.EquipmentID, ViewModel.Converter.ConvertInfomation.UnitMeasure);
                 String status = ConvertCollection.ConvertStatus(detail.StatusID);
-                eqExportDS.EquipmentImportationDetail.AddEquipmentImportationDetailRow(detail.DetailID, 0, equipmentCode, equipmentName, unitMeasure, detail.Quantity, status, detail.Note, detail.Index);
+                eqExportDS.EquipmentImportationDetail.AddEquipmentImportationDetailRow(Guid.NewGuid(), 0, equipmentCode, equipmentName, unitMeasure, detail.Quantity, status, detail.Note, detail.Index);
             }
             rptWnd.ReportPath = "Report/EquipmentExport.rdlc";
             rptWnd.AddReportSource("EquipmentExport", eqExportDS.EquipmentImportation);

@@ -46,20 +46,6 @@
       <Association Name="EquipmentType_Equipment" Member="Equipments" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="Equipment" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentImportationDetail" Member="EquipmentImportationDetails">
-    <Type Name="EquipmentImportationDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RestQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Association Name="EquipmentImportation_EquipmentImportationDetail" Member="EquipmentImportation" ThisKey="ID" OtherKey="ID" Type="EquipmentImportation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Equipment_EquipmentImportationDetail" Member="Equipment" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="Equipment" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EquipmentImportation" Member="EquipmentImportations">
     <Type Name="EquipmentImportation">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -81,19 +67,6 @@
       <Association Name="EquipmentExportation_EquipmentExportationDetail" Member="EquipmentExportationDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentExportationDetail" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentExportationDetail" Member="EquipmentExportationDetails">
-    <Type Name="EquipmentExportationDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RestQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Association Name="EquipmentExportation_EquipmentExportationDetail" Member="EquipmentExportation" ThisKey="ID" OtherKey="ID" Type="EquipmentExportation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Regency" Member="Regencies">
     <Type Name="Regency">
       <Column Name="RegencyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -111,39 +84,6 @@
       <Column Name="Note" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentHandOverDetail" Member="EquipmentHandOverDetails">
-    <Type Name="EquipmentHandOverDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Association Name="EquipmentHandOver_EquipmentHandOverDetail" Member="EquipmentHandOver" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOver" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Equipment_EquipmentHandOverDetail" Member="Equipment" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="Equipment" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentHandOverReceiver" Member="EquipmentHandOverReceivers">
-    <Type Name="EquipmentHandOverReceiver">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentHandOver_EquipmentHandOverReceiver" Member="EquipmentHandOver" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOver" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Employee_EquipmentHandOverReceiver" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentHandOverSender" Member="EquipmentHandOverSenders">
-    <Type Name="EquipmentHandOverSender">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentHandOver_EquipmentHandOverSender" Member="EquipmentHandOver" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOver" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Employee_EquipmentHandOverSender" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EquipmentHandOver" Member="EquipmentHandOvers">
     <Type Name="EquipmentHandOver">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -152,8 +92,8 @@
       <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="DepartmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="EquipmentHandOver_EquipmentHandOverDetail" Member="EquipmentHandOverDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOverDetail" />
-      <Association Name="EquipmentHandOver_EquipmentHandOverReceiver" Member="EquipmentHandOverReceivers" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOverReceiver" />
       <Association Name="EquipmentHandOver_EquipmentHandOverSender" Member="EquipmentHandOverSenders" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOverSender" />
+      <Association Name="EquipmentHandOver_EquipmentHandOverReceiver" Member="EquipmentHandOverReceivers" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOverReceiver" />
       <Association Name="Department_EquipmentHandOver" Member="Department" ThisKey="DepartmentID" OtherKey="DepartmentID" Type="Department" IsForeignKey="true" />
     </Type>
   </Table>
@@ -166,56 +106,15 @@
       <Association Name="EquipmentStatusNoteBook_EquipmentStatusNoteBookDetail" Member="EquipmentStatusNoteBookDetails" ThisKey="NoteID" OtherKey="ID" Type="EquipmentStatusNoteBookDetail" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentStatusNoteBookDetail" Member="EquipmentStatusNoteBookDetails">
-    <Type Name="EquipmentStatusNoteBookDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Cause" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Association Name="EquipmentStatusNoteBook_EquipmentStatusNoteBookDetail" Member="EquipmentStatusNoteBook" ThisKey="ID" OtherKey="NoteID" Type="EquipmentStatusNoteBook" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EquipmentReturning" Member="EquipmentReturnings">
     <Type Name="EquipmentReturning">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Number" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="DepartmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentReturning_EquipmentReturningDetail" Member="EquipmentReturningDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentReturningDetail" />
       <Association Name="EquipmentReturning_EquipmentReturningReceiver" Member="EquipmentReturningReceivers" ThisKey="ID" OtherKey="ID" Type="EquipmentReturningReceiver" />
       <Association Name="EquipmentReturning_EquipmentReturningSender" Member="EquipmentReturningSenders" ThisKey="ID" OtherKey="ID" Type="EquipmentReturningSender" />
-      <Association Name="EquipmentReturning_EquipmentReturningDetail" Member="EquipmentReturningDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentReturningDetail" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentReturningReceiver" Member="EquipmentReturningReceivers">
-    <Type Name="EquipmentReturningReceiver">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentReturning_EquipmentReturningReceiver" Member="EquipmentReturning" ThisKey="ID" OtherKey="ID" Type="EquipmentReturning" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentReturningSender" Member="EquipmentReturningSenders">
-    <Type Name="EquipmentReturningSender">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentReturning_EquipmentReturningSender" Member="EquipmentReturning" ThisKey="ID" OtherKey="ID" Type="EquipmentReturning" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentReturningDetail" Member="EquipmentReturningDetails">
-    <Type Name="EquipmentReturningDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentReturning_EquipmentReturningDetail" Member="EquipmentReturning" ThisKey="ID" OtherKey="ID" Type="EquipmentReturning" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.EquipmentTransfer" Member="EquipmentTransfers">
@@ -225,39 +124,9 @@
       <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Note" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
       <Association Name="EquipmentTransfer_EquipmentTransferDetail" Member="EquipmentTransferDetails" ThisKey="ID" OtherKey="ID" Type="EquipmentTransferDetail" />
+      <Association Name="EquipmentTransfer_EquipmentTransferITManager" Member="EquipmentTransferITManagers" ThisKey="ID" OtherKey="ID" Type="EquipmentTransferITManager" />
       <Association Name="EquipmentTransfer_EquipmentTransferReceiver" Member="EquipmentTransferReceivers" ThisKey="ID" OtherKey="ID" Type="EquipmentTransferReceiver" />
       <Association Name="EquipmentTransfer_EquipmentTransferSender" Member="EquipmentTransferSenders" ThisKey="ID" OtherKey="ID" Type="EquipmentTransferSender" />
-      <Association Name="EquipmentTransfer_EquipmentTransferITManager" Member="EquipmentTransferITManagers" ThisKey="ID" OtherKey="ID" Type="EquipmentTransferITManager" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentTransferDetail" Member="EquipmentTransferDetails">
-    <Type Name="EquipmentTransferDetail">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Association Name="EquipmentTransfer_EquipmentTransferDetail" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentTransferReceiver" Member="EquipmentTransferReceivers">
-    <Type Name="EquipmentTransferReceiver">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentTransfer_EquipmentTransferReceiver" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentTransferSender" Member="EquipmentTransferSenders">
-    <Type Name="EquipmentTransferSender">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentTransfer_EquipmentTransferSender" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.EquipmentBreak" Member="EquipmentBreaks">
@@ -296,24 +165,6 @@
       <Association Name="EquipmentBreakReport_EquipmentBreakReportUser" Member="EquipmentBreakReportUsers" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReportUser" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentBreakReportManager" Member="EquipmentBreakReportManagers">
-    <Type Name="EquipmentBreakReportManager">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentBreakReport_EquipmentBreakReportManager" Member="EquipmentBreakReport" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentBreakReportUser" Member="EquipmentBreakReportUsers">
-    <Type Name="EquipmentBreakReportUser">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentBreakReport_EquipmentBreakReportUser" Member="EquipmentBreakReport" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Employee" Member="Employees">
     <Type Name="Employee">
       <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -332,9 +183,9 @@
       <Column Name="IsManager" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="Employee_EquipmentImportation" Member="EquipmentImportations" ThisKey="EmployeeID" OtherKey="Deliver" Type="EquipmentImportation" />
-      <Association Name="Employee_EquipmentHandOverReceiver" Member="EquipmentHandOverReceivers" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="EquipmentHandOverReceiver" />
-      <Association Name="Employee_EquipmentHandOverSender" Member="EquipmentHandOverSenders" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="EquipmentHandOverSender" />
       <Association Name="Employee_Permission" Member="Permissions" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Permission" />
+      <Association Name="Employee_EquipmentHandOverSender" Member="EquipmentHandOverSenders" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="EquipmentHandOverSender" />
+      <Association Name="Employee_EquipmentHandOverReceiver" Member="EquipmentHandOverReceivers" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="EquipmentHandOverReceiver" />
       <Association Name="Department_Employee" Member="Department" ThisKey="DepartmentID" OtherKey="DepartmentID" Type="Department" IsForeignKey="true" />
       <Association Name="Regency_Employee" Member="Regency" ThisKey="RegencyID" OtherKey="RegencyID" Type="Regency" IsForeignKey="true" />
     </Type>
@@ -350,15 +201,6 @@
       <Column Name="CanAccept" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Employee_Permission" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
       <Association Name="Method_Permission" Member="Method" ThisKey="MethodID" OtherKey="MethodID" Type="Method" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EquipmentTransferITManager" Member="EquipmentTransferITManagers">
-    <Type Name="EquipmentTransferITManager">
-      <Column Name="DetailID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentTransfer_EquipmentTransferITManager" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.[National]" Member="Nationals">
@@ -379,10 +221,168 @@
       <Column Name="NationalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
       <Column Name="ParentEquipmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Equipment_EquipmentImportationDetail" Member="EquipmentImportationDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentImportationDetail" />
       <Association Name="Equipment_EquipmentHandOverDetail" Member="EquipmentHandOverDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentHandOverDetail" />
+      <Association Name="Equipment_EquipmentImportationDetail" Member="EquipmentImportationDetails" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="EquipmentImportationDetail" />
       <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
       <Association Name="UnitMeasure_Equipment" Member="UnitMeasure" ThisKey="UnitMeasureID" OtherKey="UnitMeasureID" Type="UnitMeasure" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentExportationDetail" Member="EquipmentExportationDetails">
+    <Type Name="EquipmentExportationDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RestQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="EquipmentExportation_EquipmentExportationDetail" Member="EquipmentExportation" ThisKey="ID" OtherKey="ID" Type="EquipmentExportation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentHandOverDetail" Member="EquipmentHandOverDetails">
+    <Type Name="EquipmentHandOverDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="Equipment_EquipmentHandOverDetail" Member="Equipment" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="Equipment" IsForeignKey="true" />
+      <Association Name="EquipmentHandOver_EquipmentHandOverDetail" Member="EquipmentHandOver" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOver" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentHandOverSender" Member="EquipmentHandOverSenders">
+    <Type Name="EquipmentHandOverSender">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_EquipmentHandOverSender" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+      <Association Name="EquipmentHandOver_EquipmentHandOverSender" Member="EquipmentHandOver" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOver" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentHandOverReceiver" Member="EquipmentHandOverReceivers">
+    <Type Name="EquipmentHandOverReceiver">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_EquipmentHandOverReceiver" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+      <Association Name="EquipmentHandOver_EquipmentHandOverReceiver" Member="EquipmentHandOver" ThisKey="ID" OtherKey="ID" Type="EquipmentHandOver" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentImportationDetail" Member="EquipmentImportationDetails">
+    <Type Name="EquipmentImportationDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RestQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="Equipment_EquipmentImportationDetail" Member="Equipment" ThisKey="EquipmentID" OtherKey="EquipmentID" Type="Equipment" IsForeignKey="true" />
+      <Association Name="EquipmentImportation_EquipmentImportationDetail" Member="EquipmentImportation" ThisKey="ID" OtherKey="ID" Type="EquipmentImportation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentReturningDetail" Member="EquipmentReturningDetails">
+    <Type Name="EquipmentReturningDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentReturning_EquipmentReturningDetail" Member="EquipmentReturning" ThisKey="ID" OtherKey="ID" Type="EquipmentReturning" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentReturningReceiver" Member="EquipmentReturningReceivers">
+    <Type Name="EquipmentReturningReceiver">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentReturning_EquipmentReturningReceiver" Member="EquipmentReturning" ThisKey="ID" OtherKey="ID" Type="EquipmentReturning" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentReturningSender" Member="EquipmentReturningSenders">
+    <Type Name="EquipmentReturningSender">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentReturning_EquipmentReturningSender" Member="EquipmentReturning" ThisKey="ID" OtherKey="ID" Type="EquipmentReturning" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentStatusNoteBookDetail" Member="EquipmentStatusNoteBookDetails">
+    <Type Name="EquipmentStatusNoteBookDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cause" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Association Name="EquipmentStatusNoteBook_EquipmentStatusNoteBookDetail" Member="EquipmentStatusNoteBook" ThisKey="ID" OtherKey="NoteID" Type="EquipmentStatusNoteBook" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentTransferDetail" Member="EquipmentTransferDetails">
+    <Type Name="EquipmentTransferDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="EquipmentTransfer_EquipmentTransferDetail" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentTransferITManager" Member="EquipmentTransferITManagers">
+    <Type Name="EquipmentTransferITManager">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentTransfer_EquipmentTransferITManager" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentTransferReceiver" Member="EquipmentTransferReceivers">
+    <Type Name="EquipmentTransferReceiver">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentTransfer_EquipmentTransferReceiver" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentTransferSender" Member="EquipmentTransferSenders">
+    <Type Name="EquipmentTransferSender">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentTransfer_EquipmentTransferSender" Member="EquipmentTransfer" ThisKey="ID" OtherKey="ID" Type="EquipmentTransfer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentBreakReportManager" Member="EquipmentBreakReportManagers">
+    <Type Name="EquipmentBreakReportManager">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentBreakReport_EquipmentBreakReportManager" Member="EquipmentBreakReport" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentBreakReportUser" Member="EquipmentBreakReportUsers">
+    <Type Name="EquipmentBreakReportUser">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentBreakReport_EquipmentBreakReportUser" Member="EquipmentBreakReport" ThisKey="ID" OtherKey="ID" Type="EquipmentBreakReport" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

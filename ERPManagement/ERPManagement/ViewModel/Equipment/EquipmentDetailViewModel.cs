@@ -15,12 +15,12 @@ namespace ERPManagement.ViewModel.Equipment
 
     public class EquipmentIndexViewModel : BaseNotify
     {
-        public Guid DetailID { get; set; }
+        public int DetailID { get; set; }
         public Int32 Index { get; set; }
 
         public EquipmentIndexViewModel()
         {
-            DetailID = Guid.NewGuid();
+            DetailID = -1;
             Index = -1;
         }
     }

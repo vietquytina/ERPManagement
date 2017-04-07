@@ -784,7 +784,7 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipmentImportationDetailRow AddEquipmentImportationDetailRow(System.Guid DetailID, int ID, string EquipmentCode, string EquipmentName, string UnitMeasure, int Quantity, string StatusName, string Note, int Index) {
+            public EquipmentImportationDetailRow AddEquipmentImportationDetailRow(int DetailID, int ID, string EquipmentCode, string EquipmentName, string UnitMeasure, int Quantity, string StatusName, string Note, int Index) {
                 EquipmentImportationDetailRow rowEquipmentImportationDetailRow = ((EquipmentImportationDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DetailID,
@@ -803,7 +803,7 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipmentImportationDetailRow FindByDetailID(System.Guid DetailID) {
+            public EquipmentImportationDetailRow FindByDetailID(int DetailID) {
                 return ((EquipmentImportationDetailRow)(this.Rows.Find(new object[] {
                             DetailID})));
             }
@@ -839,7 +839,7 @@ namespace ERPManagement.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnDetailID = new global::System.Data.DataColumn("DetailID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                this.columnDetailID = new global::System.Data.DataColumn("DetailID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDetailID);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
@@ -1124,9 +1124,9 @@ namespace ERPManagement.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Guid DetailID {
+            public int DetailID {
                 get {
-                    return ((global::System.Guid)(this[this.tableEquipmentImportationDetail.DetailIDColumn]));
+                    return ((int)(this[this.tableEquipmentImportationDetail.DetailIDColumn]));
                 }
                 set {
                     this[this.tableEquipmentImportationDetail.DetailIDColumn] = value;
