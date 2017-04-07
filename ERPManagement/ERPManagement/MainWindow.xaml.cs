@@ -65,7 +65,8 @@ namespace ERPManagement
 
         private void btnEmp_Click(object sender, RoutedEventArgs e)
         {
-
+            EmployeeList empList = new EmployeeList();
+            ShowWindow(empList);
         }
 
         private void btnEqBreak_Click(object sender, RoutedEventArgs e)
@@ -100,6 +101,8 @@ namespace ERPManagement
 
         private void btnTransfer_Click(object sender, RoutedEventArgs e)
         {
+            EquipmentTransferingList frmEqTransfer = new EquipmentTransferingList();
+            ShowWindow(frmEqTransfer);
         }
 
         private void btnEqReturning_Click(object sender, RoutedEventArgs e)
@@ -112,6 +115,12 @@ namespace ERPManagement
         {
             EquipmentList frmEquipmentList = new EquipmentList();
             ShowWindow(frmEquipmentList);
+        }
+
+        private void btnNational_Click(object sender, RoutedEventArgs e)
+        {
+            NationalList frmNationalList = new NationalList();
+            ShowWindow(frmNationalList);
         }
     }
 }

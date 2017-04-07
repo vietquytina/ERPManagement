@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
 using ERPManagement.Model;
+using System.Collections.Specialized;
 
 namespace ERPManagement.ViewModel.List
 {
+    public class SubEquipmentViewModel : Equipment.EquipmentDetailViewModel
+    {
+
+    }
+
     [Authorize.Authorize(Method = "Equipment")]
     public class EquipmentViewModel : ListViewModel
     {
@@ -73,6 +80,17 @@ namespace ERPManagement.ViewModel.List
             equipmentvm.NationalID = equipment.NationalID;
             equipmentvm.Description = equipment.Description;
             equipmentvm.ParentEquipmentID = equipment.ParentEquipmentID;
+            var subEquipments = from q in db.Equipments
+                                where q.ParentEquipmentID == equipmentvm.EquipmentID
+                                select q;
+            int index = 1;
+            foreach (var subEquipment in subEquipments)
+            {
+                SubEquipmentViewModel subEquipmentvm = new SubEquipmentViewModel();
+                subEquipmentvm.Index = index++;
+                subEquipmentvm.EquipmentID = subEquipment.EquipmentID;
+                equipmentvm.SubEquipments.Add(subEquipmentvm);
+            }
             equipmentvm.isInserted = false;
             return equipmentvm;
         }
@@ -82,6 +100,7 @@ namespace ERPManagement.ViewModel.List
         private String unitMeasureName, equipmentTypeName, number, description, nationalName;
         private Int32 equipmentTypeID, unitMeasureID, nationalID;
         private Int32? parentEqID;
+        private List<SubEquipmentViewModel> delItems = null;
         #endregion
 
         #region Properties
@@ -210,18 +229,46 @@ namespace ERPManagement.ViewModel.List
             }
         }
 
+        public ObservableCollection<SubEquipmentViewModel> SubEquipments { get; set; }
+
         public IEnumerable<UnitMeasureViewModel> UnitMeasures { get; set; }
 
         public IEnumerable<EquipmentTypeViewModel> EquipmentTypes { get; set; }
 
         public IEnumerable<NationalViewModel> Nationals { get; set; }
+
+        public IEnumerable<EquipmentViewModel> Equipments { get; set; }
         #endregion
 
         public EquipmentViewModel() : base()
         {
+            delItems = new List<SubEquipmentViewModel>();
+            SubEquipments = new ObservableCollection<SubEquipmentViewModel>();
+            SubEquipments.CollectionChanged += new NotifyCollectionChangedEventHandler(SubEquipments_CollectionChanged);
             UnitMeasures = (App.Current as App).UnitMeasures.Items;
             EquipmentTypes = (App.Current as App).EquipmentTypes.Items;
             Nationals = (App.Current as App).Nationals.Items;
+            var eqList = (App.Current as App).Equipments;
+            if (eqList != null)
+            {
+                Equipments = eqList.Items;
+            }
+        }
+
+        private void SubEquipments_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    SubEquipmentViewModel subEquipment = e.OldItems[0] as SubEquipmentViewModel;
+                    if (subEquipment != null)
+                    {
+                        delItems.Add(subEquipment);
+                    }
+                    break;
+            }
         }
 
         protected override void Save(RadWindow window)
@@ -248,6 +295,17 @@ namespace ERPManagement.ViewModel.List
                 equipment.ParentEquipmentID = ParentEquipmentID;
                 db.SubmitChanges();
                 equipmentID = equipment.EquipmentID;
+                foreach (var delItem in delItems)
+                {
+                    var eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == delItem.EquipmentID);
+                    eq.ParentEquipmentID = null;
+                }
+                foreach (var subEquipment in SubEquipments)
+                {
+                    var eq = db.Equipments.SingleOrDefault(m => m.EquipmentID == subEquipment.EquipmentID);
+                    eq.ParentEquipmentID = EquipmentID;
+                }
+                db.SubmitChanges();
                 RaiseAction(isInserted ? ViewModelAction.Add : ViewModelAction.Edit);
                 isInserted = false;
             }
@@ -285,6 +343,7 @@ namespace ERPManagement.ViewModel.List
                 EquipmentTypeID = equipmentvm.EquipmentTypeID;
                 UnitMeasureID = equipmentvm.UnitMeasureID;
                 Description = equipmentvm.Description;
+                ParentEquipmentID = equipmentvm.ParentEquipmentID;
             }
         }
     }

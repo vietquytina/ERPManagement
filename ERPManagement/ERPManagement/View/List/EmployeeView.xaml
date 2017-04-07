@@ -25,7 +25,7 @@
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,48,0,0" TextWrapping="Wrap" Text="{Binding FamilyName}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="208"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,80,0,0" TextWrapping="Wrap" Text="{Binding Name}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="208"/>
         <Image Name="imgAvatar" Source="/ERPManagement;component/Resources/noavatar.gif" Stretch="Fill" HorizontalAlignment="Left" Height="132" Margin="13,51,0,0" VerticalAlignment="Top" Width="108"/>
-        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedIndex="{Binding Sex}" IsEnabled="{Binding CanWrite}" HorizontalAlignment="Left" Margin="565,48,0,0" VerticalAlignment="Top" Width="121" Height="26" />
+        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedIndex="{Binding Sex}" ItemsSource="{Binding Sexes}" IsEnabled="{Binding CanWrite}" HorizontalAlignment="Left" Margin="565,48,0,0" VerticalAlignment="Top" Width="121" Height="26" />
         <telerik:RadDatePicker telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding BirthDate}" IsEnabled="{Binding CanWrite}" HorizontalAlignment="Left" Margin="565,79,0,0" VerticalAlignment="Top" Width="121" Height="27"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="565,111,0,0" TextWrapping="Wrap" Text="{Binding BirthPlace}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="269"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,142,0,0" TextWrapping="Wrap" Text="{Binding FullName}" IsEnabled="False" VerticalAlignment="Top" Width="208"/>
@@ -38,8 +38,8 @@
         <Label Content="Chức vụ" HorizontalAlignment="Left" Margin="13,361,0,0" VerticalAlignment="Top"/>
         <Label Content="Phòng ban" HorizontalAlignment="Left" Margin="362,361,0,0" VerticalAlignment="Top"/>
         <Label Content="Dân tộc" HorizontalAlignment="Left" Margin="485,142,0,0" VerticalAlignment="Top"/>
-        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding RegencyID}" HorizontalAlignment="Left" Margin="111,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
-        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding DepartmentID}" HorizontalAlignment="Left" Margin="460,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
+        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding RegencyID}" ItemsSource="{Binding Regencies}" DisplayMemberPath="Name" SelectedValuePath="RegencyID" HorizontalAlignment="Left" Margin="111,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
+        <telerik:RadComboBox telerik:StyleManager.Theme="Office_Blue" SelectedValue="{Binding DepartmentID}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentID" HorizontalAlignment="Left" Margin="460,361,0,0" VerticalAlignment="Top" Width="208" Height="26" />
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="565,142,0,0" TextWrapping="Wrap" Text="{Binding Ethnic}" IsEnabled="{Binding CanWrite}" VerticalAlignment="Top" Width="208"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="237,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
         <Grid Grid.Row="1" Background="#F0F0F0">

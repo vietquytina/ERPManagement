@@ -7,9 +7,10 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
         xmlns:ERPManagement="clr-namespace:ERPManagement" x:Class="ERPManagement.View.List.EquipmentView" 
         mc:Ignorable="d"
-        Header="Thiết bị" Height="449" Width="768" WindowStartupLocation="CenterScreen">
+        Header="Thiết bị" Height="490" Width="724" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="176"/>
             <RowDefinition/>
             <RowDefinition Height="64"/>
         </Grid.RowDefinitions>
@@ -17,25 +18,32 @@
         <Label Content="Tên thiết bị" HorizontalAlignment="Left" Margin="359,10,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
         <Label Content="Serial" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="26" Width="39"/>
         <Label Content="Đơn vị tính" HorizontalAlignment="Left" Margin="359,41,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
-        <Label Content="Loại thiết bị" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Height="26" Width="72"/>
-        <Label Content="Xuất xứ" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
-        <Label Content="Mô tả" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
+        <Label Content="Loại thiết bị" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Height="26" Width="72"/>
+        <Label Content="Xuất xứ" HorizontalAlignment="Left" Margin="359,74,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+        <Label Content="Mô tả" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="113,10,0,0" TextWrapping="Wrap" Text="{Binding Code}" VerticalAlignment="Top" Width="192" Height="26" />
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="462,10,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="209" Height="26" />
         <ERPManagement:MetroTextBox HorizontalAlignment="Left" Margin="113,41,0,0" TextWrapping="Wrap" Text="{Binding Number}" VerticalAlignment="Top" Width="192" Height="26" />
         <telerik:RadComboBox SelectedValue="{Binding UnitMeasureID}" ItemsSource="{Binding UnitMeasures}" DisplayMemberPath="Name" SelectedValuePath="UnitMeasureID" HorizontalAlignment="Left" Margin="462,41,0,0" VerticalAlignment="Top" Width="209" Height="26" />
-        <telerik:RadComboBox SelectedValue="{Binding EquipmentTypeID}" ItemsSource="{Binding EquipmentTypes}" DisplayMemberPath="Name" SelectedValuePath="TypeID" HorizontalAlignment="Left" Margin="113,134,0,0" VerticalAlignment="Top" Width="439" Height="26" />
-        <telerik:RadComboBox SelectedValue="{Binding NationalID}" ItemsSource="{Binding Nationals}" DisplayMemberPath="Name" SelectedValuePath="NationalID" HorizontalAlignment="Left" Margin="113,165,0,0" VerticalAlignment="Top" Width="439" Height="26" />
-        <RichTextBox HorizontalAlignment="Left" Height="129" Margin="113,196,0,0" VerticalAlignment="Top" Width="439">
+        <telerik:RadComboBox SelectedValue="{Binding EquipmentTypeID}" ItemsSource="{Binding EquipmentTypes}" DisplayMemberPath="Name" SelectedValuePath="TypeID" HorizontalAlignment="Left" Margin="113,74,0,0" VerticalAlignment="Top" Width="192" Height="26" />
+        <telerik:RadComboBox SelectedValue="{Binding NationalID}" ItemsSource="{Binding Nationals}" DisplayMemberPath="Name" SelectedValuePath="NationalID" HorizontalAlignment="Left" Margin="462,74,0,0" VerticalAlignment="Top" Width="209" Height="26" />
+        <RichTextBox HorizontalAlignment="Left" Height="60" Margin="113,105,0,0" VerticalAlignment="Top" Width="558">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="{Binding Description}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Grid Grid.Row="1" Background="#F0F0F0">
-            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" HorizontalAlignment="Left" Height="26" Margin="347,0,0,0" VerticalAlignment="Center" Width="91"/>
-            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" Content="Thoát" HorizontalAlignment="Left" Height="26" Margin="451,0,0,0" VerticalAlignment="Center" Width="91"/>
+        <Grid Grid.Row="2" Background="#F0F0F0">
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" IsEnabled="{Binding CanWrite}" Content="Lưu" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" HorizontalAlignment="Left" Height="26" Margin="494,0,0,0" VerticalAlignment="Center" Width="91"/>
+            <telerik:RadButton telerik:StyleManager.Theme="Office_Blue" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadWindow}, Mode=FindAncestor}}" Content="Thoát" HorizontalAlignment="Left" Height="26" Margin="598,0,0,0" VerticalAlignment="Center" Width="91"/>
         </Grid>
+        <telerik:RadGridView Grid.Row="1" ItemsSource="{Binding SubEquipments}" AutoGenerateColumns="False" GroupRenderMode="Flat" NewRowPosition="Bottom" ShowGroupPanel="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="STT" Width="60" HeaderTextAlignment="Center" DataMemberBinding="{Binding Index}"></telerik:GridViewDataColumn>
+                <telerik:GridViewComboBoxColumn Header="Thiết bị" Width="140" HeaderTextAlignment="Center" DataMemberBinding="{Binding EquipmentID}" DisplayMemberPath="Name" SelectedValueMemberPath="EquipmentID" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadWindow, Mode=FindAncestor}, Path=DataContext.Equipments}"></telerik:GridViewComboBoxColumn>
+                <telerik:GridViewDataColumn Header="Serial" Width="160" HeaderTextAlignment="Center" DataMemberBinding="{Binding Serial}" IsReadOnly="True"></telerik:GridViewDataColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
     </Grid>
 </telerik:RadWindow>

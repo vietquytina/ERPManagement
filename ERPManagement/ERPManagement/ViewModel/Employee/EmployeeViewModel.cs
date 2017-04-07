@@ -61,7 +61,9 @@ namespace ERPManagement.ViewModel.Employee
         {
             var employee = db.Employees.SingleOrDefault(m => m.EmployeeID == employeeID);
             if (employee == null)
+            {
                 return null;
+            }
             EmployeeViewModel employeevm = new EmployeeViewModel();
             employeevm.employeeID = employee.EmployeeID;
             employeevm.Code = employee.Code;
@@ -75,13 +77,17 @@ namespace ERPManagement.ViewModel.Employee
             employeevm.Email = employee.Email;
             employeevm.RegencyID = employee.RegencyID;
             employeevm.DepartmentID = employee.DepartmentID;
+            if (employee.Avatar != null && employee.Avatar.Length != 0)
+            {
+                employeevm.avatarBuff = employee.Avatar.ToArray();
+            }
             employeevm.isInserted = false;
             return employeevm;
         }
 
         #region Variables
         private Int32 employeeID;
-        private String familyName, fullName, name, birthPlace, ethnic, phoneNumber, email;
+        private String familyName, fullName, name, birthPlace, ethnic, phoneNumber, email, regencyName, departName;
         private Int32 sex, regencyID, departmentID;
         private DateTime birthDate;
         private Byte[] avatarBuff = null;
@@ -206,7 +212,21 @@ namespace ERPManagement.ViewModel.Employee
                 if (regencyID != value)
                 {
                     regencyID = value;
+                    RegencyName = ConvertCollection.ConvertRegency(regencyID);
                     RaisePropertyChanged("RegencyID");
+                }
+            }
+        }
+
+        public String RegencyName
+        {
+            get { return regencyName; }
+            set
+            {
+                if (regencyName != value)
+                {
+                    regencyName = value;
+                    RaisePropertyChanged("RegencyName");
                 }
             }
         }
@@ -219,7 +239,21 @@ namespace ERPManagement.ViewModel.Employee
                 if (departmentID != value)
                 {
                     departmentID = value;
+                    DepartmentName = ConvertCollection.ConvertDepartment(departmentID);
                     RaisePropertyChanged("DepartmentID");
+                }
+            }
+        }
+
+        public String DepartmentName
+        {
+            get { return departName; }
+            set
+            {
+                if (departName != value)
+                {
+                    departName = value;
+                    RaisePropertyChanged("DepartmentName");
                 }
             }
         }
@@ -227,13 +261,20 @@ namespace ERPManagement.ViewModel.Employee
         public IEnumerable<List.RegencyViewModel> Regencies { get; set; }
 
         public IEnumerable<List.DepartmentViewModel> Departments { get; set; }
+
+        public byte[] AvatarBuffer { get { return avatarBuff; } }
         #endregion
+
+        public List<string> Sexes { get; set; }
 
         public EmployeeViewModel() : base()
         {
             BirthDate = DateTime.Now;
             Regencies = (App.Current as App).Regencies.Items;
             Departments = (App.Current as App).Departments.Items;
+            Sexes = new List<string>();
+            Sexes.Add("Nam");
+            Sexes.Add("Nữ");
         }
 
         protected override void Save(RadWindow window)

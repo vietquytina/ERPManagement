@@ -42,12 +42,24 @@ namespace ERPManagement.View.List
                 bmpSrc.StreamSource = fs;
                 bmpSrc.EndInit();
                 imgAvatar.Source = bmpSrc;
+                employeevm.SetAvatar(fs);
+                fs.Close();
             }
         }
 
         private void RadWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            employeevm = DataContext as ViewModel.Employee.EmployeeViewModel;
+            if (employeevm != null && employeevm.AvatarBuffer != null)
+            {
+                MemoryStream ms = new MemoryStream(employeevm.AvatarBuffer);
+                BitmapImage bmpSrc = new BitmapImage();
+                bmpSrc.BeginInit();
+                bmpSrc.StreamSource = ms;
+                bmpSrc.EndInit();
+                imgAvatar.Source = bmpSrc;
+                ms.Close();
+            }
         }
     }
 }

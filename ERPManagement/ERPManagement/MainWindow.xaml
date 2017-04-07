@@ -115,6 +115,14 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                <Button Name="btnNational" Style="{StaticResource MenuButton}" Click="btnNational_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image Source="Resources/earth-globe.png" RenderOptions.BitmapScalingMode="HighQuality" Width="70"></Image>
+                            <TextBlock Text="Nhân viên" Style="{StaticResource MenuItemTitle}"></TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="1">
